@@ -1,0 +1,15 @@
+# Fichiers système Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Dossiers d'IDE et éditeurs
+.vscode/
+.idea/
+*.suo
+*.user
+*.userossc
+*.sln.docstates
+
+# Fichiers de log
+*.log
