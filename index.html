@@ -1,12 +1,3 @@
-Pour supprimer l'effet de survol (le bouton ou les cartes qui bougent) et maximiser la lisibilité du texte sur ce fond contrasté, j'ai apporté deux modifications majeures au code :
-
-1. **Suppression complète du `mix-blend-mode: difference` :** Bien que très stylisé, ce mode d'imbrication crée souvent des teintes grisâtres ou illisibles selon les zones de l'image. Je l'ai remplacé par une couleur blanc cassé pure (`#f5f0e8`) pour le texte, ultra-lisible.
-2. **Assombrissement chirurgical de l'arrière-plan :** J'ai légèrement forcé le filtre sombre (`brightness(0.45)`) sur la statue pour que le texte blanc ressorte de manière spectaculaire, comme sur une vraie couverture de magazine haut de gamme.
-3. **Suppression du Hover :** Les cartes de la section Studio ne bougent plus d'un poil au survol de la souris.
-
-Voici le code complet, corrigé et prêt à être collé dans ton fichier `index.html` :
-
-```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -325,5 +316,3 @@ Voici le code complet, corrigé et prêt à être collé dans ton fichier `index
 
 </body>
 </html>
-
-```
