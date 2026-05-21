@@ -47,7 +47,7 @@
         .nav-logo { font-size: 0.9rem; font-weight: 700; letter-spacing: -0.02em; }
         .nav-links a { text-decoration: none; color: inherit; margin-left: 24px; }
 
-        /* --- COUVERTURE DU MAGAZINE --- */
+        /* --- COUVERTURE DU MAGAZINE (AXÉE COMM & MÉDIATION) --- */
         .cover {
             position: relative;
             width: 100%;
@@ -61,7 +61,7 @@
         .cover-img {
             position: absolute;
             inset: 0;
-            background-image: url('https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&q=80&w=2000'); /* Remplacer par ton image de fond */
+            background-image: url('https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&q=80&w=2000');
             background-size: cover;
             background-position: center;
             opacity: 0.75;
@@ -70,13 +70,13 @@
         .cover-content {
             position: relative;
             z-index: 2;
-            grid-column: 1 / span 8;
+            grid-column: 1 / span 10; /* Un peu plus large pour les longs titres */
             mix-blend-mode: difference;
             color: #fff;
         }
         .cover-title {
-            font-size: clamp(3.5rem, 10vw, 8.5rem);
-            line-height: 0.85;
+            font-size: clamp(3.2rem, 8.5vw, 7.5rem); /* Ajusté pour éviter les coupures bizarres */
+            line-height: 0.9;
             letter-spacing: -0.04em;
             margin-bottom: 24px;
         }
@@ -90,10 +90,11 @@
         }
         .cover-deck {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-style: italic;
-            max-width: 450px;
+            max-width: 550px;
             line-height: 1.4;
+            color: #f5f0e8;
         }
 
         /* --- DOUBLE PAGE (SPREADS PROJETS MAJEURS) --- */
@@ -108,7 +109,6 @@
             overflow: hidden;
             background: #0d0d0d;
         }
-        /* L'image prend toute la page mais en arrière-plan */
         .spread-bg-img {
             position: absolute;
             inset: 0;
@@ -121,7 +121,7 @@
         .spread-content {
             position: relative;
             z-index: 3;
-            grid-column: 2 / span 5; /* Décalage asymétrique */
+            grid-column: 2 / span 5;
             mix-blend-mode: difference;
             color: #fff;
         }
@@ -153,7 +153,6 @@
             background: #fff;
             color: #000;
         }
-        /* Numérotation géante de magazine au second plan */
         .spread-num {
             position: absolute;
             bottom: 5%;
@@ -166,10 +165,10 @@
             pointer-events: none;
         }
 
-        /* --- SECTION GRILLE SCONOMIQUE (AFFICHES, FLYERS & MEDIATION) --- */
+        /* --- SECTION GRILLE ÉDITORIALE (STUDIO) --- */
         .editorial-grid-section {
             padding: 120px 48px;
-            background: #f5f0e8; /* Rupture chromatique : fond clair type papier mat */
+            background: #f5f0e8;
             color: #1a1a1a;
         }
         .section-header {
@@ -194,11 +193,9 @@
             grid-template-columns: repeat(12, 1fr);
             gap: 48px 32px;
         }
-        /* Agencement asymétrique des cartes */
         .grid-item-wide { grid-column: 1 / span 7; }
-        .grid-item-narrow { grid-column: 9 / span 4; margin-top: 100px; } /* Décalé vers le bas */
+        .grid-item-narrow { grid-column: 9 / span 4; margin-top: 100px; }
         
-        /* Look Mockup d'exposition pour les affiches */
         .editorial-card {
             display: flex;
             flex-direction: column;
@@ -206,7 +203,7 @@
             color: inherit;
         }
         .card-display {
-            background: #e2ded6; /* "Table" ou fond neutre */
+            background: #e2ded6;
             padding: 40px;
             display: flex;
             justify-content: center;
@@ -218,12 +215,11 @@
         .editorial-card:hover .card-display {
             transform: translateY(-8px);
         }
-        /* L'affiche à l'intérieur */
         .card-display img {
             max-height: 100%;
             max-width: 100%;
             object-fit: contain;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12); /* Ombre de papier posé */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
             background: #fff;
         }
         .card-meta {
@@ -234,7 +230,7 @@
         }
         .card-title { font-size: 1.25rem; font-weight: 400; }
 
-        /* --- RESPONSIVE BASIQUE --- */
+        /* --- RESPONSIVE --- */
         @media (max-width: 900px) {
             .cover-content { grid-column: 1 / span 12; }
             .spread-content { grid-column: 1 / span 10; }
@@ -249,7 +245,7 @@
         <div class="nav-logo">JULIEN THIBAULT</div>
         <nav class="nav-links mono-caps">
             <a href="#projets">Projets</a>
-            <a href="#studio">Studio</a>
+            <a href="#studio">Contrast & Studio</a>
             <a href="#contact">Contact</a>
         </nav>
     </header>
@@ -257,11 +253,11 @@
     <section class="cover">
         <div class="cover-img"></div>
         <div class="cover-content">
-            <p class="mono-caps" style="color: #fff; margin-bottom: 16px;">— PORTFOLIO ARCHIVE / VOL. 2026</p>
-            <h1 class="cover-title">Ingénierie<br>Numérique <span>&</span><br>Médiation.</h1>
+            <p class="mono-caps" style="color: #fff; margin-bottom: 16px;">— ARCHIVE PORTFOLIO / VOL. 2026</p>
+            <h1 class="cover-title">Communication,<br>Médiation <span>&</span> Culture<br>Numérique.</h1>
         </div>
         <div class="cover-meta">
-            <p class="cover-deck">Traduire la recherche historique et scientifique complexe en expériences interactives mémorables.</p>
+            <p class="cover-deck">Chargé de communication et médiateur culturel, j’associe l'ingénierie web et le design interactif pour concevoir des expériences de publics mémorables.</p>
             <p class="mono-caps">Toulouse, FR</p>
         </div>
     </section>
@@ -269,9 +265,9 @@
     <section class="spread" id="projets">
         <div class="spread-bg-img" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1500');"></div>
         <div class="spread-content">
-            <span class="mono-caps spread-tag">[ ÉTUDE DE CAS 01 ]</span>
+            <span class="mono-caps spread-tag">[ STRATÉGIE DIGITALE & CMS ]</span>
             <h2 class="spread-title">Refonte du portail web du <em>DRASSM</em></h2>
-            <p class="spread-desc">Co-pilotage de l'architecture d'information, restructuration éditoriale et intégration CMS pour le Département des Recherches Archéologiques Subaquatiques.</p>
+            <p class="spread-desc">Co-pilotage de l'architecture d'information, restructuration éditoriale globale et intégration WordPress au service de la valorisation archéologique subaquatique.</p>
             <a href="#" class="spread-btn mono-caps">Consulter la notice</a>
         </div>
         <div class="spread-num">01</div>
@@ -280,9 +276,9 @@
     <section class="spread">
         <div class="spread-bg-img" style="background-image: url('https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&q=80&w=1500');"></div>
         <div class="spread-content">
-            <span class="mono-caps spread-tag">[ APPLICATION WEB ]</span>
+            <span class="mono-caps spread-tag">[ MÉDIATION INTERACTIVE & APP ]</span>
             <h2 class="spread-title">Renaissance<br><em>Toulousaine</em></h2>
-            <p class="spread-desc">Escape game patrimonial immersif basé sur le web. Utilisation fine des flux JavaScript et GeoJSON pour une valorisation cartographique et narrative du territoire.</p>
+            <p class="spread-desc">Escape game patrimonial immersif basé sur le web. Utilisation de JavaScript et GeoJSON pour transformer la cartographie en un puissant vecteur de storytelling culturel.</p>
             <a href="#" class="spread-btn mono-caps">Lancer l'expérience</a>
         </div>
         <div class="spread-num">02</div>
@@ -290,8 +286,8 @@
 
     <section class="editorial-grid-section" id="studio">
         <div class="section-header">
-            <h2 class="section-title">Édition, Design <span>&</span> Graphisme</h2>
-            <p class="section-intro">Une sélection d'identités visuelles, d'affiches culturelles et d'éditions scientifiques pensées pour l'espace physique ou imprimé.</p>
+            <h2 class="section-title">Ingénierie Culturelle <span>&</span> Graphisme</h2>
+            <p class="section-intro">De la gestion de projet associatif à la création de supports de communication visuelle (print et réseaux sociaux), un aperçu de mes actions de terrain.</p>
         </div>
 
         <div class="grid-container">
@@ -300,8 +296,8 @@
                     <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&q=80&w=800" alt="Direction de projet — Association Contrast">
                 </div>
                 <div class="card-meta">
-                    <h3 class="card-title">Association Contrast — Valorisation & Histoire de l'Art</h3>
-                    <span class="mono-caps">[ Gestion de projet & Médiation ]</span>
+                    <h3 class="card-title">Association Contrast — Histoire de l'Art & Médiation</h3>
+                    <span class="mono-caps">[ Gestion de projet, Partenariats & Publics ]</span>
                 </div>
             </div>
 
@@ -310,8 +306,8 @@
                     <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=600" alt="Visuels Réseaux Sociaux DRASSM">
                 </div>
                 <div class="card-meta">
-                    <h3 class="card-title">Campagne Éditoriale DRASSM</h3>
-                    <span class="mono-caps">[ Social Media ]</span>
+                    <h3 class="card-title">Campagne Éditoriale & Réseaux Sociaux DRASSM</h3>
+                    <span class="mono-caps">[ Social Media & Création ]</span>
                 </div>
             </div>
         </div>
