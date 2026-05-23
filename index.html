@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -7,6 +8,7 @@
     <style>
         /* --- BASICS & RESET --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
         body { 
             background: #0d0d0d; 
             color: #f5f0e8; 
@@ -41,11 +43,14 @@
             padding: 32px 48px;
             z-index: 10;
             color: #f5f0e8;
+            background: linear-gradient(to bottom, rgba(13,13,13,0.8) 0%, rgba(13,13,13,0) 100%);
+            pointer-events: none;
         }
+        .nav-logo, .nav-links a { pointer-events: auto; }
         .nav-logo { font-size: 0.9rem; font-weight: 700; letter-spacing: -0.02em; }
         .nav-links a { text-decoration: none; color: inherit; margin-left: 24px; }
 
-        /* --- COUVERTURE DU MAGAZINE (ÉCLATANTE & LISIBLE) --- */
+        /* --- COUVERTURE DU MAGAZINE (ÉCLATANTE) --- */
         .cover {
             position: relative;
             width: 100%;
@@ -53,7 +58,7 @@
             display: grid;
             grid-template-columns: repeat(12, 1fr);
             align-items: end;
-            padding: 64px 48px;
+            padding: 80px 48px;
             overflow: hidden;
             background: #0d0d0d;
         }
@@ -62,16 +67,14 @@
             inset: 0;
             background-size: cover;
             background-position: center;
-            /* Luminosité augmentée pour redonner de l'éclat à la statue */
             filter: brightness(0.75) contrast(1.15); 
             opacity: 0.9;
             z-index: 1;
         }
-        /* Overlay progressif transparent pour protéger la lisibilité des textes en blanc */
         .cover-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(13, 13, 13, 0.9) 0%, rgba(13, 13, 13, 0.4) 35%, rgba(13, 13, 13, 0) 65%);
+            background: linear-gradient(to top, rgba(13, 13, 13, 1) 0%, rgba(13, 13, 13, 0.4) 40%, rgba(13, 13, 13, 0) 70%);
             z-index: 1;
             pointer-events: none;
         }
@@ -80,6 +83,7 @@
             z-index: 2;
             grid-column: 1 / span 10;
             color: #f5f0e8;
+            margin-bottom: 20px;
         }
         .cover-title {
             font-size: clamp(3.2rem, 8.5vw, 7.5rem);
@@ -94,7 +98,6 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-            margin-top: 32px;
             position: relative;
             z-index: 2;
         }
@@ -107,38 +110,58 @@
             color: #f5f0e8;
         }
 
-        /* --- DOUBLE PAGE (PROJETS) --- */
+        /* --- PROJETS EN FLUX CONTINU & ASYMÉTRIQUE --- */
         .spread {
             position: relative;
             width: 100%;
-            height: 100vh;
+            min-height: 85vh; /* Respire sans bloquer l'écran */
             display: grid;
             grid-template-columns: repeat(12, 1fr);
             align-items: center;
-            padding: 0 48px;
+            padding: 140px 48px; /* Grand espacement vertical pour le rythme */
             overflow: hidden;
             background: #0d0d0d;
+            border-bottom: 1px solid rgba(245, 240, 232, 0.05);
         }
+        
         .spread-bg-img {
             position: absolute;
             inset: 0;
             background-size: cover;
             background-position: center;
-            opacity: 0.45;
+            background-attachment: fixed; /* Effet de glissement au scroll */
             z-index: 1;
-            filter: grayscale(20%) brightness(0.5);
         }
+        
+        /* Assombrissement global pour les fonds de projets */
+        .spread::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(13, 13, 13, 0.75);
+            z-index: 2;
+            pointer-events: none;
+        }
+
         .spread-content {
             position: relative;
             z-index: 3;
-            grid-column: 2 / span 5;
             color: #f5f0e8;
         }
-        .spread-tag { margin-bottom: 16px; display: inline-block; }
+        
+        /* Alternance asymétrique automatique des blocs de texte */
+        .spread:nth-of-type(odd) .spread-content {
+            grid-column: 2 / span 6;
+        }
+        .spread:nth-of-type(even) .spread-content {
+            grid-column: 6 / span 6;
+        }
+
+        .spread-tag { margin-bottom: 20px; display: inline-block; }
         .spread-title {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
-            line-height: 0.95;
-            margin-bottom: 24px;
+            font-size: clamp(2.5rem, 5vw, 4.2rem);
+            line-height: 1;
+            margin-bottom: 28px;
             letter-spacing: -0.02em;
             color: #ffffff;
         }
@@ -148,11 +171,11 @@
             font-size: 0.9rem;
             line-height: 1.6;
             color: #e0dcd5;
-            margin-bottom: 32px;
+            margin-bottom: 40px;
         }
         .spread-btn {
             display: inline-block;
-            padding: 12px 24px;
+            padding: 14px 28px;
             border: 1px solid #f5f0e8;
             color: #f5f0e8;
             text-decoration: none;
@@ -163,48 +186,52 @@
             background: #f5f0e8;
             color: #0d0d0d;
         }
+        
+        /* Les grands numéros d'arrière-plan suivent l'alternance */
         .spread-num {
             position: absolute;
-            bottom: 5%;
-            right: 5%;
-            font-size: clamp(12rem, 25vw, 24rem);
+            font-size: clamp(12rem, 20vw, 22rem);
             font-style: italic;
-            color: rgba(255, 255, 255, 0.03);
+            color: rgba(255, 255, 255, 0.02);
             line-height: 0.8;
             z-index: 2;
             pointer-events: none;
+            bottom: 10%;
         }
+        .spread:nth-of-type(odd) .spread-num { right: 8%; }
+        .spread:nth-of-type(even) .spread-num { left: 8%; }
 
         /* --- SECTION GRILLE ÉDITORIALE (STUDIO) --- */
         .editorial-grid-section {
-            padding: 120px 48px;
+            padding: 140px 48px;
             background: #f5f0e8;
             color: #1a1a1a;
         }
         .section-header {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
-            margin-bottom: 80px;
+            margin-bottom: 100px;
         }
         .section-title {
             grid-column: 1 / span 6;
-            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-size: clamp(2.2rem, 4.5vw, 4rem);
             line-height: 1;
+            color: #0d0d0d;
         }
         .section-intro {
             grid-column: 8 / span 4;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             line-height: 1.6;
-            color: #444;
+            color: #333;
         }
         
         .grid-container {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
-            gap: 48px 32px;
+            gap: 64px 32px;
         }
         .grid-item-wide { grid-column: 1 / span 7; }
-        .grid-item-narrow { grid-column: 9 / span 4; margin-top: 100px; }
+        .grid-item-narrow { grid-column: 9 / span 4; margin-top: 120px; }
         
         .editorial-card {
             display: flex;
@@ -214,34 +241,37 @@
         }
         .card-display {
             background: #e2ded6;
-            padding: 40px;
+            padding: 48px;
             display: flex;
             justify-content: center;
             align-items: center;
             aspect-ratio: 4/3;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
         .card-display img {
             max-height: 100%;
             max-width: 100%;
             object-fit: contain;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.06);
             background: #fff;
         }
         .card-meta {
             display: flex;
             justify-content: space-between;
-            border-top: 1px solid rgba(0,0,0,0.15);
-            padding-top: 12px;
+            border-top: 1px solid rgba(0,0,0,0.12);
+            padding-top: 16px;
         }
-        .card-title { font-size: 1.25rem; font-weight: 400; color: #1a1a1a; }
+        .card-title { font-size: 1.3rem; font-weight: 400; color: #0d0d0d; }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 900px) {
             .cover-content { grid-column: 1 / span 12; }
-            .spread-content { grid-column: 1 / span 10; }
+            .spread { padding: 100px 24px; min-height: auto; }
+            .spread:nth-of-type(odd) .spread-content, 
+            .spread:nth-of-type(even) .spread-content { grid-column: 1 / span 12; }
             .grid-item-wide, .grid-item-narrow { grid-column: 1 / span 12; margin-top: 0; }
-            .section-intro { grid-column: 1 / span 12; margin-top: 20px; }
+            .section-header { display: flex; flex-direction: column; gap: 24px; margin-bottom: 60px; }
+            .nav-header { padding: 24px; }
         }
     </style>
 </head>
@@ -258,7 +288,6 @@
 
     <section class="cover">
         <div class="cover-img" style="background-image: url('https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?auto=format&fit=crop&q=80&w=2000');"></div>
-        
         <div class="cover-overlay"></div>
         
         <div class="cover-content">
@@ -271,32 +300,35 @@
         </div>
     </section>
 
-<section class="spread" id="projets">
-        <div class="spread-bg-img" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1500');"></div>
+    <main id="projets">
         
-        <div class="spread-content">
-            <span class="mono-caps spread-tag">[ INGÉNIERIE WEB & COMM DIGITALE ]</span>
-            <h2 class="spread-title">Création technique <span>&</span> <em>Stratégie Web</em></h2>
-            <p class="spread-desc">
-                Conception d’écosystèmes numériques pour la culture, du site sur-mesure codé de A à Z (HTML/CSS/JavaScript) connecté à des API, jusqu'au développement de thèmes personnalisés sur CMS (WordPress, Drupal). Une double expertise technique et stratégique pour donner vie à des interfaces fluides, performantes et centrées sur l'expérience des publics.
-                <br><br>
-                <strong style="color: #ffffff; font-weight: 400;">Cas d'étude majeur :</strong> Co-pilotage de la création intégrale, de la structuration éditoriale et du déploiement du nouveau portail web du DRASSM sous le CMS Drupal.
-            </p>
-            <a href="#" class="spread-btn mono-caps">Consulter la notice</a>
-        </div>
-        <div class="spread-num">01</div>
-    </section>
+        <section class="spread">
+            <div class="spread-bg-img" style="background-image: url('202208647_Scr.jpg'); opacity: 0.35; filter: grayscale(30%) brightness(0.65);"></div>
+            <div class="spread-content">
+                <span class="mono-caps spread-tag">[ INGÉNIERIE WEB & COMM DIGITALE ]</span>
+                <h2 class="spread-title">Création technique <span>&</span> <em>Stratégie Web</em></h2>
+                <p class="spread-desc">
+                    Conception d’écosystèmes numériques pour la culture, du site sur-mesure codé de A à Z (HTML/CSS/JavaScript) connecté à des API, jusqu'au développement de thèmes personnalisés sur CMS (WordPress, Drupal). Une double expertise technique et stratégique pour donner vie à des interfaces fluides, performantes et centrées sur l'expérience des publics.
+                    <br><br>
+                    <strong style="color: #ffffff; font-weight: 400;">Cas d'étude majeur :</strong> Co-pilotage de la création intégrale, de la structuration éditoriale et du déploiement du nouveau portail web du DRASSM sous le CMS Drupal.
+                </p>
+                <a href="#" class="spread-btn mono-caps">Consulter la notice</a>
+            </div>
+            <div class="spread-num">01</div>
+        </section>
 
-    <section class="spread">
-        <div class="spread-bg-img" style="background-image: url('https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&q=80&w=1500');"></div>
-        <div class="spread-content">
-            <span class="mono-caps spread-tag">[ MÉDIATION INTERACTIVE & APP ]</span>
-            <h2 class="spread-title">Renaissance<br><em>Toulousaine</em></h2>
-            <p class="spread-desc">Escape game patrimonial immersif basé sur le web. Utilisation de JavaScript et GeoJSON pour transformer la cartographie en un puissant vecteur de storytelling culturel.</p>
-            <a href="#" class="spread-btn mono-caps">Lancer l'expérience</a>
-        </div>
-        <div class="spread-num">02</div>
-    </section>
+        <section class="spread">
+            <div class="spread-bg-img" style="background-image: url('https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&q=80&w=1500'); opacity: 0.25; filter: grayscale(20%) brightness(0.5);"></div>
+            <div class="spread-content">
+                <span class="mono-caps spread-tag">[ MÉDIATION INTERACTIVE & APP ]</span>
+                <h2 class="spread-title">Renaissance<br><em>Toulousaine</em></h2>
+                <p class="spread-desc">Escape game patrimonial immersif basé sur le web. Utilisation de JavaScript et GeoJSON pour transformer la cartographie en un puissant vecteur de storytelling culturel.</p>
+                <a href="#" class="spread-btn mono-caps">Lancer l'expérience</a>
+            </div>
+            <div class="spread-num">02</div>
+        </section>
+
+    </main>
 
     <section class="editorial-grid-section" id="studio">
         <div class="section-header">
