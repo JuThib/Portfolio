@@ -186,76 +186,37 @@
         .spread:nth-of-type(odd) .spread-num { right: 8%; }
         .spread:nth-of-type(even) .spread-num { left: 8%; }
 
-        /* --- SECTION 2 : STRATÉGIE DIGITALE & ÉCOSYSTÈMES --- */
-        .editorial-grid-section {
-            padding: 140px 48px;
-            background: #f5efe6; /* Un ton légèrement plus chaud pour structurer la grille */
-            color: #1a1a1a;
-            border-bottom: 1px solid rgba(26, 26, 26, 0.08);
-        }
-        .section-header {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            margin-bottom: 80px;
-        }
-        .section-title {
-            grid-column: 1 / span 6;
-            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
-            line-height: 1.05;
-            color: #0d0d0d;
-        }
-        .section-intro {
-            grid-column: 7 / span 6;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            color: #2e2e2e;
-            padding-left: 40px;
-        }
-        
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 64px 32px;
-        }
-        .grid-item-wide { grid-column: 1 / span 7; }
-        .grid-item-narrow { grid-column: 8 / span 5; margin-top: 80px; }
-        
-        .editorial-card {
-            display: flex;
-            flex-direction: column;
-            text-decoration: none;
-            color: inherit;
-        }
-        .card-display {
-            background: #eadecc;
-            padding: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            aspect-ratio: 16/10;
-            margin-bottom: 24px;
-            overflow: hidden;
-        }
-        .card-display img {
-            max-height: 100%;
-            max-width: 100%;
-            object-fit: contain;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-            background: #fff;
-            transition: transform 0.5s ease;
-        }
-        .editorial-card:hover .card-display img {
-            transform: scale(1.03);
-        }
-        .card-meta {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            border-top: 1px solid rgba(0,0,0,0.1);
-            padding-top: 16px;
-        }
-        .card-title { font-size: 1.25rem; font-weight: 400; color: #0d0d0d; }
+        <!-- SECTION 2 : LA MAÎTRISE DES CANAUX DIGITAUX & DU WEB -->
+<section class="editorial-grid-section" id="digital-strategy">
+    <div class="section-header">
+        <h2 class="section-title">Stratégie Numérique <span>&</span> Écrans</h2>
+        <p class="section-intro">Maîtriser les supports physiques ne suffit plus. Je développe des écosystèmes digitaux performants, de la gestion technique de portails nationaux à la création d'applications interactives.</p>
+    </div>
 
+    <div class="grid-container">
+        <!-- Projet DRASSM (Web - Grand bloc prioritaire) -->
+        <div class="editorial-card grid-item-wide">
+            <div class="card-display">
+                <img src="scree.jpg" alt="Gestion de projet Web DRASSM">
+            </div>
+            <div class="card-meta">
+                <span class="mono-caps" style="color: #555555;">[ INGÉNIERIE WEB & EXCELLENCE TECHNIQUE / DRASSM ]</span>
+                <h3 class="card-title">Co-pilotage de la refonte, de la structuration de l'information et du déploiement du nouveau portail institutionnel sous Drupal</h3>
+            </div>
+        </div>
+
+        <!-- Projet Escape Game (Médiation innovante - Petit bloc décalé) -->
+        <div class="editorial-card grid-item-narrow">
+            <div class="card-display">
+                <img src="visuel.jpg" alt="Médiation Digitale Escape Game">
+            </div>
+            <div class="card-meta">
+                <span class="mono-caps" style="color: #555555;">[ GAMIFICATION & EXPÉRIENCE DE PUBLIC ]</span>
+                <h3 class="card-title">Conception d'une Web-App d'Escape Game patrimonial immersif (JavaScript / GeoJSON)</h3>
+            </div>
+        </div>
+    </div>
+</section>
         /* --- FOOTER CONTACT --- */
         .footer-contact {
             padding: 140px 48px;
