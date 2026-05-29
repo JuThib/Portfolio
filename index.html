@@ -50,7 +50,7 @@
         .nav-logo { font-size: 0.9rem; font-weight: 700; letter-spacing: -0.02em; }
         .nav-links a { text-decoration: none; color: inherit; margin-left: 24px; }
 
-        /* --- COUVERTURE DU MAGAZINE (ÉCLATANTE) --- */
+        /* --- COUVERTURE DU MAGAZINE --- */
         .cover {
             position: relative;
             width: 100%;
@@ -67,8 +67,8 @@
             inset: 0;
             background-size: cover;
             background-position: center;
-            filter: brightness(0.75) contrast(1.15); 
-            opacity: 0.9;
+            filter: brightness(0.6) contrast(1.1); 
+            opacity: 0.8;
             z-index: 1;
         }
         .cover-overlay {
@@ -110,15 +110,15 @@
             color: #f5f0e8;
         }
 
-        /* --- PROJETS EN FLUX CONTINU & ASYMÉTRIQUE --- */
+        /* --- SECTION PORTFOLIO PRINCIPAL (PRINT / ÉDITIONS) --- */
         .spread {
             position: relative;
             width: 100%;
-            min-height: 85vh; /* Respire sans bloquer l'écran */
+            min-height: 90vh;
             display: grid;
             grid-template-columns: repeat(12, 1fr);
             align-items: center;
-            padding: 140px 48px; /* Grand espacement vertical pour le rythme */
+            padding: 140px 48px;
             overflow: hidden;
             background: #0d0d0d;
             border-bottom: 1px solid rgba(245, 240, 232, 0.05);
@@ -129,16 +129,15 @@
             inset: 0;
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Effet de glissement au scroll */
+            background-attachment: fixed;
             z-index: 1;
         }
         
-        /* Assombrissement global pour les fonds de projets */
         .spread::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(13, 13, 13, 0.75);
+            background: rgba(13, 13, 13, 0.8);
             z-index: 2;
             pointer-events: none;
         }
@@ -149,18 +148,14 @@
             color: #f5f0e8;
         }
         
-        /* Alternance asymétrique automatique des blocs de texte */
-        .spread:nth-of-type(odd) .spread-content {
-            grid-column: 2 / span 6;
-        }
-        .spread:nth-of-type(even) .spread-content {
-            grid-column: 6 / span 6;
-        }
+        /* Alternance asymétrique */
+        .spread:nth-of-type(odd) .spread-content { grid-column: 2 / span 6; }
+        .spread:nth-of-type(even) .spread-content { grid-column: 6 / span 6; }
 
-        .spread-tag { margin-bottom: 20px; display: inline-block; }
+        .spread-tag { margin-bottom: 20px; display: inline-block; color: #b5b0a7; }
         .spread-title {
             font-size: clamp(2.5rem, 5vw, 4.2rem);
-            line-height: 1;
+            line-height: 1.1;
             margin-bottom: 28px;
             letter-spacing: -0.02em;
             color: #ffffff;
@@ -187,7 +182,6 @@
             color: #0d0d0d;
         }
         
-        /* Les grands numéros d'arrière-plan suivent l'alternance */
         .spread-num {
             position: absolute;
             font-size: clamp(12rem, 20vw, 22rem);
@@ -201,7 +195,7 @@
         .spread:nth-of-type(odd) .spread-num { right: 8%; }
         .spread:nth-of-type(even) .spread-num { left: 8%; }
 
-        /* --- SECTION GRILLE ÉDITORIALE (STUDIO) --- */
+        /* --- SECTION GRILLE ÉDITORIALE (TECH & COMM DIGITALE) --- */
         .editorial-grid-section {
             padding: 140px 48px;
             background: #f5f0e8;
@@ -257,7 +251,8 @@
         }
         .card-meta {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            gap: 8px;
             border-top: 1px solid rgba(0,0,0,0.12);
             padding-top: 16px;
         }
@@ -280,8 +275,8 @@
     <header class="nav-header">
         <div class="nav-logo">JULIEN THIBAULT</div>
         <nav class="nav-links mono-caps">
-            <a href="#projets">Projets</a>
-            <a href="#studio">Contrast & Studio</a>
+            <a href="#book-print">Édition & Print</a>
+            <a href="#digital-studio">Ingénierie & Lab</a>
             <a href="#contact">Contact</a>
         </nav>
     </header>
@@ -291,69 +286,69 @@
         <div class="cover-overlay"></div>
         
         <div class="cover-content">
-            <p class="mono-caps" style="color: #b5b0a7; margin-bottom: 16px;">— ARCHIVE PORTFOLIO / VOL. 2026</p>
-            <h1 class="cover-title">Communication,<br>Médiation <span>&</span> Culture<br>Numérique.</h1>
+            <p class="mono-caps" style="color: #b5b0a7; margin-bottom: 16px;">— PORTFOLIO ÉDITORIAL / ARCHIVE 2026</p>
+            <h1 class="cover-title">Graphisme,<br>Édition <span>&</span> Médiation<br>Culturelle.</h1>
         </div>
         <div class="cover-meta">
-            <p class="cover-deck">Chargé de communication et médiateur culturel, j’associe l'ingénierie web et le design interactif pour concevoir des expériences de publics mémorables.</p>
+            <p class="cover-deck">Chargé de communication et designer éditorial, je conçois des objets print mémorables et des écosystèmes graphiques au service de la culture et des publics.</p>
             <p class="mono-caps">Toulouse, FR</p>
         </div>
     </section>
 
-    <main id="projets">
+    <main id="book-print">
         
         <section class="spread">
-            <div class="spread-bg-img" style="background-image: url('202208647_Scr.jpg'); opacity: 0.35; filter: grayscale(30%) brightness(0.65);"></div>
+            <div class="spread-bg-img" style="background-image: url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&q=80&w=1200'); opacity: 0.35; filter: grayscale(10%) brightness(0.5);"></div>
             <div class="spread-content">
-                <span class="mono-caps spread-tag">[ INGÉNIERIE WEB & COMM DIGITALE ]</span>
-                <h2 class="spread-title">Création technique <span>&</span> <em>Stratégie Web</em></h2>
+                <span class="mono-caps spread-tag">[ DIRECTION ARTISTIQUE & ÉDITION ]</span>
+                <h2 class="spread-title">Association Contrast<br><em>Revue d'Histoire de l'Art</em></h2>
                 <p class="spread-desc">
-                    Conception d’écosystèmes numériques pour la culture, du site sur-mesure codé de A à Z (HTML/CSS/JavaScript) connecté à des API, jusqu'au développement de thèmes personnalisés sur CMS (WordPress, Drupal). Une double expertise technique et stratégique pour donner vie à des interfaces fluides, performantes et centrées sur l'expérience des publics.
-                    <br><br>
-                    <strong style="color: #ffffff; font-weight: 400;">Cas d'étude majeur :</strong> Co-pilotage de la création intégrale, de la structuration éditoriale et du déploiement du nouveau portail web du DRASSM sous le CMS Drupal.
+                    Conception graphique globale, direction éditoriale et mise en page du catalogue d'exposition et des manifestes de l'association. Un travail rigoureux sur la grille typographique, la gestion des blancs et le rythme visuel pour sublimer les textes scientifiques et les œuvres d'art.
                 </p>
-                <a href="#" class="spread-btn mono-caps">Consulter la notice</a>
+                <a href="#" class="spread-btn mono-caps">Feuilleter le book</a>
             </div>
             <div class="spread-num">01</div>
         </section>
 
         <section class="spread">
-            <div class="spread-bg-img" style="background-image: url('https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&q=80&w=1500'); opacity: 0.25; filter: grayscale(20%) brightness(0.5);"></div>
+            <div class="spread-bg-img" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1200'); opacity: 0.3; filter: grayscale(20%) brightness(0.4);"></div>
             <div class="spread-content">
-                <span class="mono-caps spread-tag">[ MÉDIATION INTERACTIVE & APP ]</span>
-                <h2 class="spread-title">Renaissance<br><em>Toulousaine</em></h2>
-                <p class="spread-desc">Escape game patrimonial immersif basé sur le web. Utilisation de JavaScript et GeoJSON pour transformer la cartographie en un puissant vecteur de storytelling culturel.</p>
-                <a href="#" class="spread-btn mono-caps">Lancer l'expérience</a>
+                <span class="mono-caps spread-tag">[ DESIGN GRAPHIQUE & IDENTITÉ ]</span>
+                <h2 class="spread-title">Campagne Print <span>&</span><br><em>Affiches pour le DRASSM</em></h2>
+                <p class="spread-desc">
+                    Création d’une charte graphique déclinée sur supports physiques (affiches grand format, flyers, invitations) pour la valorisation des campagnes d'archéologie sous-marine. Alignement parfait entre contraintes institutionnelles et modernité visuelle.
+                </p>
+                <a href="#" class="spread-btn mono-caps">Découvrir les planches</a>
             </div>
             <div class="spread-num">02</div>
         </section>
 
     </main>
 
-    <section class="editorial-grid-section" id="studio">
+    <section class="editorial-grid-section" id="digital-studio">
         <div class="section-header">
-            <h2 class="section-title">Ingénierie Culturelle <span>&</span> Graphisme</h2>
-            <p class="section-intro">De la gestion de projet associatif à la création de supports de communication visuelle (print et réseaux sociaux), un aperçu de mes actions de terrain.</p>
+            <h2 class="section-title">Ingénierie Web <span>&</span> Interactivité</h2>
+            <p class="section-intro">Parce que le message se décline aussi sur écran : une double compétence en développement pour structurer des architectures web fluides et des outils de médiation innovants.</p>
         </div>
 
         <div class="grid-container">
             <div class="editorial-card grid-item-wide">
                 <div class="card-display">
-                    <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&q=80&w=800" alt="Direction de projet — Association Contrast">
+                    <img src="202208647_Scr.jpg" alt="Portail Web DRASSM">
                 </div>
                 <div class="card-meta">
-                    <h3 class="card-title">Association Contrast — Histoire de l'Art & Médiation</h3>
-                    <span class="mono-caps">[ Gestion de projet, Partenariats & Publics ]</span>
+                    <span class="mono-caps" style="color: #666;">[ CMS DRUPAL & STRATÉGIE TECHNIQUE ]</span>
+                    <h3 class="card-title">Refonte du Portail Web National du DRASSM</h3>
                 </div>
             </div>
 
             <div class="editorial-card grid-item-narrow">
                 <div class="card-display">
-                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=600" alt="Visuels Réseaux Sociaux DRASSM">
+                    <img src="https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&q=80&w=600" alt="Renaissance Toulousaine">
                 </div>
                 <div class="card-meta">
-                    <h3 class="card-title">Campagne Éditoriale & Réseaux Sociaux DRASSM</h3>
-                    <span class="mono-caps">[ Social Media & Création ]</span>
+                    <span class="mono-caps" style="color: #666;">[ JAVASCRIPT & GEOJSON ]</span>
+                    <h3 class="card-title">Renaissance Toulousaine — App de Médiation</h3>
                 </div>
             </div>
         </div>
