@@ -10,8 +10,8 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body { 
-            background: #0d0d0d; 
-            color: #f5f0e8; 
+            background: #fdfbf7; /* Fond clair lumineux style galerie d'art */
+            color: #1a1a1a; /* Texte sombre pour un contraste parfait */
             font-family: 'Space Mono', monospace; 
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
@@ -28,7 +28,7 @@
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.25em;
-            color: #b5b0a7;
+            color: #555555; /* Légèrement grisé pour la hiérarchie */
         }
 
         /* --- NAVIGATION --- */
@@ -42,14 +42,14 @@
             align-items: center;
             padding: 32px 48px;
             z-index: 10;
-            color: #f5f0e8;
-            background: linear-gradient(to bottom, rgba(13,13,13,0.8) 0%, rgba(13,13,13,0) 100%);
+            color: #1a1a1a;
+            background: linear-gradient(to bottom, rgba(253,251,247,0.9) 0%, rgba(253,251,247,0) 100%);
             pointer-events: none;
         }
         .nav-logo, .nav-links a { pointer-events: auto; }
         .nav-logo { font-size: 0.9rem; font-weight: 700; letter-spacing: -0.02em; }
         .nav-links a { text-decoration: none; color: inherit; margin-left: 24px; transition: opacity 0.3s; }
-        .nav-links a:hover { opacity: 0.7; }
+        .nav-links a:hover { opacity: 0.6; }
 
         /* --- COUVERTURE --- */
         .cover {
@@ -61,21 +61,21 @@
             align-items: end;
             padding: 80px 48px;
             overflow: hidden;
-            background: #0d0d0d;
+            background: #fdfbf7;
         }
         .cover-img {
             position: absolute;
             inset: 0;
             background-size: cover;
             background-position: center;
-            filter: brightness(0.5) contrast(1.1); 
-            opacity: 0.7;
+            filter: brightness(0.9) contrast(1.02); /* Plus lumineux */
+            opacity: 0.25; /* Transparence douce pour laisser respirer le fond clair */
             z-index: 1;
         }
         .cover-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(13, 13, 13, 1) 0%, rgba(13, 13, 13, 0.4) 40%, rgba(13, 13, 13, 0) 70%);
+            background: linear-gradient(to top, rgba(253, 251, 247, 1) 0%, rgba(253, 251, 247, 0.2) 50%, rgba(253, 251, 247, 0) 100%);
             z-index: 1;
             pointer-events: none;
         }
@@ -83,7 +83,7 @@
             position: relative;
             z-index: 2;
             grid-column: 1 / span 10;
-            color: #f5f0e8;
+            color: #1a1a1a;
             margin-bottom: 20px;
         }
         .cover-title {
@@ -91,7 +91,7 @@
             line-height: 0.95;
             letter-spacing: -0.03em;
             margin-bottom: 24px;
-            color: #ffffff;
+            color: #0d0d0d;
         }
         .cover-title span { font-style: italic; font-weight: 300; }
         .cover-meta {
@@ -108,7 +108,7 @@
             font-style: italic;
             max-width: 650px;
             line-height: 1.4;
-            color: #e0dcd5;
+            color: #2e2e2e;
         }
 
         /* --- SECTION 1 : STRATÉGIE ÉDITORIALE & PRINT --- */
@@ -121,8 +121,8 @@
             align-items: center;
             padding: 140px 48px;
             overflow: hidden;
-            background: #0d0d0d;
-            border-bottom: 1px solid rgba(245, 240, 232, 0.05);
+            background: #fdfbf7;
+            border-bottom: 1px solid rgba(26, 26, 26, 0.08);
         }
         
         .spread-bg-img {
@@ -138,7 +138,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(13, 13, 13, 0.85);
+            background: rgba(253, 251, 247, 0.92); /* Opacité claire */
             z-index: 2;
             pointer-events: none;
         }
@@ -146,47 +146,47 @@
         .spread-content {
             position: relative;
             z-index: 3;
-            color: #f5f0e8;
+            color: #1a1a1a;
         }
         
         .spread:nth-of-type(odd) .spread-content { grid-column: 2 / span 6; }
         .spread:nth-of-type(even) .spread-content { grid-column: 6 / span 6; }
 
-        .spread-tag { margin-bottom: 20px; display: inline-block; color: #b5b0a7; }
+        .spread-tag { margin-bottom: 20px; display: inline-block; color: #555555; }
         .spread-title {
             font-size: clamp(2.2rem, 4.2vw, 3.5rem);
             line-height: 1.1;
             margin-bottom: 24px;
             letter-spacing: -0.02em;
-            color: #ffffff;
+            color: #0d0d0d;
         }
         .spread-title em { font-style: italic; font-weight: 300; }
         .spread-desc {
             font-family: 'Space Mono', monospace;
             font-size: 0.85rem;
             line-height: 1.6;
-            color: #cbd5e1;
+            color: #334155;
             margin-bottom: 40px;
         }
         .spread-btn {
             display: inline-block;
             padding: 14px 28px;
-            border: 1px solid #f5f0e8;
-            color: #f5f0e8;
+            border: 1px solid #1a1a1a;
+            color: #1a1a1a;
             text-decoration: none;
             font-size: 0.8rem;
             transition: background 0.3s, color 0.3s;
         }
         .spread-btn:hover {
-            background: #f5f0e8;
-            color: #0d0d0d;
+            background: #1a1a1a;
+            color: #fdfbf7;
         }
         
         .spread-num {
             position: absolute;
             font-size: clamp(12rem, 20vw, 22rem);
             font-style: italic;
-            color: rgba(255, 255, 255, 0.015);
+            color: rgba(0, 0, 0, 0.025); /* Filigrane très subtil */
             line-height: 0.8;
             z-index: 2;
             pointer-events: none;
@@ -198,8 +198,9 @@
         /* --- SECTION 2 : STRATÉGIE DIGITALE & ÉCOSYSTÈMES --- */
         .editorial-grid-section {
             padding: 140px 48px;
-            background: #f4efe6;
+            background: #f5efe6; /* Un ton légèrement plus chaud pour structurer la grille */
             color: #1a1a1a;
+            border-bottom: 1px solid rgba(26, 26, 26, 0.08);
         }
         .section-header {
             display: grid;
@@ -235,7 +236,7 @@
             color: inherit;
         }
         .card-display {
-            background: #e5dfd3;
+            background: #eadecc;
             padding: 40px;
             display: flex;
             justify-content: center;
@@ -248,7 +249,7 @@
             max-height: 100%;
             max-width: 100%;
             object-fit: contain;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
             background: #fff;
             transition: transform 0.5s ease;
         }
@@ -259,33 +260,32 @@
             display: flex;
             flex-direction: column;
             gap: 6px;
-            border-top: 1px solid rgba(0,0,0,0.15);
+            border-top: 1px solid rgba(0,0,0,0.1);
             padding-top: 16px;
         }
         .card-title { font-size: 1.25rem; font-weight: 400; color: #0d0d0d; }
 
-        /* --- FOOTER CONTACT (Cible de l'ancrage menu) --- */
+        /* --- FOOTER CONTACT --- */
         .footer-contact {
             padding: 140px 48px;
-            background: #0d0d0d;
+            background: #fdfbf7;
             text-align: center;
-            border-top: 1px solid rgba(245, 240, 232, 0.05);
         }
         .footer-contact h2 { 
             font-size: clamp(2rem, 4vw, 3rem); 
             margin-bottom: 30px; 
-            color: #ffffff;
+            color: #0d0d0d;
         }
         .footer-link { 
-            color: #f5f0e8; 
+            color: #1a1a1a; 
             text-decoration: none; 
             font-size: clamp(1.1rem, 2.5vw, 1.8rem); 
-            border-bottom: 1px dashed #f5f0e8; 
+            border-bottom: 1px dashed #1a1a1a; 
             padding-bottom: 8px;
             transition: opacity 0.3s;
         }
         .footer-link:hover {
-            opacity: 0.7;
+            opacity: 0.6;
         }
         .contact-details {
             margin-top: 40px;
@@ -295,7 +295,7 @@
             flex-wrap: wrap;
         }
         .contact-details span {
-            color: #b5b0a7;
+            color: #555555;
         }
 
         /* --- RESPONSIVE --- */
@@ -317,23 +317,23 @@
 </head>
 <body>
 
-    <!-- MENU DE NAVIGATION AVEC ANCRES FONCTIONNELLES -->
+    <!-- MENU DE NAVIGATION ANCRÉ -->
     <header class="nav-header">
         <div class="nav-logo">JULIEN THIBAULT</div>
         <nav class="nav-links mono-caps">
             <a href="#edition-print">Identité & Print</a>
             <a href="#digital-strategy">Stratégie Digitale</a>
-            <a href="#contact">Contact</a> <!-- Lien relié directement au footer -->
+            <a href="#contact">Contact</a>
         </nav>
     </header>
 
-    <!-- COUVERTURE -->
+    <!-- COUVERTURE LUMINEUSE -->
     <section class="cover">
         <div class="cover-img" style="background-image: url('https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?auto=format&fit=crop&q=80&w=2000');"></div>
         <div class="cover-overlay"></div>
         
         <div class="cover-content">
-            <p class="mono-caps" style="color: #b5b0a7; margin-bottom: 16px;">— PORTFOLIO STRATÉGIE & CRÉATION</p>
+            <p class="mono-caps" style="color: #555555; margin-bottom: 16px;">— PORTFOLIO STRATÉGIE & CRÉATION</p>
             <h1 class="cover-title">Valoriser la Culture.<br>Piloter la <span>Communication</span>.<br>Concevoir le Message.</h1>
         </div>
         <div class="cover-meta">
@@ -347,7 +347,7 @@
         
         <!-- PROJET 1 PRINCIPAL : LE DRASSM -->
         <section class="spread">
-            <div class="spread-bg-img" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1200'); opacity: 0.3; filter: grayscale(20%) brightness(0.4);"></div>
+            <div class="spread-bg-img" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1200'); opacity: 0.15; filter: grayscale(10%) contrast(1.05);"></div>
             <div class="spread-content">
                 <span class="mono-caps spread-tag">[ DESIGN GRAPHIQUE & STRATÉGIE SOCIAL MEDIA / DRASSM ]</span>
                 <h2 class="spread-title">Campagnes Imprimées <span>&</span><br><em>Identité visuelle du DRASSM</em></h2>
@@ -361,7 +361,7 @@
 
         <!-- PROJET 2 : ASSOCIATION CONTRAST -->
         <section class="spread">
-            <div class="spread-bg-img" style="background-image: url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&q=80&w=1200'); opacity: 0.25; filter: grayscale(10%) brightness(0.4);"></div>
+            <div class="spread-bg-img" style="background-image: url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&q=80&w=1200'); opacity: 0.12; filter: grayscale(5%) contrast(1.05);"></div>
             <div class="spread-content">
                 <span class="mono-caps spread-tag">[ DIRECTION DE PROJET & ÉDITION SCIENTIFIQUE ]</span>
                 <h2 class="spread-title">Association Contrast —<br><em>Supports d'édition et promotion</em></h2>
@@ -389,7 +389,7 @@
                     <img src="202208647_Scr.jpg" alt="Gestion de projet Web DRASSM">
                 </div>
                 <div class="card-meta">
-                    <span class="mono-caps" style="color: #666;">[ INGÉNIERIE WEB & EXCELLENCE TECHNIQUE / DRASSM ]</span>
+                    <span class="mono-caps" style="color: #555555;">[ INGÉNIERIE WEB & EXCELLENCE TECHNIQUE / DRASSM ]</span>
                     <h3 class="card-title">Co-pilotage de la refonte, de la structuration de l'information et du déploiement du nouveau portail institutionnel sous Drupal[cite: 1]</h3>
                 </div>
             </div>
@@ -400,28 +400,26 @@
                     <img src="https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&q=80&w=600" alt="Médiation Digitale Escape Game">
                 </div>
                 <div class="card-meta">
-                    <span class="mono-caps" style="color: #666;">[ GAMIFICATION & EXPÉRIENCE DE PUBLIC ]</span>
+                    <span class="mono-caps" style="color: #555555;">[ GAMIFICATION & EXPÉRIENCE DE PUBLIC ]</span>
                     <h3 class="card-title">Conception d'une Web-App d'Escape Game patrimonial immersif (JavaScript / GeoJSON)[cite: 1]</h3>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 3 : CONTACT (Identifiant ciblé par la navigation haute) -->
+    <!-- SECTION 3 : CONTACT -->
     <footer class="footer-contact" id="contact">
         <p class="mono-caps" style="margin-bottom: 20px;">— ACCESSIBLE & DISPONIBLE</p>
         <h2 class="serif">Vous recherchez un profil hybride Com' & Culture ?</h2>
         
-        <!-- Lien mail principal -->
         <a href="mailto:j.thibaultpro@outlook.fr" class="footer-link">j.thibaultpro@outlook.fr</a>
         
-        <!-- Détails de contact scannables -->
         <div class="contact-details mono-caps" style="font-size: 0.75rem;">
             <span>Tél : 06.50.94.31.84</span>
             <span>•</span>
-            <span>Toulouse / Mobilité France</span>[cite: 1]
+            <span>Toulouse / Mobilité France[cite: 1]</span>
             <span>•</span>
-            <span><a href="https://github.com/votre-username" style="color: inherit; text-decoration: none; border-bottom: 1px solid #555;">GitHub Profile</a></span>
+            <span><a href="https://github.com/votre-username" style="color: inherit; text-decoration: none; border-bottom: 1px solid #777;">Ancre GitHub</a></span>
         </div>
     </footer>
 
