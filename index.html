@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Julien Thibault — Portfolio Éditorial</title>
+    <title>Julien Thibault — Portfolio Communication & Édition</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* --- BASICS & RESET --- */
@@ -51,7 +51,7 @@
         .nav-links a { text-decoration: none; color: inherit; margin-left: 24px; transition: opacity 0.3s; }
         .nav-links a:hover { opacity: 0.7; }
 
-        /* --- COUVERTURE IMMERSIVE --- */
+        /* --- COUVERTURE --- */
         .cover {
             position: relative;
             width: 100%;
@@ -68,8 +68,8 @@
             inset: 0;
             background-size: cover;
             background-position: center;
-            filter: brightness(0.55) contrast(1.1); 
-            opacity: 0.75;
+            filter: brightness(0.5) contrast(1.1); 
+            opacity: 0.7;
             z-index: 1;
         }
         .cover-overlay {
@@ -87,9 +87,9 @@
             margin-bottom: 20px;
         }
         .cover-title {
-            font-size: clamp(2.8rem, 7.5vw, 6.5rem);
+            font-size: clamp(2.5rem, 6.5vw, 5.8rem);
             line-height: 0.95;
-            letter-spacing: -0.04em;
+            letter-spacing: -0.03em;
             margin-bottom: 24px;
             color: #ffffff;
         }
@@ -106,12 +106,12 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.5rem;
             font-style: italic;
-            max-width: 600px;
+            max-width: 650px;
             line-height: 1.4;
             color: #e0dcd5;
         }
 
-        /* --- SECTION 1 : BOOK PRINT & ÉDITION (FLUX IMMERSIF) --- */
+        /* --- SECTION 1 : STRATÉGIE ÉDITORIALE & PRINT --- */
         .spread {
             position: relative;
             width: 100%;
@@ -138,7 +138,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(13, 13, 13, 0.82);
+            background: rgba(13, 13, 13, 0.85);
             z-index: 2;
             pointer-events: none;
         }
@@ -152,9 +152,9 @@
         .spread:nth-of-type(odd) .spread-content { grid-column: 2 / span 6; }
         .spread:nth-of-type(even) .spread-content { grid-column: 6 / span 6; }
 
-        .spread-tag { margin-bottom: 20px; display: inline-block; }
+        .spread-tag { margin-bottom: 20px; display: inline-block; color: #b5b0a7; }
         .spread-title {
-            font-size: clamp(2.3rem, 4.5vw, 3.8rem);
+            font-size: clamp(2.2rem, 4.2vw, 3.5rem);
             line-height: 1.1;
             margin-bottom: 24px;
             letter-spacing: -0.02em;
@@ -195,7 +195,7 @@
         .spread:nth-of-type(odd) .spread-num { right: 8%; }
         .spread:nth-of-type(even) .spread-num { left: 8%; }
 
-        /* --- SECTION 2 : GRILLE STRATÉGIE & INTERACTIVITÉ --- */
+        /* --- SECTION 2 : STRATÉGIE DIGITALE & ÉCOSYSTÈMES --- */
         .editorial-grid-section {
             padding: 140px 48px;
             background: #f4efe6;
@@ -208,7 +208,7 @@
         }
         .section-title {
             grid-column: 1 / span 6;
-            font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
             line-height: 1.05;
             color: #0d0d0d;
         }
@@ -264,14 +264,14 @@
         }
         .card-title { font-size: 1.25rem; font-weight: 400; color: #0d0d0d; }
 
-        /* --- FOOTER CONTACT --- */
+        /* --- FOOTER --- */
         .footer-contact {
             padding: 100px 48px;
             background: #0d0d0d;
             text-align: center;
             border-top: 1px solid rgba(245, 240, 232, 0.05);
         }
-        .footer-contact h2 { font-size: 3rem; margin-bottom: 20px; }
+        .footer-contact h2 { font-size: 2.8rem; margin-bottom: 20px; }
         .footer-link { color: #f5f0e8; text-decoration: none; font-size: 1.2rem; border-bottom: 1px dashed #f5f0e8; padding-bottom: 4px; }
 
         /* --- RESPONSIVE --- */
@@ -285,110 +285,107 @@
             .section-header { display: flex; flex-direction: column; gap: 20px; margin-bottom: 40px; }
             .section-intro { padding-left: 0; }
             .nav-header { padding: 24px; }
-            .nav-links { display: none; } /* Simplification mobile */
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- BARRE DE NAVIGATION -->
     <header class="nav-header">
         <div class="nav-logo">JULIEN THIBAULT</div>
         <nav class="nav-links mono-caps">
-            <a href="#book-print">Éditions & Print</a>
-            <a href="#digital-mediation">Médiation Numérique</a>
+            <a href="#edition-print">Identité & Print</a>
+            <a href="#digital-strategy">Stratégie Digitale</a>
             <a href="#contact">Contact</a>
         </nav>
     </header>
 
-    <!-- COUVERTURE ÉDITORIALE -->
+    <!-- COUVERTURE ORIENTÉE CHARGÉ DE COM' -->
     <section class="cover">
-        <!-- Image de fond type texture papier, bibliothèque ou archive -->
-        <div class="cover-img" style="background-image: url('https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&q=80&w=2000');"></div>
+        <div class="cover-img" style="background-image: url('https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?auto=format&fit=crop&q=80&w=2000');"></div>
         <div class="cover-overlay"></div>
         
         <div class="cover-content">
-            <p class="mono-caps" style="color: #b5b0a7; margin-bottom: 16px;">— VALORISATION & MÉDIATION SCIENTIFIQUE</p>
-            <h1 class="cover-title">Traduire l'Histoire<br>par le Design <span>&</span><br>le Graphisme.</h1>
+            <p class="mono-caps" style="color: #b5b0a7; margin-bottom: 16px;">— PORTFOLIO STRATÉGIE & CRÉATION</p>
+            <h1 class="cover-title">Valoriser la Culture.<br>Piloter la <span>Communication</span>.<br>Concevoir le Message.</h1>
         </div>
         <div class="cover-meta">
-            <p class="cover-deck">Historien de l'art de formation, je conçois des objets éditoriaux (print) et des dispositifs interactifs (web) pour rendre les enjeux de recherche accessibles à tous les publics.</p>
+            <p class="cover-deck">Chargé de communication et diplômé en Histoire de l'art, je combine direction artistique (print, charte graphique) et ingénierie web pour concevoir des campagnes culturelles à fort impact.</p>
             <p class="mono-caps">Toulouse, FR</p>
         </div>
     </section>
 
-    <!-- SECTION PRINCIPALE : LE BOOK PRINT & SCÉNOGRAPHIE (Fonds sombres) -->
-    <main id="book-print">
+    <!-- SECTION PRINCIPALE : LE SAVOIR-FAIRE ÉDITORIAL & VISUEL (PRINT) -->
+    <main id="edition-print">
         
-        <!-- Projet 1 : L'association Contrast -->
+        <!-- Projet 1 : Contrast -->
         <section class="spread">
-            <!-- Arrière-plan : utilise une belle photo d'art ou de catalogue -->
             <div class="spread-bg-img" style="background-image: url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&q=80&w=1200'); opacity: 0.3; filter: grayscale(10%) brightness(0.4);"></div>
             <div class="spread-content">
-                <span class="mono-caps spread-tag">[ DIRECTION ÉDITORIALE & CRÉATION GRAPHIQUE ]</span>
-                <h2 class="spread-title">Association Contrast —<br><em>Scène Indépendante & Sciences</em></h2>
+                <span class="mono-caps spread-tag">[ DIRECTION DE PROJET & IDENTITÉ GRAPHIQUE ]</span>
+                <h2 class="spread-title">Association Contrast —<br><em>Stratégie globale de marque</em></h2>
                 <p class="spread-desc">
-                    En tant que Président et membre actif, j'ai piloté l'identité visuelle de l'association. Conception globale de supports imprimés (affiches, livrets de conférences, newsletters) et direction éditoriale. Un travail rigoureux sur la typographie pour valoriser la recherche en histoire de l'art.
+                    En tant que Président, j'ai géré le déploiement de la communication de l'association. Création de chartes graphiques complètes, mise en page des supports de promotion d'événements scientifiques (livrets, affiches, programmes imprimés) et direction de la communication interne/externe.
                 </p>
-                <a href="#" class="spread-btn mono-caps">Découvrir l'édition</a>
+                <a href="#" class="spread-btn mono-caps">Consulter le book d'édition</a>
             </div>
             <div class="spread-num">01</div>
         </section>
 
-        <!-- Projet 2 : Bibliothèque Olympe de Gouges -->
+        <!-- Projet 2 : Olympe de Gouges -->
         <section class="spread">
-            <div class="spread-bg-img" style="background-image: url('https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?auto=format&fit=crop&q=80&w=1200'); opacity: 0.25; filter: grayscale(30%) brightness(0.4);"></div>
+            <div class="spread-bg-img" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1200'); opacity: 0.25; filter: grayscale(20%) brightness(0.4);"></div>
             <div class="spread-content">
-                <span class="mono-caps spread-tag">[ SCÉNOGRAPHIE & DOSSIER DE PRESSE ]</span>
-                <h2 class="spread-title">Exposition Anniversaire<br><em>Olympe de Gouges</em></h2>
+                <span class="mono-caps spread-tag">[ COM' ÉVÉNEMENTIELLE & CONCEPTION RÉDACTION ]</span>
+                <h2 class="spread-title">Exposition 10 ans —<br><em>Scénographie & Relations Presse</em></h2>
                 <p class="spread-desc">
-                    Commissariat et scénographie pour les 10 ans du centre. Prise en charge complète du volet imprimé : rédaction et mise en page du dossier de présentation, des communiqués de presse et des argumentaires scientifiques, ainsi que la sélection iconographique in situ.
+                    Conception complète des outils de communication pour l'exposition anniversaire de la bibliothèque : rédaction de communiqués et dossiers de presse, création des fiches d'exposition et des supports physiques d'accompagnement des publics.
                 </p>
-                <a href="#" class="spread-btn mono-caps">Voir le dossier technique</a>
+                <a href="#" class="spread-btn mono-caps">Parcourir les RP</a>
             </div>
             <div class="spread-num">02</div>
         </section>
 
     </main>
 
-    <!-- SECTION SECONDAIRE : MÉDIATION INTERACTIVE & CODE (Fond clair, style "Studio") -->
-    <section class="editorial-grid-section" id="digital-mediation">
+    <!-- SECTION 2 : LA MAÎTRISE DES CANAUX DIGITAUX & DU WEB -->
+    <section class="editorial-grid-section" id="digital-strategy">
         <div class="section-header">
-            <h2 class="section-title">Ingénierie Web <span>&</span> Valorisation</h2>
-            <p class="section-intro">Le prolongement logique du papier : le code au service du territoire. Conception d'interfaces sur-mesure et d'architectures de l'information pour les institutions culturelles.</p>
+            <h2 class="section-title">Stratégie Numérique <span>&</span> Écrans</h2>
+            <p class="section-intro">Maîtriser les supports physiques ne suffit plus. Je développe des écosystèmes digitaux performants, du community management à l'architecture de sites institutionnels d'envergure.</p>
         </div>
 
         <div class="grid-container">
-            <!-- Projet Web 1 : DRASSM -->
+            <!-- Projet DRASSM (Web & Social) -->
             <div class="editorial-card grid-item-wide">
                 <div class="card-display">
-                    <!-- Mets ici ta capture d'écran du site du DRASSM (202208647_Scr.jpg) -->
-                    <img src="202208647_Scr.jpg" alt="Portail Institutionnel DRASSM">
+                    <img src="202208647_Scr.jpg" alt="Gestion de projet DRASSM">
                 </div>
                 <div class="card-meta">
-                    <span class="mono-caps" style="color: #666;">[ CMS DRUPAL / ARCHITECTURE DE L'INFORMATION ]</span>
-                    <h3 class="card-title">Co-pilotage du nouveau portail web national du DRASSM</h3>
+                    <span class="mono-caps" style="color: #666;">[ INGÉNIERIE WEB & SOCIAL MEDIA / DRASSM ]</span>
+                    <h3 class="card-title">Co-pilotage du nouveau portail institutionnel (Drupal) & Stratégie Social Media (Instagram, LinkedIn)</h3>
                 </div>
             </div>
 
-            <!-- Projet Web 2 : Escape Game Renaissance -->
+            <!-- Projet Escape Game (Médiation innovante) -->
             <div class="editorial-card grid-item-narrow">
                 <div class="card-display">
-                    <img src="https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&q=80&w=600" alt="Web-App Renaissance Toulousaine">
+                    <img src="https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&q=80&w=600" alt="Médiation Digitale">
                 </div>
                 <div class="card-meta">
-                    <span class="mono-caps" style="color: #666;">[ JAVASCRIPT & DATA GEOJSON ]</span>
-                    <h3 class="card-title">Renaissance Toulousaine — Web-App d'escape game patrimonial</h3>
+                    <span class="mono-caps" style="color: #666;">[ GAMIFICATION & EXPÉRIENCE DE PUBLIC ]</span>
+                    <h3 class="card-title">Conception d'une Web-App d'Escape Game patrimonial immersif</h3>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION CONTACT -->
+    <!-- CONTACT AVEC RAPPEL DU PROFIL -->
     <footer class="footer-contact" id="contact">
-        <p class="mono-caps" style="margin-bottom: 20px;">— TRAVAILLONS ENSEMBLE</p>
-        <h2 class="serif">Une idée ? Un projet d'édition ?</h2>
+        <p class="mono-caps" style="margin-bottom: 20px;">— DISPONIBLE POUR DE NOUVEAUX DÉFIS</p>
+        <h2 class="serif">Vous recherchez un profil hybride Com' & Culture ?</h2>
         <a href="mailto:j.thibaultpro@outlook.fr" class="footer-link">j.thibaultpro@outlook.fr</a>
+        <p class="mono-caps" style="margin-top: 30px; font-size: 0.65rem; color: #555;">Tél : 06.50.94.31.84 | Toulouse / Mobilité France</p>
     </footer>
 
 </body>
