@@ -164,15 +164,25 @@
 
     <main>
         
-        <section class="video-section">
-            <span class="mono-caps">[ PRODUCTION AUDIOVISUELLE / REPTÈRE 46S ]</span>
-            <div class="video-container">
-                <video controls poster="miniature.jpg">
-                    <source src="Reel.mp4" type="video/mp4">
-                    Votre navigateur ne prend pas en charge les vidéos HTML5.
-                </video>
-            </div>
-        </section>
+<section class="video-section" style="display: flex; flex-direction: column; align-items: center; margin-bottom: 120px;">
+    <span class="mono-caps" style="margin-bottom: 24px;">[ PRODUCTION AUDIOVISUELLE / REELS 46S ]</span>
+    
+    <div class="video-container" style="
+        position: relative;
+        width: 100%;
+        max-width: 380px; /* Largeur maximale idéale pour un écran de smartphone sur PC */
+        aspect-ratio: 9 / 16; /* Force le ratio vertical Instagram */
+        background: #1a1a1a;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+        border-radius: 8px; /* Optionnel : bords légèrement arrondis style smartphone */
+        overflow: hidden;
+    ">
+        <video controls poster="miniature.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+            <source src="Reel.mp4" type="video/mp4">
+            Votre navigateur ne prend pas en charge les vidéos HTML5.
+        </video>
+    </div>
+</section>
 
         <section class="gallery-grid">
             
