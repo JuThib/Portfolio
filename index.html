@@ -522,27 +522,34 @@
     width: 100%;
 }
 
-/* Reset et décollage du Reel par rapport au bord */
+/* Surcharge de .reel-wrap spécifique à la section 03 */
 .layout-insta-fixed .reel-wrap {
+    width: 240px;               /* Légèrement plus grand pour le style magazine */
+    aspect-ratio: auto;         /* On retire le ratio du conteneur pour laisser respirer le bouton */
+    overflow: visible;          /* TRÈS IMPORTANT : permet au bouton de sortir en dessous de la vidéo */
+    background: transparent;
     margin: 0;
-    position: relative; /* Sécurité doublée ici pour le parent du bouton */
+    flex-shrink: 0;
+}
+
+/* On applique le style du smartphone, les arrondis et l'ombre directement sur la vidéo */
+.layout-insta-fixed .reel-wrap video {
+    width: 100%;
+    aspect-ratio: 9/16;         /* Le format vertical reste verrouillé sur le film */
+    object-fit: cover;
+    border-radius: 8px;
     box-shadow: 0 30px 60px rgba(0,0,0,0.4);
     border: 1px solid rgba(253,251,247,0.1);
-    width: 240px; /* Légèrement agrandi pour l'impact visuel magazine */
+    display: block;
 }
 
-/* Forcer la base de .reel-wrap à être le référentiel absolu */
-.reel-wrap {
-    position: relative !important; /* Force l'ancrage absolu pour le bouton */
-}
-
-/* Bouton Audio Intégré - Positionné EN DESSOUS du Reel */
-.reel-wrap .audio-toggle {
-    position: relative;          /* Repasse dans le flux normal sous la vidéo */
-    margin: 16px auto 0 auto;    /* 16px d'espace sous la vidéo, auto pour le centrer horizontalement */
-    width: fit-content;          /* S'ajuste pile à la taille du texte */
+/* Bouton Audio Brutaliste - Fixé EN DESSOUS de la vidéo */
+.layout-insta-fixed .audio-toggle {
+    position: relative;          /* Entre dans le flux normal sous la vidéo */
+    margin: 20px auto 0 auto;    /* Crée 20px d'espace sous la vidéo et le centre horizontalement */
+    width: fit-content;          /* Évite qu'il ne prenne toute la largeur */
     
-    /* Tes styles graphiques brutalisme (conservés) */
+    /* Tes styles graphiques */
     background: rgba(13, 13, 13, 0.75);
     backdrop-filter: blur(8px);
     border: 1px solid rgba(253, 251, 247, 0.2);
@@ -561,7 +568,7 @@
     white-space: nowrap;
 }
 
-.reel-wrap .audio-toggle:hover {
+.layout-insta-fixed .audio-toggle:hover {
     background: var(--paper);
     color: var(--ink);
 }
@@ -571,28 +578,11 @@
     height: 12px;
     display: block;
 }
+
 .constellation-insta {
     width: 120px;
     opacity: 0.15;
     flex-shrink: 0;
-}
-
-/* Ajustement Mobile pour cette section */
-@media (max-width: 860px) {
-    .layout-insta-fixed .frag-visual-dark {
-        grid-template-columns: 1fr;
-        padding: 40px 20px;
-    }
-    .video-spec-data {
-        flex-direction: row;
-        flex-wrap: wrap;
-        border-left: none;
-        border-bottom: 1px solid rgba(253,251,247,0.1);
-        padding-left: 0;
-        padding-bottom: 20px;
-        gap: 16px;
-    }
-    .reel-center-zone { flex-direction: column; gap: 30px; }
 }
 
         /* ─── MOBILE ─── */
