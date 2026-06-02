@@ -486,7 +486,7 @@
         .ws-alt .ws-text { background: var(--warm); }
         .ws-alt .ws-images { background: var(--bone); }
 
-        /* ─── OPTIMISATION SECTION 03 REEL ─── */
+/* ─── OPTIMISATION SECTION 03 REEL ─── */
 .layout-insta-fixed .frag-visual-dark {
     display: grid;
     grid-template-columns: 200px 1fr; /* Sépare les specs techniques et la zone vidéo */
@@ -525,24 +525,23 @@
 /* Reset et décollage du Reel par rapport au bord */
 .layout-insta-fixed .reel-wrap {
     margin: 0;
-    position: relative;
+    position: relative; /* Sécurité doublée ici pour le parent du bouton */
     box-shadow: 0 30px 60px rgba(0,0,0,0.4);
     border: 1px solid rgba(253,251,247,0.1);
     width: 240px; /* Légèrement agrandi pour l'impact visuel magazine */
 }
 
-.constellation-insta {
-    width: 120px;
-    opacity: 0.15;
-    flex-shrink: 0;
+/* Forcer la base de .reel-wrap à être le référentiel absolu */
+.reel-wrap {
+    position: relative !important; /* Force l'ancrage absolu pour le bouton */
 }
 
-/* Bouton Audio Intégré */
-.audio-toggle {
+/* Bouton Audio Intégré & Verrouillé à l'intérieur du smartphone */
+.reel-wrap .audio-toggle {
     position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 20px;                /* Fixé précisément à 20px du bas de l'image du Reel */
+    left: 50%;                   /* Aligné sur l'axe central du Reel */
+    transform: translateX(-50%); /* Centrage parfait horizontal */
     background: rgba(13, 13, 13, 0.75);
     backdrop-filter: blur(8px);
     border: 1px solid rgba(253, 251, 247, 0.2);
@@ -558,14 +557,24 @@
     border-radius: 4px;
     z-index: 10;
     transition: all 0.2s ease;
+    white-space: nowrap;         /* Empêche le texte de casser sur deux lignes */
 }
-.audio-toggle:hover {
+
+.reel-wrap .audio-toggle:hover {
     background: var(--paper);
     color: var(--ink);
 }
+
 #audio-icon {
     width: 12px;
     height: 12px;
+    display: block;
+}
+
+.constellation-insta {
+    width: 120px;
+    opacity: 0.15;
+    flex-shrink: 0;
 }
 
 /* Ajustement Mobile pour cette section */
