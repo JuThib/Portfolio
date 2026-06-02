@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Julien Thibault — Portfolio</title>
+    <title>Julien Thibault — Direction de la Communication & Ingénierie Éditoriale</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* --- RESET & CONFIGURATIONS BASE --- */
+        /* --- ACCORD ET CONFIGURATIONS DE BASE --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body { 
@@ -19,7 +19,7 @@
         h2, h3, .serif { font-family: 'Cormorant Garamond', serif; font-weight: 300; }
         .mono-caps { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.25em; color: #555555; }
 
-        /* --- NAVIGATION MINIMALISTE --- */
+        /* --- NAVIGATION PROTOCOLAIRE --- */
         .nav-header {
             position: fixed;
             top: 0;
@@ -30,7 +30,7 @@
             align-items: center;
             padding: 32px 48px;
             z-index: 100;
-            mix-blend-mode: difference; /* Le menu s'adaptera (blanc sur fond sombre, noir sur fond clair) */
+            mix-blend-mode: difference;
             color: #fdfbf7;
             pointer-events: none;
         }
@@ -39,20 +39,20 @@
         .nav-links a { margin-left: 24px; transition: opacity 0.3s; }
         .nav-links a:hover { opacity: 0.6; }
 
-        /* --- INTRO / MANIFESTE --- */
+        /* --- AVANT-PROPOS / POSTURE --- */
         .intro-manifesto {
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             padding: 0 48px;
-            max-width: 900px;
+            max-width: 1000px;
             background: #fdfbf7;
         }
-        .intro-manifesto h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; margin-top: 32px; color: #0d0d0d; }
+        .intro-manifesto h1 { font-size: clamp(2.2rem, 4.5vw, 4rem); line-height: 1.15; margin-top: 32px; color: #0d0d0d; }
         .intro-manifesto h1 span { font-style: italic; }
 
-        /* --- L'EFFET STICKY SCROLL (GALERIE INVERSÉE) --- */
+        /* --- STRUCTURE ASYMÉTRIQUE ET EFFET STICKY --- */
         .portfolio-container { position: relative; }
         
         .gallery-section {
@@ -67,22 +67,32 @@
             border-bottom: 1px solid rgba(26, 26, 26, 0.05);
         }
 
-        /* Variations de couleurs de fond des salles de la galerie */
+        /* Nuances chromatiques des espaces d'exposition */
         .bg-creme { background: #fdfbf7; }
         .bg-warm { background: #f5efe6; }
         .bg-soft-dark { background: #eadecc; }
 
-        /* Cartel de l'œuvre (Texte descriptif) */
-        .cartel {
-            grid-column: 1 / span 4;
-            z-index: 3;
-            padding-right: 40px;
-        }
-        .cartel-title { font-size: clamp(1.8rem, 3vw, 2.8rem); line-height: 1.1; margin: 16px 0 24px 0; color: #0d0d0d; }
-        .cartel-title em { font-style: italic; }
-        .cartel-desc { font-size: 0.85rem; line-height: 1.6; color: #444; margin-bottom: 32px; }
+        /* --- VARIATIONS ASYMÉTRIQUES DES BLOCS (CONFIGURATIONS GRILLE) --- */
         
-        /* Boutons élégants */
+        /* Configuration A : Texte à gauche (étroit), Média à droite (large) */
+        .layout-a .cartel { grid-column: 1 / span 4; padding-right: 40px; }
+        .layout-a .media-display { grid-column: 5 / span 8; justify-content: center; }
+
+        /* Configuration B : Texte à droite (large), Média à gauche (étroit - idéal visuels verticaux) */
+        .layout-b .cartel { grid-column: 7 / span 5; padding-left: 40px; }
+        .layout-b .media-display { grid-column: 1 / span 6; justify-content: flex-start; }
+
+        /* Configuration C : Texte centré haut, Média centré bas (grand format horizontal) */
+        .layout-c { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 0 10%; }
+        .layout-c .cartel { width: 100%; max-width: 650px; margin-bottom: 40px; }
+        .layout-c .media-display { width: 100%; justify-content: center; height: auto; }
+
+        /* --- COMPOSANTS DU CARTEL --- */
+        .cartel-title { font-size: clamp(1.8rem, 2.5vw, 2.5rem); line-height: 1.2; margin: 16px 0 20px 0; color: #0d0d0d; }
+        .cartel-title em { font-style: italic; }
+        .cartel-desc { font-size: 0.85rem; line-height: 1.6; color: #444; margin-bottom: 24px; font-family: 'Space Mono', monospace; }
+        
+        /* Boutons institutionnels */
         .portfolio-btn {
             display: inline-block;
             padding: 12px 24px;
@@ -94,135 +104,129 @@
         }
         .portfolio-btn:hover { background: #1a1a1a; color: #fdfbf7; }
 
-        /* Zone d'affichage des médias */
+        /* --- ESPACE MÉDIA --- */
         .media-display {
-            grid-column: 5 / span 8;
             display: flex;
-            justify-content: center;
             align-items: center;
-            height: 80vh;
+            height: 75vh;
             position: relative;
         }
-
-        /* Styles des rendus (Mockups / Visuels) */
         .mockup-img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.06);
         }
 
-        /* Format spécifique pour le Réel Instagram */
+        /* Conteneur vertical aux proportions de l'application mobile (9/16) */
         .insta-container {
             width: 100%;
-            max-width: 320px;
+            max-width: 310px;
             aspect-ratio: 9 / 16;
             background: #000;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
-            border-radius: 12px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+            border-radius: 8px;
             overflow: hidden;
         }
         .insta-container video { width: 100%; height: 100%; object-fit: cover; }
 
-        /* --- FOOTER SIMPLIFIÉ --- */
+        /* --- CONCLUSION DE PAGE --- */
         .footer-gallery {
             position: relative;
             z-index: 10;
             background: #fdfbf7;
-            padding: 120px 48px;
+            padding: 140px 48px;
             text-align: center;
             border-top: 1px solid rgba(26, 26, 26, 0.08);
         }
         .footer-gallery h2 { font-size: 2.5rem; margin-bottom: 24px; }
         .email-link { color: #1a1a1a; text-decoration: none; font-size: 1.5rem; border-bottom: 1px dashed #1a1a1a; padding-bottom: 4px; }
 
-        /* --- RESPONSIVE --- */
+        /* --- ADAPTATION MOBILE --- */
         @media (max-width: 900px) {
             .nav-header { padding: 24px; mix-blend-mode: normal; color: #1a1a1a; background: #fdfbf7; position: relative; }
             .nav-links { display: none; }
-            .intro-manifesto { height: auto; padding: 60px 24px; }
-            .gallery-section { position: relative; height: auto; display: flex; flex-direction: column; padding: 60px 24px; gap: 40px; }
-            .cartel { padding-right: 0; width: 100%; }
-            .media-display { height: auto; width: 100%; }
-            .mockup-img { max-height: 60vh; }
+            .intro-manifesto { height: auto; padding: 80px 24px; }
+            .gallery-section { position: relative; height: auto; display: flex; flex-direction: column; padding: 80px 24px; gap: 32px; }
+            .layout-c { padding: 80px 24px; }
+            .cartel { padding: 0 !important; width: 100%; }
+            .media-display { height: auto; width: 100%; justify-content: center !important; }
+            .mockup-img { max-height: 550px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAVIGATION OVERLAY -->
+    <!-- PROTOCOLE DE NAVIGATION -->
     <header class="nav-header">
         <a href="#" class="nav-logo">JULIEN THIBAULT</a>
         <nav class="nav-links mono-caps">
-            <a href="#galerie">Portfolio</a>
-            <a href="#contact">Contact</a>
+            <a href="#galerie">Travaux de communication</a>
+            <a href="#contact">Coordonnées</a>
         </nav>
     </header>
 
-    <!-- MANIFESTE D'ENTRÉE -->
+    <!-- AVANT-PROPOS HISTORIEN ET COMMUNICANT -->
     <section class="intro-manifesto">
-        <span class="mono-caps">// CONCEVOIR LE MESSAGE CULTUREL</span>
-        <h1>Le CV est sur votre bureau.<br>Ici se trouve <span>le terrain</span>. Bienvenue dans ma galerie de productions.</h1>
+        <span class="mono-caps">// POSITIONNEMENT PROFESSIONNEL</span>
+        <h1>Issu d'un parcours universitaire en Histoire de l'art, je mets l'ingénierie éditoriale et graphique au service des <span>institutions publiques</span> et de la valorisation scientifique.</h1>
     </section>
 
-    <!-- CONTENEUR DES SENSATIONS DE SCROLL (STICKY) -->
+    <!-- INDEX DES VISUELS (STRUCTURE ASYMÉTRIQUE MULTIPLE) -->
     <div class="portfolio-container" id="galerie">
 
-        <!-- Axe DRASSM - Pièce 1 : L'affiche -->
-        <section class="gallery-section bg-creme">
+        <!-- AXE 1 : VALORISATION INSTITUTIONNELLE (DRASSM) -->
+        
+        <!-- Œuvre 01 : Affiche Grand Public [Layout A] -->
+        <section class="gallery-section bg-creme layout-a">
             <div class="cartel">
-                <span class="mono-caps">[ DRASSM / PRINT ]</span>
-                <h2 class="cartel-title">Réguler <span>&</span> Attirer</h2>
-                <p class="cartel-desc">Affiche institutionnelle pensée pour vulgariser les missions scientifiques du DRASSM auprès du grand public, tout en respectant scrupuleusement la charte graphique de l'État.</p>
+                <span class="mono-caps">[ DRASSM / INVITATION INSTITUTIONNELLE ]</span>
+                <h2 class="cartel-title">L'Ouverture au <span>Grand Public</span></h2>
+                <p class="cartel-desc">Conception d'une affiche grand public visant à rendre accessibles les campagnes scientifiques du service, tout en s'adaptant aux exigences de la charte graphique de l'État (Ministère de la Culture).</p>
             </div>
             <div class="media-display">
-                <img src="affiche_drassm.jpg" alt="Affiche Grand Public DRASSM" class="mockup-img">
+                <img src="affiche_drassm.jpg" alt="Affiche institutionnelle DRASSM" class="mockup-img">
             </div>
         </section>
 
-        <!-- Axe DRASSM - Pièce 2 : Le Flyer -->
-        <section class="gallery-section bg-warm">
-            <div class="cartel">
-                <span class="mono-caps">[ DRASSM / MÉDIATION HORS-LES-MURS ]</span>
-                <h2 class="cartel-title">Le Flyer <span>Imprimé</span></h2>
-                <p class="cartel-desc">Support de diffusion léger pour faire venir le public local aux événements et ateliers de valorisation du patrimoine sous-marin.</p>
-            </div>
+        <!-- Œuvre 02 : Le Flyer [Layout B] -->
+        <section class="gallery-section bg-warm layout-b">
             <div class="media-display">
-                <img src="flyer_drassm.jpg" alt="Flyer DRASSM" class="mockup-img">
+                <img src="flyer_drassm.jpg" alt="Flyer informatif DRASSM" class="mockup-img">
+            </div>
+            <div class="cartel">
+                <span class="mono-caps">[ DRASSM / INGENIERIE DE DIFFUSION ]</span>
+                <h2 class="cartel-title">Le Flyer comme <span>Vecteur Local</span></h2>
+                <p class="cartel-desc">Mise en page et structuration de l'information pour le flyer de promotion des événements de valorisation. Objectif : optimiser la conversion et mobiliser les publics de proximité.</p>
             </div>
         </section>
 
-        <!-- Axe DRASSM - Pièce 3 : Fiche d'inventaire (InDesign) -->
-        <section class="gallery-section bg-creme">
+        <!-- Œuvre 03 : Fiche d'inventaire InDesign [Layout C] -->
+        <section class="gallery-section bg-creme layout-c">
             <div class="cartel">
-                <span class="mono-caps">[ DRASSM / COMPOSITION INDESIGN ]</span>
-                <h2 class="cartel-title">La Fiche <span>d'Inventaire</span></h2>
-                <p class="cartel-desc">Création technique et rigoureuse d'une fiche d'inventaire de mobilier archéologique sous InDesign. Une mise en page pensée pour l'efficacité des chercheurs.</p>
+                <span class="mono-caps">[ DRASSM / STRUCTURATION TECHNIQUE ]</span>
+                <h2 class="cartel-title">La Fiche d'Inventaire <span>Éditoriale</span></h2>
+                <p class="cartel-desc">Création sous Adobe InDesign d'une fiche d'inventaire normée pour le mobilier archéologique. Un travail rigoureux sur la grille typographique pour concilier lisibilité scientifique et rigueur administrative.</p>
             </div>
             <div class="media-display">
-                <img src="fiche_inventaire.jpg" alt="Fiche Inventaire InDesign" class="mockup-img">
+                <img src="fiche_inventaire.jpg" alt="Fiche technique InDesign" class="mockup-img">
             </div>
         </section>
 
-        <!-- Axe DRASSM - Pièce 4 : Outil de médiation enfants -->
-        <section class="gallery-section bg-warm">
+        <!-- Œuvre 04 : Médiation Jeune Public [Layout A] -->
+        <section class="gallery-section bg-warm layout-a">
             <div class="cartel">
-                <span class="mono-caps">[ DRASSM / JEUNE PUBLIC ]</span>
-                <h2 class="cartel-title">L'Apprentissage <span>par le Jeu</span></h2>
-                <p class="cartel-desc">Conception graphique d'un outil de médiation ludique adapté aux élèves de classes primaires pour les initier aux concepts clés de l'archéologie.</p>
+                <span class="mono-caps">[ DRASSM / MÉDIATION UNIVERSTAIRE & SCOLAIRE ]</span>
+                <h2 class="cartel-title">Didactique <span>Jeune Public</span></h2>
+                <p class="cartel-desc">Développement d'un outil de médiation sous forme de jeu destiné aux classes de niveau primaire. Transposition graphique de concepts d'archéologie sous-marine en un parcours visuel adapté.</p>
             </div>
             <div class="media-display">
-                <img src="jeu_primaire.jpg" alt="Outil de médiation jeu enfants" class="mockup-img">
+                <img src="jeu_primaire.jpg" alt="Outil didactique et ludique" class="mockup-img">
             </div>
         </section>
 
-        <!-- Axe DRASSM - Pièce 5 : Le Réel Insta -->
-        <section class="gallery-section bg-creme">
-            <div class="cartel">
-                <span class="mono-caps">[ DRASSM / STRATÉGIE INSTAGRAM ]</span>
-                <h2 class="cartel-title">Rendez-vous <span>Éditorial</span></h2>
-                <p class="cartel-desc">Création d'un format Réel récurrent (46 secondes) pour dynamiser la communauté Instagram du DRASSM et installer un repère de communication moderne.</p>
-            </div>
+        <!-- Œuvre 05 : Vidéo Réel Instagram [Layout B] -->
+        <section class="gallery-section bg-creme layout-b">
             <div class="media-display">
                 <div class="insta-container">
                     <video controls poster="miniature.jpg">
@@ -230,93 +234,103 @@
                     </video>
                 </div>
             </div>
-        </section>
-
-        <!-- Axe DRASSM - Pièce 6 : Affiche Archéo' Time -->
-        <section class="gallery-section bg-warm">
             <div class="cartel">
-                <span class="mono-caps">[ DRASSM / COM INTERNE ]</span>
-                <h2 class="cartel-title">Archéo' <span>Time</span></h2>
-                <p class="cartel-desc">Affiche au ton décalé et détendu destinée au cadre interne de l'institution. Un levier graphique pensé pour la cohésion d'équipe.</p>
-            </div>
-            <div class="media-display">
-                <img src="archeo_time.jpg" alt="Affiche interne Archéo Time" class="mockup-img">
+                <span class="mono-caps">[ DRASSM / DYNAMISATION DES CANAUX ]</span>
+                <h2 class="cartel-title">Le Rendez-vous <span>Éditorial Numérique</span></h2>
+                <p class="cartel-desc">Conception, dériation et montage d'une capsule vidéo au format vertical (46 secondes) instaurant un jalon éditorial récurrent sur l'Instagram de l'institution afin de fidéliser une audience contemporaine.</p>
             </div>
         </section>
 
-        <!-- CONTRAST - Pièce 7 : Affiche Visites -->
-        <section class="gallery-section bg-creme">
+        <!-- Œuvre 06 : Affiche Communication Interne [Layout A] -->
+        <section class="gallery-section bg-warm layout-a">
             <div class="cartel">
-                <span class="mono-caps">[ CONTRAST / PROMOTION ]</span>
-                <h2 class="cartel-title">Les Prochaines <span>Visites</span></h2>
-                <p class="cartel-desc">Affiche minimaliste annonçant les cycles de visites guidées en Histoire de l'art organisés par l'association.</p>
+                <span class="mono-caps">[ DRASSM / COHÉSION ET SYNERGIE INTERNE ]</span>
+                <h2 class="cartel-title">Archéo' Time : <span>Fédérer la Structure</span></h2>
+                <p class="cartel-desc">Création de l'affiche pour le projet interne "Archéo' Time". Adoption d'un ton graphique plus souple, spécifiquement calibré pour les collaborateurs et le renforcement de la cohésion interne.</p>
             </div>
             <div class="media-display">
-                <img src="affiche_visites.jpg" alt="Affiche Visites Association" class="mockup-img">
+                <img src="archeo_time.jpg" alt="Affiche communication interne Archéo Time" class="mockup-img">
             </div>
         </section>
 
-        <!-- CONTRAST - Pièce 8 : Flyer Présentation -->
-        <section class="gallery-section bg-soft-dark">
-            <div class="cartel">
-                <span class="mono-caps">[ CONTRAST / IDENTITÉ ]</span>
-                <h2 class="cartel-title">Présenter <span>l'Asso</span></h2>
-                <p class="cartel-desc">Flyer de présentation global des valeurs, de la direction artistique et des ambitions de l'Association Contrast auprès des nouveaux adhérents.</p>
-            </div>
+
+        <!-- AXE 2 : COMMUNIQUER POUR L'ÉDITION SCIENTIFIQUE (ASSOCIATION CONTRAST) -->
+
+        <!-- Œuvre 07 : Affiche Conférences/Visites [Layout B] -->
+        <section class="gallery-section bg-creme layout-b">
             <div class="media-display">
-                <img src="flyer_presentation.jpg" alt="Flyer présentation Association" class="mockup-img">
+                <img src="affiche_visites.jpg" alt="Affiche cycle de visites Contrast" class="mockup-img">
+            </div>
+            <div class="cartel">
+                <span class="mono-caps">[ ASSOCIATION CONTRAST / PROMOTION DES SAVOIRS ]</span>
+                <h2 class="cartel-title">Valorisation des <span>Cycles Scientifiques</span></h2>
+                <p class="cartel-desc">Affiche promotionnelle conçue pour annoncer les prochaines visites programmées. L'épuration graphique fait écho aux exigences esthétiques de l'histoire de l'art.</p>
             </div>
         </section>
 
-        <!-- CONTRAST - Pièce 9 : Flyer Programme -->
-        <section class="gallery-section bg-creme">
+        <!-- Œuvre 08 : Flyer Présentation [Layout C] -->
+        <section class="gallery-section bg-soft-dark layout-c">
             <div class="cartel">
-                <span class="mono-caps">[ CONTRAST / ÉDITION PRINT ]</span>
-                <h2 class="cartel-title">Le Programme <span>Annuel</span></h2>
-                <p class="cartel-desc">Mise en page du dépliant contenant toute la programmation culturelle et le calendrier des conférences de l'année.</p>
+                <span class="mono-caps">[ ASSOCIATION CONTRAST / STRATÉGIE DE MARQUE ]</span>
+                <h2 class="cartel-title">Le Manifeste de <span>l'Association</span></h2>
+                <p class="cartel-desc">Conception éditoriale du support de présentation global de l'association. Traitement rigoureux de l'identité visuelle pour asseoir la crédibilité de la structure auprès des partenaires et nouveaux adhérents.</p>
             </div>
             <div class="media-display">
-                <img src="flyer_programme.jpg" alt="Flyer Programme Annuel" class="mockup-img">
+                <img src="flyer_presentation.jpg" alt="Support d'adhésion et présentation" class="mockup-img">
             </div>
         </section>
 
-        <!-- WEB DESIGN - Pièce 10 : La Web-App Live -->
-        <section class="gallery-section bg-warm">
+        <!-- Œuvre 09 : Flyer Programme [Layout A] -->
+        <section class="gallery-section bg-creme layout-a">
             <div class="cartel">
-                <span class="mono-caps">[ WEB DESIGN / GAMIFICATION ]</span>
-                <h2 class="cartel-title">Escape Game <span>Immersif</span></h2>
-                <p class="cartel-desc">Conception technique et design d'une application de jeu patrimonial (JavaScript / GeoJSON).</p>
-                <a href="https://frhb10946ds.ikexpress.com/~thibault/projet/" target="_blank" class="portfolio-btn mono-caps">Tester la Web-App</a>
+                <span class="mono-caps">[ ASSOCIATION CONTRAST / DESIGN ÉDITORIAL ]</span>
+                <h2 class="cartel-title">Le Dépliant de <span>Programmation</span></h2>
+                <p class="cartel-desc">Mise en page du programme annuel des colloques et conférences. Synthèse de données textuelles denses dans un document papier normé et structuré.</p>
             </div>
             <div class="media-display">
-                <img src="visuel.jpg" alt="Web-App Escape Game" class="mockup-img">
+                <img src="flyer_programme.jpg" alt="Dépliant programme annuel" class="mockup-img">
             </div>
         </section>
 
-        <!-- WEB DESIGN - Pièce 11 : Maquette One-Page -->
-        <section class="gallery-section bg-creme">
-            <div class="cartel">
-                <span class="mono-caps">[ UX/UI / ARCHITECTURE DE PAGE ]</span>
-                <h2 class="cartel-title">Maquette <span>One-Page</span></h2>
-                <p class="cartel-desc">Dossier de recherche UI et zoning complet d'un projet d'interface web minimaliste sur une seule page.</p>
-                <a href="maquette_onepage.pdf" target="_blank" class="portfolio-btn mono-caps">Consulter le PDF UI</a>
-            </div>
+
+        <!-- AXE 3 : EXPÉRIENCES NUMÉRIQUES ET INTERFACES GRAPHIQUES -->
+
+        <!-- Œuvre 10 : L'Escape Game Web-App [Layout B] -->
+        <section class="gallery-section bg-warm layout-b">
             <div class="media-display">
-                <img src="screen_site.jpg" alt="Maquette d'interface" class="mockup-img">
+                <img src="visuel.jpg" alt="Interface de l'Escape Game" class="mockup-img">
+            </div>
+            <div class="cartel">
+                <span class="mono-caps">[ STRATÉGIE DIGITALE / INGENIERIE DE MÉDIATION ]</span>
+                <h2 class="cartel-title">Gamification <span>Patrimoniale</span></h2>
+                <p class="cartel-desc">Interface UI et logique algorithmique d'un dispositif de médiation numérique immersif. Intégration cartographique interactive de données territoriales (JavaScript / GeoJSON).</p>
+                <a href="https://frhb10946ds.ikexpress.com/~thibault/projet/" target="_blank" class="portfolio-btn mono-caps">Consulter l'application en production</a>
             </div>
         </section>
 
-        <!-- WEB DESIGN - Pièce 12 : Capsule vidéo site complet -->
-        <section class="gallery-section bg-soft-dark">
+        <!-- Œuvre 11 : Maquette d'interface Web [Layout A] -->
+        <section class="gallery-section bg-creme layout-a">
             <div class="cartel">
-                <span class="mono-caps">[ MOTION DESIGN / SCREENCAST UX ]</span>
-                <h2 class="cartel-title">Le Site <span>Complet</span></h2>
-                <p class="cartel-desc">Capsule vidéo dynamique présentant la navigation complète, les interactions de survol et le parcours utilisateur d'un site web institutionnel structuré.</p>
+                <span class="mono-caps">[ INTERACTION DESIGN / PROTOCOLE ERGONOMIQUE ]</span>
+                <h2 class="cartel-title">Architecture d'une <span>Interface One-Page</span></h2>
+                <p class="cartel-desc">Dossier technique de conception d'une interface web unifiée. Travail poussé sur le parcours utilisateur (UX) et le découpage fonctionnel des composants de page.</p>
+                <a href="maquette_onepage.pdf" target="_blank" class="portfolio-btn mono-caps">Ouvrir le dossier d'architecture (PDF)</a>
             </div>
             <div class="media-display">
-                <!-- Conteneur format 16/9 horizontal pour la vidéo de démo de site web complet -->
-                <div style="width: 100%; max-width: 800px; aspect-ratio: 16 / 9; background: #1a1a1a; box-shadow: 0 20px 50px rgba(0,0,0,0.1);">
-                    <video controls>
+                <img src="screen_site.jpg" alt="Screencast d'interface" class="mockup-img">
+            </div>
+        </section>
+
+        <!-- Œuvre 12 : Démo vidéo site complet [Layout C] -->
+        <section class="gallery-section bg-soft-dark layout-c">
+            <div class="cartel">
+                <span class="mono-caps">[ CONCEVOIR LE PARCOURS / DOCUMENTATION UX ]</span>
+                <h2 class="cartel-title">Cinématique d'un <span>Portail Web</span></h2>
+                <p class="cartel-desc">Capsule vidéo de démonstration simulant le comportement fluide, les micro-interactions de navigation et l'arborescence structurelle d'un portail web culturel d'envergure.</p>
+            </div>
+            <div class="media-display">
+                <div style="width: 100%; max-width: 850px; aspect-ratio: 16 / 9; background: #1a1a1a; box-shadow: 0 20px 45px rgba(0,0,0,0.08);">
+                    <video controls style="width: 100%; height: 100%; object-fit: cover;">
                         <source src="capsule_site_complet.mp4" type="video/mp4">
                     </video>
                 </div>
@@ -325,11 +339,11 @@
 
     </div>
 
-    <!-- CONTACT D'OUVERTURE -->
+    <!-- REMARQUES FINALES ET CONTACT -->
     <footer class="footer-gallery" id="contact">
-        <h2 class="serif">On discute stratégie ?</h2>
+        <h2 class="serif">Collaborer avec l'institution</h2>
         <a href="mailto:j.thibaultpro@outlook.fr" class="email-link">j.thibaultpro@outlook.fr</a>
-        <p class="mono-caps" style="margin-top: 40px; font-size: 0.7rem; color: #777;">Toulouse • 06.50.94.31.84</p>
+        <p class="mono-caps" style="margin-top: 40px; font-size: 0.7rem; color: #666;">Julien Thibault • Toulouse • 06.50.94.31.84</p>
     </footer>
 
 </body>
