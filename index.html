@@ -426,18 +426,40 @@
         .ws-images-duo .ws-img-wrap:first-child { flex: 0 0 45%; }
         .ws-images-duo .ws-img-offset          { flex: 0 0 36%; margin-top: 70px; }
 
-        /* Section 02 : image pleine zone */
-        .ws-images-single { padding: 0; }
-        .ws-images-single .ws-img-wrap {
-            width: 100%;
-            height: 100%;
-        }
-        .ws-images-single .ws-img-wrap img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            max-height: 70vh;
-        }
+        /* Section 02 : Image ajustée style magazine indépendant (Dézoomée) */
+    .ws-images-single { 
+        padding: 60px 40px 100px 40px; /* Ajoute des blancs tournants / marges internes */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 75vh; /* Assure une belle hauteur de section */
+    }
+    
+    .ws-images-single .ws-img-wrap {
+        width: 100%;
+        height: 100%;
+        max-height: 65vh; /* Contraint le cadre à ne pas dépasser l'écran */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .ws-images-single .ws-img-wrap img {
+        width: 100%;
+        height: 100%;
+        max-height: 60vh; /* Force l'image à se réduire verticalement */
+        object-fit: contain; /* L'élément magique : dézoome et affiche 100% de l'image */
+    }
+    
+    .ws-images-single .ws-caption {
+        position: absolute;
+        bottom: 24px; 
+        left: 40px; 
+        right: 40px;
+        padding: 12px 0 0 0;
+        background: transparent; /* Supprime le fond opaque pour un effet plus brut */
+        border-top: 1px solid var(--rule);
+    }
         .ws-images-single .ws-caption {
             position: absolute;
             bottom: 0; left: 0; right: 0;
@@ -480,7 +502,7 @@
             .ws-images-duo .ws-img-wrap:first-child,
             .ws-images-duo .ws-img-offset { flex: none; width: 100%; margin-top: 0; }
             .ws-images-single { position: relative; }
-            .ws-images-single .ws-img-wrap img { max-height: 50vh; }
+            .ws-images-single { padding: 40px 20px 80px 20px; min-height: auto; } .ws-images-single .ws-img-wrap img { max-height: 45vh; object-fit: contain; } .ws-images-single .ws-caption { position: relative; bottom: 0; left: 0; right: 0; margin-top: 20px; }
             .ws-footbar { padding: 10px 20px; flex-direction: column; gap: 4px; }
 
             /* autres fragments */
