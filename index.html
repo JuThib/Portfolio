@@ -278,7 +278,7 @@
         .body-mono-inv { font-size: 0.78rem; line-height: 1.75; color: rgba(253,251,247,0.6); max-width: 380px; }
         .work-number { font-family: 'Cormorant Garamond', serif; font-size: 4.5rem; font-weight: 300; color: var(--rule); line-height: 1; pointer-events: none; user-select: none; }
 
-        /* Fragments réutilisés (03 à 12) */
+/* Fragments réutilisés (03 à 12) */
         .fragment { border-top: 1px solid var(--rule); display: grid; position: relative; }
         .frag-dark { grid-template-columns: 1fr 360px; background: var(--ink); color: var(--paper); min-height: 60vh; }
         .frag-dark .frag-visual-dark { padding: 40px 32px; display: flex; align-items: center; }
@@ -292,12 +292,47 @@
         .frag-triptych .col:last-child { border-right: none; }
         .frag-triptych .col-meta { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; }
         .img-full { width: 100%; height: auto; display: block; }
-        .reel-wrap { width: 220px; aspect-ratio: 9/16; background: #000; border-radius: 8px; overflow: hidden; flex-shrink: 0; }
+        
+        /* Conteneur du smartphone (Verrouillé au format 9/16 avec overflow préservé) */
+        .reel-wrap { width: 220px; aspect-ratio: 9/16; background: #000; border-radius: 8px; overflow: hidden; flex-shrink: 0; box-shadow: 0 30px 60px rgba(0,0,0,0.4); }
         .reel-wrap video { width: 100%; height: 100%; object-fit: cover; }
+        
         .video-wide { width: 100%; aspect-ratio: 16/9; background: var(--ink); overflow: hidden; }
         .video-wide video { width: 100%; height: 100%; object-fit: cover; }
         .img-hover { transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s; filter: saturate(0.9); }
         .img-hover:hover { transform: scale(1.015); filter: saturate(1.05); }
+
+        /* Nouveau Style pour le Bouton Audio Global (Positionné dans le flux sous la vidéo) */
+        .audio-toggle {
+            position: relative;
+            margin: 0 auto;             /* Centrage horizontal parfait */
+            width: fit-content;         /* Épouse la largeur exacte du texte */
+            background: rgba(13, 13, 13, 0.75);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(253, 251, 247, 0.2);
+            color: var(--paper);
+            padding: 8px 14px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.15em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-radius: 4px;
+            z-index: 10;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .audio-toggle:hover {
+            background: var(--paper);
+            color: var(--ink);
+        }
+        #audio-icon {
+            width: 12px;
+            height: 12px;
+            display: block;
+        }
 
         /* Axis stripe */
         .axis-stripe { background: var(--ink); padding: 28px 40px; display: flex; align-items: center; gap: 40px; }
@@ -805,20 +840,20 @@
             <div class="spec-item"><span>AUDIO</span><span>STEREO / 48KHZ</span></div>
         </div>
 
-        <div class="reel-center-zone">
-            <div class="reel-wrap">
-                <!-- Garder muted pour l'autoplay, mais ajout d'un bouton de contrôle -->
-                <video id="reel-video" muted playsinline loop poster="miniature.jpg">
-                    <source src="Reel.mp4" type="video/mp4">
-                </video>
-                <!-- Bouton Audio Brutaliste -->
-                <button class="audio-toggle" onclick="toggleReelAudio()">
-                    <svg id="audio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path id="audio-path" d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6"/>
-                    </svg>
-                    <span id="audio-text">ACTIVER LE SON</span>
-                </button>
-            </div>
+    <div class="reel-center-zone">
+        <div class="reel-wrap">
+            <video id="reel-video" muted playsinline loop poster="miniature.jpg">
+                <source src="Reel.mp4" type="video/mp4">
+            </video>
+        </div>
+        
+        <button class="audio-toggle" onclick="toggleReelAudio()">
+            <svg id="audio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path id="audio-path" d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6"/>
+            </svg>
+            <span id="audio-text">ACTIVER LE SON</span>
+        </button>
+    </div>
             
             <!-- Ta constellation SVG décalée pour équilibrer le côté droit du Reel -->
             <svg class="constellation-insta" viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
