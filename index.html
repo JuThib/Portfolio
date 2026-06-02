@@ -6,447 +6,999 @@
     <title>Julien Thibault — Direction de la Communication & Ingénierie Éditoriale</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* --- ACCORD ET CONFIGURATIONS DE BASE --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
-        body { 
-            background: #fdfbf7; 
-            color: #1a1a1a; 
-            font-family: 'Space Mono', monospace; 
-            -webkit-font-smoothing: antialiased;
+
+        :root {
+            --ink: #0d0d0d;
+            --paper: #fdfbf7;
+            --warm: #f5efe6;
+            --bone: #e8dfd0;
+            --muted: #8a7f70;
+            --rule: rgba(13,13,13,0.12);
         }
 
-        h2, h3, .serif { font-family: 'Cormorant Garamond', serif; font-weight: 300; }
-        .mono-caps { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.25em; color: #555555; }
+        body {
+            background: var(--paper);
+            color: var(--ink);
+            font-family: 'Space Mono', monospace;
+            -webkit-font-smoothing: antialiased;
+            cursor: crosshair;
+        }
 
-        /* --- NAVIGATION PROTOCOLAIRE --- */
-        .nav-header {
+        /* ─── MARQUEE TICKER ─── */
+        .ticker {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
+            top: 0; left: 0; width: 100%;
+            height: 36px;
+            background: var(--ink);
+            color: var(--paper);
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            z-index: 200;
+        }
+        .ticker-track {
+            display: flex;
+            white-space: nowrap;
+            animation: ticker-scroll 28s linear infinite;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+        .ticker-track span { padding: 0 40px; }
+        .ticker-track .sep { opacity: 0.35; }
+        @keyframes ticker-scroll {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+
+        /* ─── NAV ─── */
+        .nav {
+            position: fixed;
+            top: 36px; left: 0; width: 100%;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 32px 48px;
+            align-items: flex-end;
+            padding: 20px 40px 18px;
             z-index: 100;
-            mix-blend-mode: difference;
-            color: #fdfbf7;
-            pointer-events: none;
+            border-bottom: 1px solid var(--rule);
+            background: var(--paper);
         }
-        .nav-logo, .nav-links a { pointer-events: auto; text-decoration: none; color: inherit; }
-        .nav-logo { font-weight: 700; letter-spacing: -0.02em; }
-        .nav-links a { margin-left: 24px; transition: opacity 0.3s; }
-        .nav-links a:hover { opacity: 0.6; }
+        .nav-logo {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--ink);
+        }
+        .nav-index {
+            font-size: 0.65rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+        .nav-links { display: flex; gap: 32px; }
+        .nav-links a {
+            font-size: 0.65rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--muted);
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--ink); }
 
-        /* --- AVANT-PROPOS / POSTURE ÉLÉGANTE --- */
-        .intro-manifesto {
-            min-height: 90vh;
+        /* ─── HERO BRUTAL ─── */
+        .hero {
+            margin-top: calc(36px + 57px);
+            min-height: 100vh;
             display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            align-items: center;
-            padding: 120px 48px 60px 48px;
-            background: #fdfbf7;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: 1px solid var(--rule);
             position: relative;
             overflow: hidden;
         }
-        
-        .intro-content {
-            grid-column: 1 / span 9;
-            max-width: 950px;
-            z-index: 2;
+        .hero-left {
+            border-right: 1px solid var(--rule);
+            padding: 80px 60px 80px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-        
-        .intro-manifesto .mono-caps {
-            margin-bottom: 24px;
-            display: block;
-            opacity: 0.8;
+        .hero-index-block {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            border-top: 1px solid var(--rule);
+            padding-top: 12px;
+            display: flex;
+            justify-content: space-between;
         }
-        
-        .intro-manifesto h1 { 
+        .hero-h1 {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 300;
-            font-size: clamp(2.4rem, 4.2vw, 4rem); 
-            line-height: 1.25; 
-            color: #0d0d0d;
-            letter-spacing: -0.01em;
-        }
-        
-        .intro-manifesto h1 span { 
-            font-style: italic; 
-            font-family: 'Cormorant Garamond', serif;
-        }
-        
-        .intro-emphasis {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.85em;
-            font-style: normal !important;
+            font-size: clamp(3.2rem, 6vw, 6.5rem);
+            line-height: 0.92;
             letter-spacing: -0.03em;
-            display: inline-block;
-            border-bottom: 1px solid #1a1a1a;
-            padding-bottom: 2px;
+            color: var(--ink);
+            margin: 60px 0;
         }
-
-        /* --- CONSTELLATION FILAIRE --- */
-        .constellation-overlay {
+        .hero-h1 em {
+            font-style: italic;
+            display: block;
+        }
+        .hero-h1 .stacked {
+            display: block;
+            padding-left: 3vw;
+        }
+        .hero-h1 .underline-rule {
+            display: inline-block;
+            border-bottom: 2px solid var(--ink);
+        }
+        .hero-footnote {
+            font-size: 0.72rem;
+            line-height: 1.7;
+            color: var(--muted);
+            max-width: 340px;
+        }
+        .hero-right {
+            position: relative;
+            background: var(--ink);
+            overflow: hidden;
+        }
+        .hero-right-content {
             position: absolute;
-            right: -5%;
-            top: 5%;
-            width: 50%;
-            height: 90%;
-            z-index: 1;
-            opacity: 0.22; 
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 40px;
+        }
+        .hero-big-number {
+            position: absolute;
+            top: -30px;
+            right: -20px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28vw;
+            font-weight: 300;
+            color: rgba(255,255,255,0.04);
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
+        }
+        .hero-meta {
+            color: rgba(253,251,247,0.4);
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+        .hero-discipline {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 3.5vw, 3.8rem);
+            font-weight: 300;
+            color: var(--paper);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+        .hero-discipline em { font-style: italic; }
+
+        /* Constellation dans le hero */
+        .constellation-hero {
+            position: absolute;
+            inset: 0;
+            opacity: 0.15;
             pointer-events: none;
         }
 
-        /* --- RYTHME DE FLUX CONTINU (FINI LE 100VH PAR SECTION) --- */
-        .portfolio-container { 
-            position: relative; 
-            padding-bottom: 100px;
-        }
-        
-        .gallery-section {
+        /* ─── SECTION HEADER (chapitres) ─── */
+        .chapter-header {
             display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            align-items: flex-start;
-            padding: 140px 64px; /* Grands espaces verticaux pour respirer entre les œuvres */
+            grid-template-columns: 60px 1fr auto;
+            align-items: center;
+            gap: 24px;
+            padding: 40px 40px 0;
+            margin-bottom: 0;
+        }
+        .chapter-rule { height: 1px; background: var(--ink); }
+        .chapter-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+        }
+        .chapter-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+        }
+
+        /* ─── LAYOUT FRAGMENTS (remplace les sections horizontales) ─── */
+
+        /* Fragment: bloc titre + image pleine largeur décalée */
+        .fragment {
+            border-top: 1px solid var(--rule);
+            display: grid;
             position: relative;
         }
 
-        /* Nuances subtiles en bandes continues */
-        .bg-creme { background: #fdfbf7; }
-        .bg-warm { background: #f5efe6; }
-        .bg-soft-dark { background: #eadecc; }
-
-        /* Effet Sticky sur les textes pour créer un décalage au scroll avec les images */
-        .cartel {
+        /* FRAGMENT TYPE A — Couverture de magazine : grand titre à gauche, image débordante à droite */
+        .frag-cover {
+            grid-template-columns: 380px 1fr;
+            min-height: 85vh;
+        }
+        .frag-cover .frag-meta {
+            padding: 60px 50px 60px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-right: 1px solid var(--rule);
             position: sticky;
-            top: 140px;
-            z-index: 5;
+            top: calc(36px + 57px);
+            align-self: start;
+            height: calc(100vh - 93px);
+        }
+        .frag-cover .frag-visual {
+            padding: 40px 40px 40px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 32px;
         }
 
-        /* --- RYTHMES DE GRILLES IMPRÉVISIBLES --- */
-        
-        /* Rythme Épique : Texte très à gauche, médias immenses et décalés vers le bas */
-        .layout-epic .cartel { grid-column: 1 / span 4; }
-        .layout-epic .media-display { grid-column: 5 / span 8; margin-top: 60px; }
-
-        /* Rythme Intime : Visuel central serré, texte flottant à droite */
-        .layout-intimate .cartel { grid-column: 8 / span 5; padding-left: 60px; }
-        .layout-intimate .media-display { grid-column: 2 / span 5; margin-top: -40px; }
-
-        /* Rythme Grand Angle : Tout est éclaté et décentré */
-        .layout-wide .cartel { grid-column: 3 / span 5; margin-bottom: 60px; }
-        .layout-wide .media-display { grid-column: 6 / span 7; }
-
-        /* Rythme Duo : Les visuels descendent en cascade */
-        .layout-duo .cartel { grid-column: 1 / span 4; }
-        .layout-duo .duo-container { 
-            grid-column: 5 / span 8; 
-            display: flex; 
-            align-items: flex-start; 
-            gap: 48px;
-            margin-top: 40px;
+        /* FRAGMENT TYPE B — Titre massif en haut, image en dessous décalée */
+        .frag-editorial {
+            grid-template-columns: 1fr;
+            padding: 0;
+        }
+        .frag-editorial .frag-top {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: 1px solid var(--rule);
+        }
+        .frag-editorial .frag-top-left {
+            padding: 50px 40px;
+            border-right: 1px solid var(--rule);
+        }
+        .frag-editorial .frag-top-right {
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        .frag-editorial .frag-bottom {
+            padding: 0 40px 60px;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .frag-editorial .frag-bottom img {
+            width: 65%;
+            margin-top: -40px;
         }
 
-        /* --- TRAITEMENT DES COMPOSANTS --- */
-        .media-wrapper { display: flex; flex-direction: column; }
-        .media-wrapper.offset-down { margin-top: 120px; } /* Décale le flyer plus bas pour casser l'alignement */
-        
-        .format-label { font-size: 0.7rem; margin-bottom: 12px; color: #888; }
-        .format-a4 { width: 55%; }
-        .format-a5 { width: 38%; }
-
-        .cartel-title { font-size: clamp(1.8rem, 2.8vw, 2.8rem); line-height: 1.15; margin: 16px 0 24px 0; color: #0d0d0d; letter-spacing: -0.02em; }
-        .cartel-title span { font-style: italic; }
-        .cartel-desc { font-size: 0.88rem; line-height: 1.65; color: #333; margin-bottom: 32px; font-family: 'Space Mono', monospace; max-width: 420px; }
-        
-        .portfolio-btn {
-            display: inline-block;
-            padding: 12px 24px;
-            border: 1px solid #1a1a1a;
-            color: #1a1a1a;
-            text-decoration: none;
-            font-size: 0.75rem;
-            transition: all 0.3s ease;
+        /* FRAGMENT TYPE C — Image en noir sur fond sombre, texte inversé */
+        .frag-dark {
+            grid-template-columns: 1fr 420px;
+            background: var(--ink);
+            color: var(--paper);
+            min-height: 80vh;
         }
-        .portfolio-btn:hover { background: #1a1a1a; color: #fdfbf7; }
-
-        /* --- MEDIAS (HAUTEURS DYNAMIQUES ET VARIÉES) --- */
-        .media-display { display: flex; position: relative; }
-        
-        .mockup-img {
-            width: 100%;
-            height: auto;
-            object-fit: contain;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.06);
+        .frag-dark .frag-visual-dark {
+            padding: 60px 40px 60px 40px;
+            display: flex;
+            align-items: center;
         }
-        
-        /* Hauteurs asymétriques pour éviter l'effet répétitif */
-        .h-large { max-height: 85vh; }
-        .h-medium { max-height: 65vh; }
-        .h-small { max-height: 45vh; }
+        .frag-dark .frag-meta-dark {
+            padding: 60px 40px 60px 40px;
+            border-left: 1px solid rgba(253,251,247,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
 
-        /* Conteneur du Reel Instagram */
-        .insta-container {
-            width: 100%;
-            max-width: 290px;
-            aspect-ratio: 9 / 16;
-            background: #000;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.12);
-            border-radius: 12px;
+        /* FRAGMENT TYPE D — Pleine largeur, titre en diagonale typographique */
+        .frag-full {
+            grid-template-columns: 1fr;
             overflow: hidden;
-            border: 1px solid rgba(26, 26, 26, 0.08);
         }
-        .insta-container video { width: 100%; height: 100%; object-fit: cover; }
-
-        /* --- CONCLUSION --- */
-        .footer-gallery {
-            position: relative;
-            z-index: 10;
-            background: #fdfbf7;
-            padding: 180px 48px;
-            text-align: center;
-            border-top: 1px solid rgba(26, 26, 26, 0.08);
+        .frag-full-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
         }
-        .footer-gallery h2 { font-size: 3rem; margin-bottom: 24px; }
-        .email-link { color: #1a1a1a; text-decoration: none; font-size: 1.8rem; border-bottom: 1px dashed #1a1a1a; padding-bottom: 4px; }
+        .frag-full .frag-left {
+            padding: 60px 50px 60px 40px;
+            border-right: 1px solid var(--rule);
+        }
+        .frag-full .frag-right {
+            padding: 60px 40px;
+        }
 
-        /* --- ADAPTATION MOBILE --- */
-        @media (max-width: 900px) {
-            .nav-header { padding: 24px; mix-blend-mode: normal; color: #1a1a1a; background: #fdfbf7; position: relative; }
+        /* FRAGMENT TYPE E — Trois colonnes (médias multiples) */
+        .frag-triptych {
+            grid-template-columns: 1fr 1fr 1fr;
+            min-height: 70vh;
+        }
+        .frag-triptych .col {
+            border-right: 1px solid var(--rule);
+            padding: 50px 36px;
+            display: flex;
+            flex-direction: column;
+        }
+        .frag-triptych .col:last-child { border-right: none; }
+        .frag-triptych .col-meta {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        /* ─── TYPOGRAPHIE CARTEL ─── */
+        .label-caps {
+            font-size: 0.62rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 20px;
+            display: block;
+        }
+        .label-caps-inv {
+            font-size: 0.62rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(253,251,247,0.45);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .title-serif {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(2.2rem, 3.5vw, 4rem);
+            line-height: 0.95;
+            letter-spacing: -0.025em;
+            color: var(--ink);
+            margin-bottom: 28px;
+        }
+        .title-serif em { font-style: italic; }
+        .title-serif-inv {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(2.2rem, 3.5vw, 4rem);
+            line-height: 0.95;
+            letter-spacing: -0.025em;
+            color: var(--paper);
+            margin-bottom: 28px;
+        }
+        .title-serif-inv em { font-style: italic; }
+
+        /* Titre massif pour les chapitres */
+        .title-massive {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(5rem, 12vw, 14rem);
+            line-height: 0.82;
+            letter-spacing: -0.04em;
+            color: var(--ink);
+        }
+        .title-massive em { font-style: italic; }
+
+        .body-mono {
+            font-size: 0.78rem;
+            line-height: 1.75;
+            color: #444;
+            max-width: 400px;
+        }
+        .body-mono-inv {
+            font-size: 0.78rem;
+            line-height: 1.75;
+            color: rgba(253,251,247,0.6);
+            max-width: 380px;
+        }
+
+        /* Numéro d'œuvre superposé */
+        .work-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 7rem;
+            font-weight: 300;
+            color: var(--rule);
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        /* ─── MÉDIAS ─── */
+        .img-full { width: 100%; height: auto; display: block; }
+        .img-contained { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+        /* Conteneur portrait (A4/A5) */
+        .img-portrait { max-width: 340px; }
+        .img-portrait-sm { max-width: 240px; }
+
+        /* Conteneur vidéo vertical (Reel) */
+        .reel-wrap {
+            width: 220px;
+            aspect-ratio: 9/16;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .reel-wrap video { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Conteneur vidéo horizontal */
+        .video-wide {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: var(--ink);
+            overflow: hidden;
+        }
+        .video-wide video { width: 100%; height: 100%; object-fit: cover; }
+
+        /* ─── RÈGLE TYPOGRAPHIQUE VERTICALE ─── */
+        .v-rule {
+            width: 1px;
+            background: var(--rule);
+            align-self: stretch;
+            flex-shrink: 0;
+        }
+
+        /* ─── CTA ─── */
+        .cta {
+            display: inline-block;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 10px 20px;
+            border: 1px solid var(--ink);
+            color: var(--ink);
+            text-decoration: none;
+            transition: background 0.25s, color 0.25s;
+            margin-top: 32px;
+        }
+        .cta:hover { background: var(--ink); color: var(--paper); }
+        .cta-inv {
+            display: inline-block;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 10px 20px;
+            border: 1px solid rgba(253,251,247,0.4);
+            color: var(--paper);
+            text-decoration: none;
+            transition: background 0.25s;
+            margin-top: 32px;
+        }
+        .cta-inv:hover { background: rgba(253,251,247,0.1); }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            border-top: 1px solid var(--rule);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 50vh;
+        }
+        .footer-left {
+            padding: 80px 40px;
+            border-right: 1px solid var(--rule);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .footer-right {
+            padding: 80px 40px;
+            background: var(--warm);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        .footer-email {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem, 3.5vw, 4rem);
+            font-weight: 300;
+            color: var(--ink);
+            text-decoration: none;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            border-bottom: 1px solid var(--ink);
+            padding-bottom: 6px;
+            display: inline-block;
+        }
+        .footer-coords {
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--muted);
+            line-height: 2.2;
+        }
+
+        /* ─── STRIPE DE SÉPARATION ENTRE AXES ─── */
+        .axis-stripe {
+            background: var(--ink);
+            padding: 28px 40px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        .axis-stripe-label {
+            font-size: 0.62rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: rgba(253,251,247,0.5);
+            white-space: nowrap;
+        }
+        .axis-stripe-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 300;
+            font-style: italic;
+            color: var(--paper);
+        }
+        .axis-stripe-rule {
+            flex: 1;
+            height: 1px;
+            background: rgba(253,251,247,0.15);
+        }
+
+        /* ─── HOVER SUBTIL SUR IMAGES ─── */
+        .img-hover {
+            transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s;
+            filter: saturate(0.9);
+        }
+        .img-hover:hover {
+            transform: scale(1.015);
+            filter: saturate(1.05);
+        }
+
+        /* ─── MOBILE ─── */
+        @media (max-width: 860px) {
+            .ticker { height: 28px; }
+            .ticker-track { font-size: 0.58rem; }
+            .nav { top: 28px; padding: 16px 20px; flex-wrap: wrap; gap: 8px; }
             .nav-links { display: none; }
-            .intro-manifesto { min-height: auto; padding: 80px 24px; display: block; }
-            .gallery-section { display: flex; flex-direction: column; padding: 80px 24px; gap: 40px; }
-            .cartel { position: relative; top: 0 !important; }
-            .layout-duo .duo-container { display: flex; flex-direction: column; gap: 32px; margin-top: 0; }
-            .media-wrapper.offset-down { margin-top: 0; }
-            .format-a4, .format-a5 { width: 100%; }
-            .media-display { width: 100%; margin: 0 !important; }
-            .mockup-img { max-height: none !important; }
+            .hero { grid-template-columns: 1fr; margin-top: calc(28px + 50px); }
+            .hero-left { padding: 40px 20px; min-height: 60vh; }
+            .hero-right { min-height: 50vh; }
+            .frag-cover { grid-template-columns: 1fr; }
+            .frag-cover .frag-meta { position: relative; top: 0; height: auto; padding: 40px 20px; border-right: none; border-bottom: 1px solid var(--rule); }
+            .frag-cover .frag-visual { padding: 30px 20px; flex-wrap: wrap; }
+            .frag-editorial .frag-top { grid-template-columns: 1fr; }
+            .frag-editorial .frag-top-left { border-right: none; border-bottom: 1px solid var(--rule); padding: 30px 20px; }
+            .frag-editorial .frag-top-right { padding: 30px 20px; }
+            .frag-editorial .frag-bottom { padding: 0 20px 40px; }
+            .frag-editorial .frag-bottom img { width: 100%; margin-top: 0; }
+            .frag-dark { grid-template-columns: 1fr; }
+            .frag-dark .frag-visual-dark { padding: 30px 20px; }
+            .frag-dark .frag-meta-dark { border-left: none; border-top: 1px solid rgba(253,251,247,0.1); padding: 30px 20px; }
+            .frag-full-inner { grid-template-columns: 1fr; }
+            .frag-full .frag-left { border-right: none; border-bottom: 1px solid var(--rule); padding: 30px 20px; }
+            .frag-full .frag-right { padding: 30px 20px; }
+            .frag-triptych { grid-template-columns: 1fr; }
+            .frag-triptych .col { border-right: none; border-bottom: 1px solid var(--rule); padding: 30px 20px; }
+            .chapter-header { padding: 30px 20px 0; grid-template-columns: 30px 1fr auto; gap: 12px; }
+            .axis-stripe { padding: 20px; }
+            .footer { grid-template-columns: 1fr; }
+            .footer-left { border-right: none; border-bottom: 1px solid var(--rule); }
+            .title-massive { font-size: clamp(3.5rem, 18vw, 14rem); }
+            .img-portrait { max-width: 100%; }
+            .img-portrait-sm { max-width: 100%; }
+            .reel-wrap { width: 160px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAVIGATION -->
-    <header class="nav-header">
-        <a href="#" class="nav-logo">JULIEN THIBAULT</a>
-        <nav class="nav-links mono-caps">
-            <a href="#galerie">Travaux de communication</a>
+    <!-- ─── TICKER ─── -->
+    <div class="ticker" aria-hidden="true">
+        <div class="ticker-track">
+            <span>Julien Thibault</span><span class="sep">—</span>
+            <span>Direction de la Communication</span><span class="sep">—</span>
+            <span>Ingénierie Éditoriale</span><span class="sep">—</span>
+            <span>Archéologie Sous-marine</span><span class="sep">—</span>
+            <span>DRASSM</span><span class="sep">—</span>
+            <span>Histoire de l'art</span><span class="sep">—</span>
+            <span>Toulouse</span><span class="sep">—</span>
+            <span>Julien Thibault</span><span class="sep">—</span>
+            <span>Direction de la Communication</span><span class="sep">—</span>
+            <span>Ingénierie Éditoriale</span><span class="sep">—</span>
+            <span>Archéologie Sous-marine</span><span class="sep">—</span>
+            <span>DRASSM</span><span class="sep">—</span>
+            <span>Histoire de l'art</span><span class="sep">—</span>
+            <span>Toulouse</span><span class="sep">—</span>
+        </div>
+    </div>
+
+    <!-- ─── NAV ─── -->
+    <header class="nav">
+        <a href="#" class="nav-logo">Julien Thibault</a>
+        <span class="nav-index">Portfolio 2025–2026</span>
+        <nav class="nav-links">
+            <a href="#galerie">Travaux</a>
             <a href="#contact">Coordonnées</a>
         </nav>
     </header>
 
-    <!-- AVANT-PROPOS AVEC ABSTRACTION GÉOMÉTRIQUE -->
-    <section class="intro-manifesto">
-        <div class="intro-content">
-            <span class="mono-caps">// POSITIONNEMENT PROFESSIONNEL</span>
-            <h1>
-                Issu d'un parcours universitaire en <span>Histoire de l'art</span>, je mets l'ingénierie éditoriale et graphique au service des <span>institutions publiques</span> et de la <span>valorisation scientifique</span>.
+    <!-- ─── HERO ─── -->
+    <section class="hero">
+        <div class="hero-left">
+            <div class="hero-index-block">
+                <span>// Positionnement professionnel</span>
+                <span>01 / 01</span>
+            </div>
+            <h1 class="hero-h1">
+                <span class="underline-rule">Ingénierie</span>
+                <em>éditoriale</em>
+                <span class="stacked">& graphique</span>
             </h1>
+            <p class="hero-footnote">
+                Issu d'un parcours en Histoire de l'art, je mets l'ingénierie éditoriale au service des institutions publiques et de la valorisation scientifique.
+            </p>
         </div>
-
-        <!-- Réseau Constellation -->
-        <svg class="constellation-overlay" viewBox="0 0 400 700" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <line x1="120" y1="150" x2="280" y2="220" stroke="#1a1a1a" stroke-width="0.7" stroke-dasharray="4 4"/>
-            <line x1="280" y1="220" x2="200" y2="380" stroke="#1a1a1a" stroke-width="0.7"/>
-            <line x1="200" y1="380" x2="340" y2="480" stroke="#1a1a1a" stroke-width="0.7" stroke-dasharray="2 2"/>
-            <line x1="200" y1="380" x2="80" y2="450" stroke="#1a1a1a" stroke-width="0.7"/>
-            <line x1="80" y1="450" x2="150" y2="600" stroke="#1a1a1a" stroke-width="0.7"/>
-            <line x1="280" y1="220" x2="340" y2="480" stroke="#1a1a1a" stroke-width="0.7"/>
-            
-            <circle cx="120" cy="150" r="3" fill="#1a1a1a" />
-            <circle cx="280" cy="220" r="4.5" fill="none" stroke="#1a1a1a" stroke-width="1" />
-            <circle cx="280" cy="220" r="1.5" fill="#1a1a1a" />
-            <circle cx="200" cy="380" r="3" fill="#1a1a1a" />
-            <circle cx="340" cy="480" r="3" fill="#1a1a1a" />
-            <circle cx="80" cy="450" r="4.5" fill="none" stroke="#1a1a1a" stroke-width="1" />
-            <circle cx="80" cy="450" r="1.5" fill="#1a1a1a" />
-            <circle cx="150" cy="600" r="2.5" fill="#1a1a1a" />
-        </svg>
+        <div class="hero-right">
+            <svg class="constellation-hero" viewBox="0 0 500 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="120" y1="150" x2="280" y2="220" stroke="#fdfbf7" stroke-width="0.7" stroke-dasharray="4 4"/>
+                <line x1="280" y1="220" x2="200" y2="380" stroke="#fdfbf7" stroke-width="0.7"/>
+                <line x1="200" y1="380" x2="370" y2="500" stroke="#fdfbf7" stroke-width="0.7" stroke-dasharray="2 2"/>
+                <line x1="200" y1="380" x2="80" y2="480" stroke="#fdfbf7" stroke-width="0.7"/>
+                <line x1="80" y1="480" x2="160" y2="650" stroke="#fdfbf7" stroke-width="0.7"/>
+                <line x1="280" y1="220" x2="370" y2="500" stroke="#fdfbf7" stroke-width="0.7"/>
+                <line x1="370" y1="500" x2="300" y2="680" stroke="#fdfbf7" stroke-width="0.7" stroke-dasharray="3 3"/>
+                <line x1="160" y1="650" x2="300" y2="680" stroke="#fdfbf7" stroke-width="0.7"/>
+                <circle cx="120" cy="150" r="2.5" fill="#fdfbf7"/>
+                <circle cx="280" cy="220" r="4" fill="none" stroke="#fdfbf7" stroke-width="1"/>
+                <circle cx="280" cy="220" r="1.5" fill="#fdfbf7"/>
+                <circle cx="200" cy="380" r="2.5" fill="#fdfbf7"/>
+                <circle cx="370" cy="500" r="2.5" fill="#fdfbf7"/>
+                <circle cx="80" cy="480" r="4" fill="none" stroke="#fdfbf7" stroke-width="1"/>
+                <circle cx="80" cy="480" r="1.5" fill="#fdfbf7"/>
+                <circle cx="160" cy="650" r="2" fill="#fdfbf7"/>
+                <circle cx="300" cy="680" r="2" fill="#fdfbf7"/>
+            </svg>
+            <div class="hero-right-content">
+                <div class="hero-big-number" aria-hidden="true">Σ</div>
+                <p class="hero-meta">Axes de compétences — 2025</p>
+                <div class="hero-discipline">
+                    Communication<br>
+                    <em>institutionnelle</em><br>
+                    Édition<br>
+                    <em>scientifique</em><br>
+                    Design<br>
+                    <em>numérique</em>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- PORTFOLIO EN FLUX CONTINU -->
-    <div class="portfolio-container" id="galerie">
+    <!-- ═══════════════════════════════════════════════════════
+         AXE I — DRASSM
+    ═══════════════════════════════════════════════════════ -->
 
-        <!-- Œuvre 01 & 02 : Campagne JEA (Layout Duo Cascade) -->
-        <section class="gallery-section bg-creme layout-duo">
-            <div class="cartel">
-                <span class="mono-caps">[ DRASSM / JOURNÉES EUROPÉENNES DE L'ARCHÉOLOGIE ]</span>
-                <h2 class="cartel-title">Coexistence <span>Charte & Identité</span></h2>
-                <p class="cartel-desc">Conception de la campagne de communication pour les JEA. La complexité résidait dans l'articulation rigoureuse entre la charte graphique imposée par l'événement national et l'identité visuelle propre au DRASSM.</p>
-            </div>
-            <div class="media-display duo-container">
-                <div class="media-wrapper format-a4">
-                    <span class="mono-caps format-label">Affiche (A4)</span>
-                    <img src="JEA_2026-Cannes_V4.jpg" alt="Affiche JEA - DRASSM" class="mockup-img h-large">
+    <div id="galerie">
+        <div class="axis-stripe">
+            <span class="axis-stripe-label">Axe I</span>
+            <div class="axis-stripe-rule"></div>
+            <span class="axis-stripe-title">Institutions publiques & archéologie</span>
+            <div class="axis-stripe-rule"></div>
+            <span class="axis-stripe-label">DRASSM</span>
+        </div>
+
+        <!-- ░░ ŒUVRE 01–02 : JEA — Layout Cover (Sticky meta + duo cascade) ░░ -->
+        <div class="fragment frag-cover">
+            <div class="frag-meta">
+                <div>
+                    <span class="label-caps">DRASSM / Journées Européennes de l'Archéologie</span>
+                    <div class="work-number" aria-hidden="true">01</div>
                 </div>
-                <!-- Offset down : Décale volontairement le flyer vers le bas pour briser la ligne -->
-                <div class="media-wrapper format-a5 offset-down">
-                    <span class="mono-caps format-label">Flyer (A5)</span>
-                    <img src="JEA_2026-Cannes_V4_flyer_recto.jpg" alt="Flyer JEA - DRASSM" class="mockup-img h-medium">
+                <div>
+                    <h2 class="title-serif">
+                        Coexistence<br>
+                        <em>Charte & Identité</em>
+                    </h2>
+                    <p class="body-mono">
+                        Conception de la campagne de communication pour les JEA. La complexité résidait dans l'articulation rigoureuse entre la charte graphique imposée par l'événement national et l'identité visuelle propre au DRASSM.
+                    </p>
                 </div>
-            </div>
-        </section>
-
-        <!-- Œuvre 04 : Médiation Jeune Public (Layout Epic) -->
-        <section class="gallery-section bg-creme layout-epic">
-            <div class="cartel">
-                <span class="mono-caps">[ DRASSM / MÉDIATION UNIVERSITAIRE & SCOLAIRE ]</span>
-                <h2 class="cartel-title">Didactique <span>Jeune Public</span></h2>
-                <p class="cartel-desc">Développement d'un outil de médiation sous forme de jeu destiné aux classes de niveau primaire. Transposition graphique de concepts d'archéologie sous-marine.</p>
-            </div>
-            <div class="media-display">
-                <img src="jeu_primaire.jpg" alt="Outil didactique et ludique" class="mockup-img h-large">
-            </div>
-        </section>
-
-        <!-- Œuvre 05 : Vidéo Réel Instagram (Layout Intimate) -->
-        <section class="gallery-section bg-creme layout-intimate">
-            <div class="media-display">
-                <div class="insta-container">
-                    <video id="reel-video" muted playsinline loop poster="miniature.jpg">
-                        <source src="Reel.mp4" type="video/mp4">
-                    </video>
+                <div style="display:flex; gap:20px; font-size:0.62rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted);">
+                    <span>Affiche A4</span>
+                    <span>—</span>
+                    <span>Flyer A5</span>
                 </div>
             </div>
-            <div class="cartel">
-                <span class="mono-caps">[ DRASSM / DYNAMISATION DES CANAUX ]</span>
-                <h2 class="cartel-title">Le Rendez-vous <span>Éditorial Numérique</span></h2>
-                <p class="cartel-desc">Conception, réalisation et montage d'une capsule vidéo au format vertical (46 secondes) instaurant un jalon éditorial récurrent sur l'Instagram de l'institution.</p>
-            </div>
-        </section>
-
-        <!-- Œuvre 06 : Affiche Communication Interne (Layout Intimate inversé par la grille) -->
-        <section class="gallery-section bg-creme layout-epic">
-            <div class="cartel">
-                <span class="mono-caps">[ DRASSM / COHESIS & SYNERGIE INTERNE ]</span>
-                <h2 class="cartel-title">Archéo' Time : <span>Fédérer la Structure</span></h2>
-                <p class="cartel-desc">Création de l'affiche pour le projet interne "Archéo' Time". Adoption d'un ton graphique plus souple, spécifiquement calibré pour les collaborateurs.</p>
-            </div>
-            <div class="media-display">
-                <img src="archeo_time.jpg" alt="Affiche communication interne Archéo Time" class="mockup-img h-medium">
-            </div>
-        </section>
-
-
-        <!-- AXE 2 : COMMUNIQUER POUR L'ÉDITION SCIENTIFIQUE (ASSOCIATION CONTRAST) -->
-
-        <!-- Œuvre 07 : Affiche Conférences/Visites (Layout Intimate) -->
-        <section class="gallery-section bg-warm layout-intimate">
-            <div class="media-display">
-                <img src="affiche_visites.jpg" alt="Affiche cycle de visites Contrast" class="mockup-img h-large">
-            </div>
-            <div class="cartel">
-                <span class="mono-caps">[ ASSOCIATION CONTRAST / PROMOTION DES SAVOIRS ]</span>
-                <h2 class="cartel-title">Valorisation des <span>Cycles Scientifiques</span></h2>
-                <p class="cartel-desc">Affiche promotionnelle conçue pour annoncer les prochaines visites programmées. L'épuration graphique fait écho aux exigences esthétiques de l'histoire de l'art.</p>
-            </div>
-        </section>
-
-        <!-- Œuvre 08 : Flyer Présentation (Layout Wide) -->
-        <section class="gallery-section bg-soft-dark layout-wide">
-            <div class="cartel">
-                <span class="mono-caps">[ ASSOCIATION CONTRAST / STRATÉGIE DE MARQUE ]</span>
-                <h2 class="cartel-title">Le Manifeste de <span>l'Association</span></h2>
-                <p class="cartel-desc">Conception éditoriale du support de présentation global de l'association. Traitement rigoureux de l'identité visuelle pour asseoir la crédibilité de la structure.</p>
-            </div>
-            <div class="media-display">
-                <img src="flyer_presentation.jpg" alt="Support d'adhésion et présentation" class="mockup-img h-small">
-            </div>
-        </section>
-
-        <!-- Œuvre 09 : Flyer Programme (Layout Epic) -->
-        <section class="gallery-section bg-creme layout-epic">
-            <div class="cartel">
-                <span class="mono-caps">[ ASSOCIATION CONTRAST / DESIGN ÉDITORIAL ]</span>
-                <h2 class="cartel-title">Le Dépliant de <span>Programmation</span></h2>
-                <p class="cartel-desc">Mise en page du programme annuel des colloques et conférences. Synthèse de données textuelles denses dans un document papier normé et structuré.</p>
-            </div>
-            <div class="media-display">
-                <img src="flyer_programme.jpg" alt="Dépliant programme annuel" class="mockup-img h-medium">
-            </div>
-        </section>
-
-
-        <!-- AXE 3 : EXPÉRIENCES NUMÉRIQUES ET INTERFACES GRAPHIQUES -->
-
-        <!-- Œuvre 10 : L'Escape Game Web-App (Layout Intimate) -->
-        <section class="gallery-section bg-warm layout-intimate">
-            <div class="media-display">
-                <img src="visuel.jpg" alt="Interface de l'Escape Game" class="mockup-img h-medium">
-            </div>
-            <div class="cartel">
-                <span class="mono-caps">[ STRATÉGIE DIGITALE / INGENIERIE DE MÉDIATION ]</span>
-                <h2 class="cartel-title">Gamification <span>Patrimoniale</span></h2>
-                <p class="cartel-desc">Interface UI et logique algorithmique d'un dispositif de médiation numérique immersif. Intégration cartographique interactive de données territoriales.</p>
-                <a href="https://frhb10946ds.ikexpress.com/~thibault/projet/" target="_blank" class="portfolio-btn mono-caps">Consulter l'application en production</a>
-            </div>
-        </section>
-
-        <!-- Œuvre 11 : Maquette d'interface Web (Layout Epic) -->
-        <section class="gallery-section bg-creme layout-epic">
-            <div class="cartel">
-                <span class="mono-caps">[ INTERACTION DESIGN / PROTOCOLE ERGONOMIQUE ]</span>
-                <h2 class="cartel-title">Architecture d'une <span>Interface One-Page</span></h2>
-                <p class="cartel-desc">Dossier technique de conception d'une interface web unifiée. Travail poussé sur le parcours utilisateur (UX).</p>
-                <a href="maquette_onepage.pdf" target="_blank" class="portfolio-btn mono-caps">Ouvrir le dossier d'architecture (PDF)</a>
-            </div>
-            <div class="media-display">
-                <img src="one_page.png" alt="Screencast d'interface" class="mockup-img h-medium">
-            </div>
-        </section>
-
-        <!-- Œuvre 12 : Démo vidéo site complet (Layout Wide) -->
-        <section class="gallery-section bg-soft-dark layout-wide">
-            <div class="cartel">
-                <span class="mono-caps">[ CONCEVOIR LE PARCOURS / DOCUMENTATION UX ]</span>
-                <h2 class="cartel-title">Cinématique d'un <span>Portail Web</span></h2>
-                <p class="cartel-desc">Capsule vidéo de démonstration simulant le comportement fluide, les micro-interactions de navigation et l'arborescence d'un portail web culturel.</p>
-            </div>
-            <div class="media-display">
-                <div style="width: 100%; aspect-ratio: 16 / 9; background: #1a1a1a; box-shadow: 0 25px 60px rgba(0,0,0,0.12);">
-                    <video controls style="width: 100%; height: 100%; object-fit: cover;">
-                        <source src="capsule_site_complet.mp4" type="video/mp4">
-                    </video>
+            <div class="frag-visual">
+                <div style="flex:1; padding-top:0;">
+                    <span class="label-caps" style="font-size:0.58rem;">Affiche (A4)</span>
+                    <img src="JEA_2026-Cannes_V4.jpg" alt="Affiche JEA - DRASSM" class="img-portrait img-hover">
+                </div>
+                <div style="flex:0 0 auto; padding-top:120px;">
+                    <span class="label-caps" style="font-size:0.58rem;">Flyer (A5)</span>
+                    <img src="JEA_2026-Cannes_V4_flyer_recto.jpg" alt="Flyer JEA - DRASSM" class="img-portrait-sm img-hover">
                 </div>
             </div>
-        </section>
+        </div>
 
+        <!-- ░░ ŒUVRE 03 : Jeu primaire — Layout Editorial ░░ -->
+        <div class="fragment frag-editorial">
+            <div class="frag-top">
+                <div class="frag-top-left">
+                    <span class="label-caps">DRASSM / Médiation Universitaire & Scolaire</span>
+                    <div class="work-number" aria-hidden="true">02</div>
+                </div>
+                <div class="frag-top-right">
+                    <h2 class="title-serif">
+                        Didactique<br>
+                        <em>Jeune Public</em>
+                    </h2>
+                    <p class="body-mono">
+                        Développement d'un outil de médiation sous forme de jeu destiné aux classes de niveau primaire. Transposition graphique de concepts d'archéologie sous-marine.
+                    </p>
+                </div>
+            </div>
+            <div class="frag-bottom">
+                <img src="jeu_primaire.jpg" alt="Outil didactique et ludique" class="img-hover">
+            </div>
+        </div>
+
+        <!-- ░░ ŒUVRE 04 : Reel Instagram — Layout Dark Inverse ░░ -->
+        <div class="fragment frag-dark">
+            <div class="frag-visual-dark">
+                <div style="display:flex; align-items:flex-start; gap:48px;">
+                    <div class="reel-wrap">
+                        <video id="reel-video" muted playsinline loop poster="miniature.jpg">
+                            <source src="Reel.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <!-- Constellation répétée dans le dark -->
+                    <svg style="width:160px; opacity:0.2; margin-top:40px; flex-shrink:0;" viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="60" y1="40" x2="140" y2="100" stroke="#fdfbf7" stroke-width="0.7" stroke-dasharray="3 3"/>
+                        <line x1="140" y1="100" x2="80" y2="200" stroke="#fdfbf7" stroke-width="0.7"/>
+                        <line x1="80" y1="200" x2="160" y2="300" stroke="#fdfbf7" stroke-width="0.7" stroke-dasharray="2 2"/>
+                        <line x1="80" y1="200" x2="30" y2="280" stroke="#fdfbf7" stroke-width="0.7"/>
+                        <circle cx="60" cy="40" r="2" fill="#fdfbf7"/>
+                        <circle cx="140" cy="100" r="3" fill="none" stroke="#fdfbf7" stroke-width="1"/>
+                        <circle cx="140" cy="100" r="1.2" fill="#fdfbf7"/>
+                        <circle cx="80" cy="200" r="2" fill="#fdfbf7"/>
+                        <circle cx="160" cy="300" r="2" fill="#fdfbf7"/>
+                        <circle cx="30" cy="280" r="2" fill="#fdfbf7"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="frag-meta-dark">
+                <div>
+                    <span class="label-caps-inv">DRASSM / Dynamisation des Canaux</span>
+                    <div class="work-number" aria-hidden="true" style="color:rgba(253,251,247,0.06);">03</div>
+                </div>
+                <div>
+                    <h2 class="title-serif-inv">
+                        Rendez-vous<br>
+                        <em>Éditorial Numérique</em>
+                    </h2>
+                    <p class="body-mono-inv">
+                        Conception, réalisation et montage d'une capsule vidéo au format vertical (46 secondes) instaurant un jalon éditorial récurrent sur l'Instagram de l'institution.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ░░ ŒUVRE 05 : Archéo' Time — Layout Full ░░ -->
+        <div class="fragment frag-full">
+            <div class="frag-full-inner">
+                <div class="frag-left">
+                    <span class="label-caps">DRASSM / Cohésion & Synergie Interne</span>
+                    <div class="work-number" aria-hidden="true">04</div>
+                    <h2 class="title-serif">
+                        Archéo' Time :<br>
+                        <em>Fédérer la Structure</em>
+                    </h2>
+                    <p class="body-mono">
+                        Création de l'affiche pour le projet interne "Archéo' Time". Adoption d'un ton graphique plus souple, spécifiquement calibré pour les collaborateurs.
+                    </p>
+                </div>
+                <div class="frag-right" style="display:flex; align-items:center; justify-content:center; background:var(--warm);">
+                    <img src="archeo_time.jpg" alt="Affiche communication interne Archéo Time" class="img-portrait img-hover">
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- REMARQUES FINALES ET CONTACT -->
-    <footer class="footer-gallery" id="contact">
-        <h2 class="serif">Me contacter</h2>
-        <a href="mailto:j.thibaultpro@outlook.fr" class="email-link">j.thibaultpro@outlook.fr</a>
-        <p class="mono-caps" style="margin-top: 40px; font-size: 0.7rem; color: #666;">Julien Thibault • Toulouse • 06.50.94.31.84</p>
+    <!-- ═══════════════════════════════════════════════════════
+         AXE II — ASSOCIATION CONTRAST
+    ═══════════════════════════════════════════════════════ -->
+    <div class="axis-stripe">
+        <span class="axis-stripe-label">Axe II</span>
+        <div class="axis-stripe-rule"></div>
+        <span class="axis-stripe-title">Édition scientifique & valorisation</span>
+        <div class="axis-stripe-rule"></div>
+        <span class="axis-stripe-label">Association Contrast</span>
+    </div>
+
+    <!-- ░░ ŒUVRE 06 : Affiche Visites — Cover inversé ░░ -->
+    <div class="fragment frag-cover" style="background:var(--warm);">
+        <div class="frag-meta" style="background:var(--warm);">
+            <div>
+                <span class="label-caps">Association Contrast / Promotion des Savoirs</span>
+                <div class="work-number" aria-hidden="true">05</div>
+            </div>
+            <div>
+                <h2 class="title-serif">
+                    Valorisation des<br>
+                    <em>Cycles Scientifiques</em>
+                </h2>
+                <p class="body-mono">
+                    Affiche promotionnelle conçue pour annoncer les prochaines visites programmées. L'épuration graphique fait écho aux exigences esthétiques de l'histoire de l'art.
+                </p>
+            </div>
+            <div style="font-size:0.62rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted);">
+                Affiche événementielle
+            </div>
+        </div>
+        <div class="frag-visual" style="background:var(--bone); align-items:center; justify-content:center;">
+            <img src="affiche_visites.jpg" alt="Affiche cycle de visites Contrast" class="img-portrait img-hover">
+        </div>
+    </div>
+
+    <!-- ░░ ŒUVRES 07–08 : Flyers — Triptych ░░ -->
+    <div class="fragment frag-triptych">
+        <div class="col">
+            <span class="label-caps">Association Contrast / Stratégie de Marque</span>
+            <div class="work-number" aria-hidden="true" style="font-size:4rem; color:var(--rule);">06</div>
+            <div class="col-meta">
+                <h2 class="title-serif" style="font-size:clamp(1.6rem,2.5vw,2.8rem);">
+                    Le Manifeste de<br>
+                    <em>l'Association</em>
+                </h2>
+                <p class="body-mono" style="margin-top:16px;">
+                    Conception éditoriale du support de présentation global de l'association. Traitement rigoureux de l'identité visuelle.
+                </p>
+            </div>
+        </div>
+        <div class="col" style="justify-content:center; background:var(--warm);">
+            <img src="flyer_presentation.jpg" alt="Support de présentation association Contrast" class="img-full img-hover">
+        </div>
+        <div class="col" style="border-right:none;">
+            <span class="label-caps">Association Contrast / Design Éditorial</span>
+            <div class="work-number" aria-hidden="true" style="font-size:4rem; color:var(--rule);">07</div>
+            <div class="col-meta">
+                <h2 class="title-serif" style="font-size:clamp(1.6rem,2.5vw,2.8rem);">
+                    Le Dépliant de<br>
+                    <em>Programmation</em>
+                </h2>
+                <p class="body-mono" style="margin-top:16px;">
+                    Mise en page du programme annuel des colloques et conférences. Synthèse de données textuelles denses dans un document papier normé.
+                </p>
+            </div>
+            <img src="flyer_programme.jpg" alt="Dépliant programme annuel" class="img-full img-hover" style="margin-top:24px;">
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         AXE III — EXPÉRIENCES NUMÉRIQUES
+    ═══════════════════════════════════════════════════════ -->
+    <div class="axis-stripe">
+        <span class="axis-stripe-label">Axe III</span>
+        <div class="axis-stripe-rule"></div>
+        <span class="axis-stripe-title">Interfaces numériques & gamification</span>
+        <div class="axis-stripe-rule"></div>
+        <span class="axis-stripe-label">Web & UX</span>
+    </div>
+
+    <!-- ░░ ŒUVRE 09 : Escape Game — Layout Dark ░░ -->
+    <div class="fragment frag-dark">
+        <div class="frag-visual-dark" style="justify-content:center;">
+            <img src="visuel.jpg" alt="Interface de l'Escape Game" class="img-hover" style="max-width:100%; height:auto;">
+        </div>
+        <div class="frag-meta-dark">
+            <div>
+                <span class="label-caps-inv">Stratégie Digitale / Ingénierie de Médiation</span>
+                <div class="work-number" aria-hidden="true" style="color:rgba(253,251,247,0.06);">08</div>
+            </div>
+            <div>
+                <h2 class="title-serif-inv">
+                    Gamification<br>
+                    <em>Patrimoniale</em>
+                </h2>
+                <p class="body-mono-inv">
+                    Interface UI et logique algorithmique d'un dispositif de médiation numérique immersif. Intégration cartographique interactive de données territoriales.
+                </p>
+                <a href="https://frhb10946ds.ikexpress.com/~thibault/projet/" target="_blank" class="cta-inv">Consulter l'application</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ░░ ŒUVRE 10 : Maquette One Page — Layout Full ░░ -->
+    <div class="fragment frag-full">
+        <div class="frag-full-inner">
+            <div class="frag-left">
+                <span class="label-caps">Interaction Design / Protocole Ergonomique</span>
+                <div class="work-number" aria-hidden="true">09</div>
+                <h2 class="title-serif">
+                    Architecture d'une<br>
+                    <em>Interface One-Page</em>
+                </h2>
+                <p class="body-mono">
+                    Dossier technique de conception d'une interface web unifiée. Travail poussé sur le parcours utilisateur (UX) et les conventions ergonomiques.
+                </p>
+                <a href="maquette_onepage.pdf" target="_blank" class="cta">Ouvrir le dossier PDF</a>
+            </div>
+            <div class="frag-right" style="background:var(--bone); display:flex; align-items:center; justify-content:center; padding:60px 40px;">
+                <img src="one_page.png" alt="Screencast interface" class="img-hover" style="width:100%; height:auto;">
+            </div>
+        </div>
+    </div>
+
+    <!-- ░░ ŒUVRE 11 : Capsule Portail Web — Layout Editorial ░░ -->
+    <div class="fragment frag-editorial" style="background:var(--warm);">
+        <div class="frag-top" style="background:var(--warm);">
+            <div class="frag-top-left" style="background:var(--warm);">
+                <span class="label-caps">Concevoir le Parcours / Documentation UX</span>
+                <div class="work-number" aria-hidden="true">10</div>
+            </div>
+            <div class="frag-top-right" style="background:var(--warm);">
+                <h2 class="title-serif">
+                    Cinématique d'un<br>
+                    <em>Portail Web</em>
+                </h2>
+                <p class="body-mono">
+                    Capsule vidéo de démonstration simulant le comportement fluide, les micro-interactions de navigation et l'arborescence d'un portail web culturel.
+                </p>
+            </div>
+        </div>
+        <div class="frag-bottom" style="justify-content:center; padding:40px;">
+            <div class="video-wide" style="width:80%;">
+                <video controls>
+                    <source src="capsule_site_complet.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── FOOTER / CONTACT ─── -->
+    <footer class="footer" id="contact">
+        <div class="footer-left">
+            <div>
+                <span class="label-caps">// Coordonnées</span>
+                <div class="title-massive" style="font-size:clamp(4rem,9vw,10rem); margin-top:24px;">
+                    Prendre<br>
+                    <em>contact</em>
+                </div>
+            </div>
+            <div class="footer-coords">
+                <div>Julien Thibault</div>
+                <div>Toulouse</div>
+                <div>06.50.94.31.84</div>
+            </div>
+        </div>
+        <div class="footer-right">
+            <!-- Constellation en footer -->
+            <svg style="width:100%; max-width:260px; opacity:0.18; margin-bottom:40px;" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="30" y1="50" x2="120" y2="90" stroke="#0d0d0d" stroke-width="0.7" stroke-dasharray="4 4"/>
+                <line x1="120" y1="90" x2="200" y2="60" stroke="#0d0d0d" stroke-width="0.7"/>
+                <line x1="120" y1="90" x2="160" y2="160" stroke="#0d0d0d" stroke-width="0.7"/>
+                <line x1="200" y1="60" x2="260" y2="140" stroke="#0d0d0d" stroke-width="0.7" stroke-dasharray="2 2"/>
+                <circle cx="30" cy="50" r="2" fill="#0d0d0d"/>
+                <circle cx="120" cy="90" r="3.5" fill="none" stroke="#0d0d0d" stroke-width="1"/>
+                <circle cx="120" cy="90" r="1.5" fill="#0d0d0d"/>
+                <circle cx="200" cy="60" r="2" fill="#0d0d0d"/>
+                <circle cx="160" cy="160" r="2" fill="#0d0d0d"/>
+                <circle cx="260" cy="140" r="2" fill="#0d0d0d"/>
+            </svg>
+            <a href="mailto:j.thibaultpro@outlook.fr" class="footer-email">j.thibaultpro<br>@outlook.fr</a>
+        </div>
     </footer>
 
-    <!-- SCRIPT INTERSECTION OBSERVER -->
+    <!-- ─── SCRIPTS ─── -->
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const video = document.getElementById("reel-video");
-
-            if (video) {
-                const observerOptions = {
-                    root: null,
-                    threshold: 0.5 
-                };
-
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            video.play().catch(error => console.log("Autoplay bloqué :", error));
-                        } else {
-                            video.pause();
-                        }
-                    });
-                }, observerOptions);
-
-                observer.observe(video);
-            }
-        });
+        const video = document.getElementById("reel-video");
+        if (video) {
+            const obs = new IntersectionObserver(entries => {
+                entries.forEach(e => e.isIntersecting
+                    ? video.play().catch(() => {})
+                    : video.pause()
+                );
+            }, { threshold: 0.5 });
+            obs.observe(video);
+        }
     </script>
 </body>
 </html>
