@@ -486,6 +486,106 @@
         .ws-alt .ws-text { background: var(--warm); }
         .ws-alt .ws-images { background: var(--bone); }
 
+        /* ─── OPTIMISATION SECTION 03 REEL ─── */
+.layout-insta-fixed .frag-visual-dark {
+    display: grid;
+    grid-template-columns: 200px 1fr; /* Sépare les specs techniques et la zone vidéo */
+    gap: 40px;
+    padding: 60px 48px;
+    align-items: center;
+}
+
+/* Données d'archives à gauche */
+.video-spec-data {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-left: 1px solid rgba(253,251,247,0.15);
+    padding-left: 20px;
+}
+.spec-item {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+.spec-item span:first-child { color: rgba(253,251,247,0.4); margin-bottom: 4px; }
+.spec-item span:last-child { color: var(--paper); font-weight: 700; }
+
+/* Zone centrale stabilisée pour le Reel */
+.reel-center-zone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    width: 100%;
+}
+
+/* Reset et décollage du Reel par rapport au bord */
+.layout-insta-fixed .reel-wrap {
+    margin: 0;
+    position: relative;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+    border: 1px solid rgba(253,251,247,0.1);
+    width: 240px; /* Légèrement agrandi pour l'impact visuel magazine */
+}
+
+.constellation-insta {
+    width: 120px;
+    opacity: 0.15;
+    flex-shrink: 0;
+}
+
+/* Bouton Audio Intégré */
+.audio-toggle {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(13, 13, 13, 0.75);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(253, 251, 247, 0.2);
+    color: var(--paper);
+    padding: 8px 14px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 4px;
+    z-index: 10;
+    transition: all 0.2s ease;
+}
+.audio-toggle:hover {
+    background: var(--paper);
+    color: var(--ink);
+}
+#audio-icon {
+    width: 12px;
+    height: 12px;
+}
+
+/* Ajustement Mobile pour cette section */
+@media (max-width: 860px) {
+    .layout-insta-fixed .frag-visual-dark {
+        grid-template-columns: 1fr;
+        padding: 40px 20px;
+    }
+    .video-spec-data {
+        flex-direction: row;
+        flex-wrap: wrap;
+        border-left: none;
+        border-bottom: 1px solid rgba(253,251,247,0.1);
+        padding-left: 0;
+        padding-bottom: 20px;
+        gap: 16px;
+    }
+    .reel-center-zone { flex-direction: column; gap: 30px; }
+}
+
         /* ─── MOBILE ─── */
         @media (max-width: 860px) {
             .nav { padding: 16px 20px; }
@@ -695,44 +795,64 @@
             </div>
         </article>
 
-        <!-- ══ SECTION 03 — Reel Instagram (style original) ══ -->
-        <div class="fragment frag-dark">
-            <div class="frag-visual-dark">
-                <div style="display:flex; align-items:flex-start; gap:48px;">
-                    <div class="reel-wrap">
-                        <video id="reel-video" muted playsinline loop poster="miniature.jpg">
-                            <source src="Reel.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <svg style="width:160px; opacity:0.2; margin-top:40px; flex-shrink:0;" viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <line x1="60" y1="40" x2="140" y2="100" stroke="#fdfbf7" stroke-width="0.7" stroke-dasharray="3 3"/>
-                        <line x1="140" y1="100" x2="80" y2="200" stroke="#fdfbf7" stroke-width="0.7"/>
-                        <line x1="80" y1="200" x2="160" y2="300" stroke="#fdfbf7" stroke-width="0.7" stroke-dasharray="2 2"/>
-                        <line x1="80" y1="200" x2="30" y2="280" stroke="#fdfbf7" stroke-width="0.7"/>
-                        <circle cx="60" cy="40" r="2" fill="#fdfbf7"/>
-                        <circle cx="140" cy="100" r="3" fill="none" stroke="#fdfbf7" stroke-width="1"/>
-                        <circle cx="140" cy="100" r="1.2" fill="#fdfbf7"/>
-                        <circle cx="80" cy="200" r="2" fill="#fdfbf7"/>
-                        <circle cx="160" cy="300" r="2" fill="#fdfbf7"/>
-                        <circle cx="30" cy="280" r="2" fill="#fdfbf7"/>
+<!-- ══ SECTION 03 — Reel Instagram (Style Éditorial Optimisé) ══ -->
+<div class="fragment frag-dark layout-insta-fixed">
+    <div class="frag-visual-dark">
+        <!-- Ajout des métadonnées brutales à gauche pour occuper l'espace vide -->
+        <div class="video-spec-data">
+            <div class="spec-item"><span>PROJET</span><span>REEL ARCHÉO V1</span></div>
+            <div class="spec-item"><span>RATIO</span><span>9:16 VERTICAL</span></div>
+            <div class="spec-item"><span>DURÉE</span><span>00:46:00</span></div>
+            <div class="spec-item"><span>AUDIO</span><span>STEREO / 48KHZ</span></div>
+        </div>
+
+        <div class="reel-center-zone">
+            <div class="reel-wrap">
+                <!-- Garder muted pour l'autoplay, mais ajout d'un bouton de contrôle -->
+                <video id="reel-video" muted playsinline loop poster="miniature.jpg">
+                    <source src="Reel.mp4" type="video/mp4">
+                </video>
+                <!-- Bouton Audio Brutaliste -->
+                <button class="audio-toggle" onclick="toggleReelAudio()">
+                    <svg id="audio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path id="audio-path" d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6"/>
                     </svg>
-                </div>
+                    <span id="audio-text">ACTIVER LE SON</span>
+                </button>
             </div>
-            <div class="frag-meta-dark">
-                <div>
-                    <span class="label-caps-inv">DRASSM / Dynamisation des Canaux</span>
-                    <div class="work-number" aria-hidden="true" style="color:rgba(253,251,247,0.06);">03</div>
-                </div>
-                <div>
-                    <h2 class="title-serif-inv">
-                        Rendez-vous<br>
-                        <em>Éditorial Numérique</em>
-                    </h2>
-                    <p class="body-mono-inv">
-                        Conception, réalisation et montage d'une capsule vidéo au format vertical (46 secondes) instaurant un jalon éditorial récurrent sur l'Instagram de l'institution.
-                    </p>
-                </div>
-            </div>
+            
+            <!-- Ta constellation SVG décalée pour équilibrer le côté droit du Reel -->
+            <svg class="constellation-insta" viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="60" y1="40" x2="140" y2="100" stroke="#fdfbf7" stroke-width="0.7" stroke-dasharray="3 3"/>
+                <line x1="140" y1="100" x2="80" y2="200" stroke="#fdfbf7" stroke-width="0.7"/>
+                <line x1="80" y1="200" x2="160" y2="300" stroke="#fdfbf7" stroke-width="0.7" stroke-dasharray="2 2"/>
+                <line x1="80" y1="200" x2="30" y2="280" stroke="#fdfbf7" stroke-width="0.7"/>
+                <circle cx="60" cy="40" r="2" fill="#fdfbf7"/>
+                <circle cx="140" cy="100" r="3" fill="none" stroke="#fdfbf7" stroke-width="1"/>
+                <circle cx="140" cy="100" r="1.2" fill="#fdfbf7"/>
+                <circle cx="80" cy="200" r="2" fill="#fdfbf7"/>
+                <circle cx="160" cy="300" r="2" fill="#fdfbf7"/>
+                <circle cx="30" cy="280" r="2" fill="#fdfbf7"/>
+            </svg>
+        </div>
+    </div>
+    
+    <div class="frag-meta-dark">
+        <div>
+            <span class="label-caps-inv">DRASSM / Dynamisation des Canaux</span>
+            <div class="work-number" aria-hidden="true" style="color:rgba(253,251,247,0.06);">03</div>
+        </div>
+        <div>
+            <h2 class="title-serif-inv">
+                Rendez-vous<br>
+                <em>Éditorial Numérique</em>
+            </h2>
+            <p class="body-mono-inv">
+                Conception, réalisation et montage d'une capsule vidéo au format vertical (46 secondes) instaurant un jalon éditorial récurrent sur l'Instagram de l'institution.
+            </p>
+        </div>
+    </div>
+</div>
         </div>
 
         <!-- ══ SECTION 04 — Archéo' Time (style original) ══ -->
@@ -933,7 +1053,8 @@
         </div>
     </footer>
 
-    <script>
+<script>
+        // 1. GESTION DU SCROLL (Intersection Observer préexistant)
         const video = document.getElementById("reel-video");
         if (video) {
             const obs = new IntersectionObserver(entries => {
@@ -943,6 +1064,27 @@
                 );
             }, { threshold: 0.5 });
             obs.observe(video);
+        }
+
+        // 2. GESTION DU SON (Toggle Mute/Unmute)
+        function toggleReelAudio() {
+            const videoEl = document.getElementById('reel-video');
+            const text = document.getElementById('audio-text');
+            const path = document.getElementById('audio-path');
+            
+            if (!videoEl) return;
+
+            if (videoEl.muted) {
+                videoEl.muted = false;
+                text.innerText = "COUPER LE SON";
+                // Met à jour l'icône SVG : Haut-parleur actif avec ondes sonores
+                path.setAttribute('d', 'M11 5L6 9H2v6h4l5 4V5z M15.54 8.46a5 5 0 0 1 0 7.07');
+            } else {
+                videoEl.muted = true;
+                text.innerText = "ACTIVER LE SON";
+                // Met à jour l'icône SVG : Haut-parleur muet avec une croix (X)
+                path.setAttribute('d', 'M11 5L6 9H2v6h4l5 4V5z M23 9l-6 6M17 9l6 6');
+            }
         }
     </script>
 </body>
