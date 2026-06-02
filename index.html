@@ -536,12 +536,13 @@
     position: relative !important; /* Force l'ancrage absolu pour le bouton */
 }
 
-/* Bouton Audio Intégré & Verrouillé à l'intérieur du smartphone */
+/* Bouton Audio Intégré - Positionné EN DESSOUS du Reel */
 .reel-wrap .audio-toggle {
-    position: absolute;
-    bottom: 20px;                /* Fixé précisément à 20px du bas de l'image du Reel */
-    left: 50%;                   /* Aligné sur l'axe central du Reel */
-    transform: translateX(-50%); /* Centrage parfait horizontal */
+    position: relative;          /* Repasse dans le flux normal sous la vidéo */
+    margin: 16px auto 0 auto;    /* 16px d'espace sous la vidéo, auto pour le centrer horizontalement */
+    width: fit-content;          /* S'ajuste pile à la taille du texte */
+    
+    /* Tes styles graphiques brutalisme (conservés) */
     background: rgba(13, 13, 13, 0.75);
     backdrop-filter: blur(8px);
     border: 1px solid rgba(253, 251, 247, 0.2);
@@ -557,7 +558,7 @@
     border-radius: 4px;
     z-index: 10;
     transition: all 0.2s ease;
-    white-space: nowrap;         /* Empêche le texte de casser sur deux lignes */
+    white-space: nowrap;
 }
 
 .reel-wrap .audio-toggle:hover {
@@ -570,7 +571,6 @@
     height: 12px;
     display: block;
 }
-
 .constellation-insta {
     width: 120px;
     opacity: 0.15;
