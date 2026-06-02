@@ -426,25 +426,35 @@
         .ws-images-duo .ws-img-wrap:first-child { flex: 0 0 45%; }
         .ws-images-duo .ws-img-offset          { flex: 0 0 36%; margin-top: 70px; }
 
-        /* Section 02 : image pleine zone */
-        .ws-images-single { padding: 0; }
+        /* Section 02 : image complète sans crop */
+        .ws-images-single {
+            padding: 40px 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
         .ws-images-single .ws-img-wrap {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
             width: 100%;
-            height: 100%;
         }
         .ws-images-single .ws-img-wrap img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            max-height: 70vh;
+            height: auto;
+            display: block;
+            object-fit: contain;
         }
         .ws-images-single .ws-caption {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            padding: 10px 24px;
-            background: var(--warm);
-            margin-top: 0;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            padding-top: 8px;
             border-top: 1px solid var(--rule);
+            font-size: 0.56rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted);
         }
 
         /* Barre de pied */
@@ -727,7 +737,7 @@
                     <p class="ws-tags">Conception pédagogique · Édition jeunesse</p>
                     <p class="ws-desc">Conception d'un dispositif de médiation à destination des classes primaires : jeu d'identification, livret-cartel et iconographie sur-mesure pour transmettre les méthodes de l'archéologie sous-marine.</p>
                 </div>
-                <div class="ws-images ws-images-single" style="position:relative;">
+                <div class="ws-images ws-images-single">
                     <div class="ws-img-wrap">
                         <img src="jeu_primaire.jpg" alt="Outil didactique et ludique" class="img-hover">
                         <div class="ws-caption">
