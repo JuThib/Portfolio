@@ -524,7 +524,8 @@
 /* ─── OPTIMISATION SECTION 03 REEL ─── */
 .layout-insta-fixed .frag-visual-dark {
     display: grid;
-    grid-template-columns: 200px 1fr; /* Sépare les specs techniques et la zone vidéo */
+    /* Correction : On crée 3 colonnes pour accueillir les specs, le reel, et la constellation */
+    grid-template-columns: 200px 1fr 120px; 
     gap: 40px;
     padding: 60px 48px;
     align-items: center;
@@ -551,40 +552,41 @@
 /* Zone centrale stabilisée pour le Reel */
 .reel-center-zone {
     display: flex;
+    flex-direction: column; /* Correction majeure : Force le bouton à se mettre SOUS la vidéo */
     align-items: center;
     justify-content: center;
-    gap: 60px;
+    gap: 20px;              /* Ajustement de l'espace vertical entre vidéo et bouton */
     width: 100%;
 }
 
 /* Surcharge de .reel-wrap spécifique à la section 03 */
 .layout-insta-fixed .reel-wrap {
-    width: 240px;               /* Légèrement plus grand pour le style magazine */
-    aspect-ratio: auto;         /* On retire le ratio du conteneur pour laisser respirer le bouton */
-    overflow: visible;          /* TRÈS IMPORTANT : permet au bouton de sortir en dessous de la vidéo */
+    width: 240px;               /* Taille optimale style magazine */
+    aspect-ratio: 9/16;         /* Restauration du ratio pour figer la boîte noire de la vidéo */
+    overflow: hidden;           /* On remet le hidden pour couper proprement les coins de la vidéo */
     background: transparent;
     margin: 0;
     flex-shrink: 0;
-}
-
-/* On applique le style du smartphone, les arrondis et l'ombre directement sur la vidéo */
-.layout-insta-fixed .reel-wrap video {
-    width: 100%;
-    aspect-ratio: 9/16;         /* Le format vertical reste verrouillé sur le film */
-    object-fit: cover;
     border-radius: 8px;
     box-shadow: 0 30px 60px rgba(0,0,0,0.4);
     border: 1px solid rgba(253,251,247,0.1);
+}
+
+/* Le film occupe tout le smartphone */
+.layout-insta-fixed .reel-wrap video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
 }
 
-/* Bouton Audio Brutaliste - Fixé EN DESSOUS de la vidéo */
+/* Bouton Audio Brutaliste - Centré en dessous du smartphone */
 .layout-insta-fixed .audio-toggle {
-    position: relative;          /* Entre dans le flux normal sous la vidéo */
-    margin: 20px auto 0 auto;    /* Crée 20px d'espace sous la vidéo et le centre horizontalement */
-    width: fit-content;          /* Évite qu'il ne prenne toute la largeur */
+    position: relative;          /* Reste sagement sous la vidéo dans le flex column */
+    margin: 0 auto;              /* Centrage horizontal parfait */
+    width: fit-content;          
     
-    /* Tes styles graphiques */
+    /* Styles graphiques Brutalistes */
     background: rgba(13, 13, 13, 0.75);
     backdrop-filter: blur(8px);
     border: 1px solid rgba(253, 251, 247, 0.2);
@@ -618,8 +620,8 @@
     width: 120px;
     opacity: 0.15;
     flex-shrink: 0;
+    justify-self: center; /* Aligne bien le SVG au milieu de sa colonne de droite */
 }
-
         /* ─── MOBILE ─── */
         @media (max-width: 860px) {
             .nav { padding: 16px 20px; }
