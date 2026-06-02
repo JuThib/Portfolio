@@ -39,18 +39,42 @@
         .nav-links a { margin-left: 24px; transition: opacity 0.3s; }
         .nav-links a:hover { opacity: 0.6; }
 
-        /* --- AVANT-PROPOS / POSTURE --- */
+/* --- AVANT-PROPOS / POSTURE ÉLÉGANTE --- */
         .intro-manifesto {
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 0 48px;
-            max-width: 1000px;
+            padding: 0 8%;
+            max-width: 1200px;
             background: #fdfbf7;
         }
-        .intro-manifesto h1 { font-size: clamp(2.2rem, 4.5vw, 4rem); line-height: 1.15; margin-top: 32px; color: #0d0d0d; }
-        .intro-manifesto h1 span { font-style: italic; }
+        .intro-manifesto .mono-caps {
+            margin-bottom: 24px;
+            opacity: 0.8;
+        }
+        .intro-manifesto h1 { 
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(2.2rem, 3.8vw, 3.5rem); 
+            line-height: 1.3; 
+            color: #0d0d0d;
+            max-width: 1050px;
+            letter-spacing: -0.01em;
+        }
+        .intro-manifesto h1 span { 
+            font-style: italic; 
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .intro-emphasis {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85em;
+            font-style: normal !important;
+            letter-spacing: -0.03em;
+            display: inline-block;
+            border-bottom: 1px solid #1a1a1a;
+            padding-bottom: 2px;
+        }
 
         /* --- STRUCTURE ASYMÉTRIQUE ET EFFET STICKY --- */
         .portfolio-container { position: relative; }
