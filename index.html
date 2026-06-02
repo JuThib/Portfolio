@@ -88,7 +88,7 @@
         /* ─── HERO BRUTAL ─── */
         .hero {
             margin-top: calc(36px + 57px);
-            min-height: 100vh;
+            min-height: 80vh;
             display: grid;
             grid-template-columns: 1fr 1fr;
             border-bottom: 1px solid var(--rule);
@@ -97,7 +97,7 @@
         }
         .hero-left {
             border-right: 1px solid var(--rule);
-            padding: 80px 60px 80px 40px;
+            padding: 48px 40px 48px 32px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -115,11 +115,11 @@
         .hero-h1 {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 300;
-            font-size: clamp(3.2rem, 6vw, 6.5rem);
+            font-size: clamp(2.2rem, 4vw, 4.8rem);
             line-height: 0.92;
             letter-spacing: -0.03em;
             color: var(--ink);
-            margin: 60px 0;
+            margin: 40px 0;
         }
         .hero-h1 em { font-style: italic; display: block; }
         .hero-h1 .stacked { display: block; padding-left: 3vw; }
@@ -163,7 +163,7 @@
         }
         .hero-discipline {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 3.5vw, 3.8rem);
+            font-size: clamp(1.4rem, 2.4vw, 2.8rem);
             font-weight: 300;
             color: var(--paper);
             line-height: 1.1;
@@ -184,7 +184,7 @@
             display: grid;
             grid-template-columns: repeat(12, 1fr);
             align-items: flex-start;
-            padding: 140px 64px;
+            padding: 80px 40px;
             position: relative;
         }
         .bg-creme { background: var(--paper); }
@@ -264,27 +264,27 @@
             margin-bottom: 20px;
             display: block;
         }
-        .title-serif { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(2.2rem, 3.5vw, 4rem); line-height: 0.95; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 28px; }
+        .title-serif { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(1.6rem, 2.4vw, 3rem); line-height: 0.95; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 28px; }
         .title-serif em { font-style: italic; }
-        .title-serif-inv { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(2.2rem, 3.5vw, 4rem); line-height: 0.95; letter-spacing: -0.025em; color: var(--paper); margin-bottom: 28px; }
+        .title-serif-inv { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(1.6rem, 2.4vw, 3rem); line-height: 0.95; letter-spacing: -0.025em; color: var(--paper); margin-bottom: 28px; }
         .title-serif-inv em { font-style: italic; }
-        .title-massive { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(5rem, 12vw, 14rem); line-height: 0.82; letter-spacing: -0.04em; color: var(--ink); }
+        .title-massive { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(3rem, 7vw, 9rem); line-height: 0.82; letter-spacing: -0.04em; color: var(--ink); }
         .title-massive em { font-style: italic; }
         .body-mono     { font-size: 0.78rem; line-height: 1.75; color: #444; max-width: 400px; }
         .body-mono-inv { font-size: 0.78rem; line-height: 1.75; color: rgba(253,251,247,0.6); max-width: 380px; }
-        .work-number { font-family: 'Cormorant Garamond', serif; font-size: 7rem; font-weight: 300; color: var(--rule); line-height: 1; pointer-events: none; user-select: none; }
+        .work-number { font-family: 'Cormorant Garamond', serif; font-size: 4.5rem; font-weight: 300; color: var(--rule); line-height: 1; pointer-events: none; user-select: none; }
 
         /* Fragments réutilisés (03 à 12) */
         .fragment { border-top: 1px solid var(--rule); display: grid; position: relative; }
-        .frag-dark { grid-template-columns: 1fr 420px; background: var(--ink); color: var(--paper); min-height: 80vh; }
-        .frag-dark .frag-visual-dark { padding: 60px 40px; display: flex; align-items: center; }
-        .frag-dark .frag-meta-dark { padding: 60px 40px; border-left: 1px solid rgba(253,251,247,0.1); display: flex; flex-direction: column; justify-content: space-between; }
+        .frag-dark { grid-template-columns: 1fr 360px; background: var(--ink); color: var(--paper); min-height: 60vh; }
+        .frag-dark .frag-visual-dark { padding: 40px 32px; display: flex; align-items: center; }
+        .frag-dark .frag-meta-dark { padding: 40px 32px; border-left: 1px solid rgba(253,251,247,0.1); display: flex; flex-direction: column; justify-content: space-between; }
         .frag-full { grid-template-columns: 1fr; overflow: hidden; }
         .frag-full-inner { display: grid; grid-template-columns: 1fr 1fr; }
-        .frag-full .frag-left  { padding: 60px 50px 60px 40px; border-right: 1px solid var(--rule); }
-        .frag-full .frag-right { padding: 60px 40px; }
-        .frag-triptych { grid-template-columns: 1fr 1fr 1fr; min-height: 70vh; }
-        .frag-triptych .col { border-right: 1px solid var(--rule); padding: 50px 36px; display: flex; flex-direction: column; }
+        .frag-full .frag-left  { padding: 48px 40px 48px 32px; border-right: 1px solid var(--rule); }
+        .frag-full .frag-right { padding: 40px 32px; }
+        .frag-triptych { grid-template-columns: 1fr 1fr 1fr; min-height: 55vh; }
+        .frag-triptych .col { border-right: 1px solid var(--rule); padding: 36px 28px; display: flex; flex-direction: column; }
         .frag-triptych .col:last-child { border-right: none; }
         .frag-triptych .col-meta { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; }
         .img-full { width: 100%; height: auto; display: block; }
@@ -308,9 +308,9 @@
         .cta-inv:hover { background: rgba(253,251,247,0.1); }
 
         /* Footer */
-        .footer { border-top: 1px solid var(--rule); display: grid; grid-template-columns: 1fr 1fr; min-height: 50vh; }
-        .footer-left { padding: 80px 40px; border-right: 1px solid var(--rule); display: flex; flex-direction: column; justify-content: space-between; }
-        .footer-right { padding: 80px 40px; background: var(--warm); display: flex; flex-direction: column; justify-content: flex-end; }
+        .footer { border-top: 1px solid var(--rule); display: grid; grid-template-columns: 1fr 1fr; min-height: 40vh; }
+        .footer-left { padding: 56px 32px; border-right: 1px solid var(--rule); display: flex; flex-direction: column; justify-content: space-between; }
+        .footer-right { padding: 56px 32px; background: var(--warm); display: flex; flex-direction: column; justify-content: flex-end; }
         .footer-email { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3.5vw, 4rem); font-weight: 300; color: var(--ink); text-decoration: none; line-height: 1.1; letter-spacing: -0.02em; border-bottom: 1px solid var(--ink); padding-bottom: 6px; display: inline-block; }
         .footer-coords { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); line-height: 2.2; }
 
@@ -320,7 +320,7 @@
 
         /* Barre de titre de projet */
         .ws-topbar {
-            padding: 32px 40px 0;
+            padding: 24px 32px 0;
             border-top: 1px solid var(--rule);
         }
         .ws-topbar-inner {
@@ -349,13 +349,13 @@
         /* Corps texte + images */
         .ws-body {
             display: grid;
-            grid-template-columns: 380px 1fr;
-            min-height: 85vh;
+            grid-template-columns: 320px 1fr;
+            min-height: 70vh;
         }
 
         /* Colonne texte — poussé vers le bas */
         .ws-text {
-            padding: 48px 40px 56px;
+            padding: 36px 32px 40px;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -372,7 +372,7 @@
         .ws-title {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 300;
-            font-size: clamp(2.6rem, 4.2vw, 4.8rem);
+            font-size: clamp(1.8rem, 2.8vw, 3.4rem);
             line-height: 1.0;
             letter-spacing: -0.03em;
             color: var(--ink);
@@ -396,10 +396,10 @@
         /* Colonne images — fond crème, images en cascade */
         .ws-images {
             background: var(--warm);
-            padding: 56px 48px;
+            padding: 40px 36px;
             display: flex;
             align-items: flex-start;
-            gap: 36px;
+            gap: 28px;
         }
 
         /* Wrapper image individuelle */
@@ -420,7 +420,7 @@
 
         /* Section 01 : duo en cascade */
         .ws-images-duo .ws-img-wrap:first-child { flex: 0 0 45%; }
-        .ws-images-duo .ws-img-offset          { flex: 0 0 36%; margin-top: 110px; }
+        .ws-images-duo .ws-img-offset          { flex: 0 0 36%; margin-top: 70px; }
 
         /* Section 02 : image pleine zone */
         .ws-images-single { padding: 0; }
@@ -432,7 +432,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            max-height: 85vh;
+            max-height: 70vh;
         }
         .ws-images-single .ws-caption {
             position: absolute;
@@ -447,7 +447,7 @@
         .ws-footbar {
             display: flex;
             justify-content: space-between;
-            padding: 12px 40px;
+            padding: 10px 32px;
             border-top: 1px solid var(--rule);
             font-size: 0.56rem;
             letter-spacing: 0.16em;
