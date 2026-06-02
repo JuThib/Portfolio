@@ -28,7 +28,7 @@
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.25em;
-            color: 555555; /* Légèrement grisé pour la hiérarchie */
+            color: #555555; /* Légèrement grisé pour la hiérarchie */
         }
 
         /* --- NAVIGATION --- */
@@ -42,7 +42,7 @@
             align-items: center;
             padding: 32px 48px;
             z-index: 10;
-            color: 1a1a1a;
+            color: #1a1a1a;
             background: linear-gradient(to bottom, rgba(253,251,247,0.9) 0%, rgba(253,251,247,0) 100%);
             pointer-events: none;
         }
@@ -111,7 +111,7 @@
             color: #2e2e2e;
         }
 
-        /* --- SECTION 1 : STRATÉGIE ÉDITORIALE & PRINT --- */
+        /* --- SPREADS (SECTION 1 : PRINT & IDENTITÉ) --- */
         .spread {
             position: relative;
             width: 100%;
@@ -124,7 +124,6 @@
             background: #fdfbf7;
             border-bottom: 1px solid rgba(26, 26, 26, 0.08);
         }
-        
         .spread-bg-img {
             position: absolute;
             inset: 0;
@@ -133,16 +132,11 @@
             background-attachment: fixed;
             z-index: 1;
         }
-
         .spread-content {
             position: relative;
             z-index: 3;
             color: #1a1a1a;
         }
-        
-        .spread:nth-of-type(odd) .spread-content { grid-column: 2 / span 6; }
-        .spread:nth-of-type(even) .spread-content { grid-column: 6 / span 6; }
-
         .spread-tag { margin-bottom: 20px; display: inline-block; color: #555555; }
         .spread-title {
             font-size: clamp(2.2rem, 4.2vw, 3.5rem);
@@ -172,25 +166,21 @@
             background: #1a1a1a;
             color: #fdfbf7;
         }
-        
         .spread-num {
             position: absolute;
             font-size: clamp(12rem, 20vw, 22rem);
             font-style: italic;
-            color: rgba(0, 0, 0, 0.025); /* Filigrane très subtil */
+            color: rgba(0, 0, 0, 0.025);
             line-height: 0.8;
             z-index: 2;
             pointer-events: none;
             bottom: 10%;
         }
-        .spread:nth-of-type(odd) .spread-num { right: 8%; }
-        .spread:nth-of-type(even) .spread-num { left: 8%; }
 
-
-        /* --- SECTION 2 : STRATÉGIE DIGITALE & ÉCOSYSTÈMES --- */
+        /* --- SECTION 2 : STRATÉGIE DIGITALE --- */
         .editorial-grid-section {
             padding: 140px 48px;
-            background: #f5efe6; /* Un ton légèrement plus chaud pour structurer la grille */
+            background: #f5efe6; /* Ton un peu plus chaud */
             color: #1a1a1a;
             border-bottom: 1px solid rgba(26, 26, 26, 0.08);
         }
@@ -205,6 +195,7 @@
             line-height: 1.05;
             color: #0d0d0d;
         }
+        .section-title span { font-style: italic; }
         .section-intro {
             grid-column: 7 / span 6;
             font-size: 0.9rem;
@@ -212,7 +203,6 @@
             color: #2e2e2e;
             padding-left: 40px;
         }
-        
         .grid-container {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
@@ -220,7 +210,6 @@
         }
         .grid-item-wide { grid-column: 1 / span 7; }
         .grid-item-narrow { grid-column: 8 / span 5; margin-top: 80px; }
-        
         .editorial-card {
             display: flex;
             flex-direction: column;
@@ -245,9 +234,7 @@
             background: #fff;
             transition: transform 0.5s ease;
         }
-        .editorial-card:hover .card-display img {
-            transform: scale(1.03);
-        }
+        .editorial-card:hover .card-display img { transform: scale(1.03); }
         .card-meta {
             display: flex;
             flex-direction: column;
@@ -257,53 +244,70 @@
         }
         .card-title { font-size: 1.25rem; font-weight: 400; color: #0d0d0d; }
 
+        /* --- SECTION 3 : GALERIE / PLANCHES GRAPHIQUES & PRODUCTION --- */
+        .planches-section {
+            padding: 140px 48px;
+            background: #fdfbf7;
+            border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 80px 40px;
+            max-width: 1200px;
+            margin: 80px auto 0 auto;
+        }
+        .gallery-item { display: flex; flex-direction: column; gap: 16px; }
+        .item-wide { grid-column: 1 / span 7; }
+        .item-narrow { grid-column: 8 / span 5; margin-top: 60px; }
+        .image-wrapper {
+            background: #f5efe6;
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.03);
+        }
+        .image-wrapper img {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .gallery-item:hover .image-wrapper img { transform: scale(1.02); }
+        .item-meta { border-top: 1px solid rgba(0,0,0,0.08); padding-top: 12px; }
+        .item-title { font-size: 1.2rem; font-weight: 400; margin-top: 4px; color: #0d0d0d; }
+
         /* --- FOOTER CONTACT --- */
         .footer-contact {
             padding: 140px 48px;
             background: #fdfbf7;
             text-align: center;
         }
-        .footer-contact h2 { 
-            font-size: clamp(2rem, 4vw, 3rem); 
-            margin-bottom: 30px; 
-            color: #0d0d0d;
-        }
+        .footer-contact h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 30px; color: #0d0d0d; }
         .footer-link { 
-            color: #1a1a1a; 
-            text-decoration: none; 
-            font-size: clamp(1.1rem, 2.5vw, 1.8rem); 
-            border-bottom: 1px dashed #1a1a1a; 
-            padding-bottom: 8px;
-            transition: opacity 0.3s;
+            color: #1a1a1a; text-decoration: none; font-size: clamp(1.1rem, 2.5vw, 1.8rem); 
+            border-bottom: 1px dashed #1a1a1a; padding-bottom: 8px; transition: opacity 0.3s;
         }
-        .footer-link:hover {
-            opacity: 0.6;
-        }
-        .contact-details {
-            margin-top: 40px;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-        .contact-details span {
-            color: #555555;
-        }
+        .footer-link:hover { opacity: 0.6; }
+        .contact-details { margin-top: 40px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+        .contact-details span { color: #555555; }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 900px) {
             .cover-content { grid-column: 1 / span 12; }
             .cover-meta { flex-direction: column; align-items: flex-start; gap: 24px; }
             .spread { padding: 80px 24px; min-height: auto; height: auto; }
-            .spread:nth-of-type(odd) .spread-content, 
-            .spread:nth-of-type(even) .spread-content { grid-column: 1 / span 12; }
-            .grid-item-wide, .grid-item-narrow { grid-column: 1 / span 12; margin-top: 0; }
+            .grid-item-wide, .grid-item-narrow, .item-wide, .item-narrow { grid-column: 1 / span 12; margin-top: 0; }
             .section-header { display: flex; flex-direction: column; gap: 20px; margin-bottom: 40px; }
             .section-intro { padding-left: 0; }
             .nav-header { padding: 24px; }
             .nav-links { display: none; }
             .footer-contact { padding: 80px 24px; }
             .contact-details { flex-direction: column; gap: 15px; }
+            .gallery-grid { gap: 48px; }
         }
     </style>
 </head>
@@ -314,6 +318,7 @@
         <nav class="nav-links mono-caps">
             <a href="#edition-print">Identité & Print</a>
             <a href="#digital-strategy">Stratégie Digitale</a>
+            <a href="#planches-graphiques">Planches & Vidéo</a>
             <a href="#contact">Contact</a>
         </nav>
     </header>
@@ -327,86 +332,119 @@
             <h1 class="cover-title">Valoriser la Culture.<br>Piloter la <span>Communication</span>.<br>Concevoir le Message.</h1>
         </div>
         <div class="cover-meta">
-            <p class="cover-deck">Diplomé en Communication et en Histoire de l'art, je combine direction artistique (print, charte graphique) et ingénierie web pour concevoir des campagnes culturelles à fort impact.</p>
+            <p class="cover-deck">Chargé de communication et diplômé en Histoire de l'art, je combine direction artistique (print, charte graphique) et ingénierie web pour concevoir des campagnes culturelles à fort impact.</p>
             <p class="mono-caps">Toulouse, FR</p>
         </div>
     </section>
 
     <main id="edition-print">
 
-        <section class="spread" style="display: flex; justify-content: flex-start; align-items: center; position: relative; background: #fdfbf7; padding: 140px 48px; border-bottom: 1px solid rgba(26, 26, 26, 0.08);">
-            
+        <section class="spread" style="display: flex; justify-content: flex-start; align-items: center;">
             <div class="spread-bg-img" style="background-image: url('fond_sec_drassm.jpg'); opacity: 1; filter: contrast(1.02); background-position: right center; background-size: cover; background-repeat: no-repeat; inset: 0; position: absolute; z-index: 1;"></div>
-            
             <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(253, 251, 247, 1) 0%, rgba(253, 251, 247, 0.9) 25%, rgba(253, 251, 247, 0) 50%); z-index: 2; pointer-events: none;"></div>
             
-            <div style="position: relative; z-index: 3; max-width: 500px; width: 100%; text-align: left;">
-                <span class="mono-caps spread-tag" style="margin-bottom: 20px; display: inline-block;">[ DESIGN GRAPHIQUE & STRATÉGIE SOCIAL MEDIA / DRASSM ]</span>
+            <div style="position: relative; z-index: 3; max-width: 500px; width: 100; text-align: left;">
+                <span class="mono-caps spread-tag">[ DESIGN GRAPHIQUE & STRATÉGIE SOCIAL MEDIA / DRASSM ]</span>
                 <h2 class="spread-title">Campagnes Imprimées <span>&</span><br><em>Identité visuelle du DRASSM</em></h2>
                 <p class="spread-desc">
-                    Au sein de ce service du Ministère de la Culture, je co-pilote le calendrier éditorial et assure la création des supports visuels (print et numériques) via Canva, Photoshop et InDesign. Alignement rigoureux sur les contraintes d'une institution nationale pour déployer des chartes graphiques déclinables et percutantes.
+                    Au sein de ce service du Ministère de la Culture, je co-pilote le calendrier éditorial et assure la création des supports visuels (print et numériques) via Canva, Photoshop et InDesign. Alignement rigoureux sur les contraintes d'une institution nationale.
                 </p>
-                <a href="planches.html" target="_blank" class="spread-btn mono-caps">Découvrir les planches</a>
+                <a href="#planches-graphiques" class="spread-btn mono-caps">Découvrir les planches</a>
             </div>
-            
             <div class="spread-num" style="z-index: 2; right: 8%;">01</div>
         </section>
 
-     <section class="spread" style="display: flex; justify-content: flex-end; align-items: center; position: relative; background: #fdfbf7; padding: 140px 48px; border-bottom: 1px solid rgba(26, 26, 26, 0.08);">
+        <section class="spread" style="display: flex; justify-content: flex-end; align-items: center;">
+            <div class="spread-bg-img" style="background-image: url('logo.jpg'); opacity: 1; filter: grayscale(5%) contrast(1.05); background-position: left center; background-size: contain; background-repeat: no-repeat; inset: 0 0 0 48px; position: absolute; z-index: 1;"></div>
+            <div style="position: absolute; inset: 0; background: linear-gradient(to left, rgba(253, 251, 247, 1) 0%, rgba(253, 251, 247, 0.95) 35%, rgba(253, 251, 247, 0) 60%); z-index: 2; pointer-events: none;"></div>
             
-    <div class="spread-bg-img" style="background-image: url('logo.jpg'); opacity: 1; filter: grayscale(5%) contrast(1.05); background-position: left center; background-size: contain; background-repeat: no-repeat; inset: 0 0 0 48px; position: absolute; z-index: 1;"></div>
-    
-    <div style="position: absolute; inset: 0; background: linear-gradient(to left, rgba(253, 251, 247, 1) 0%, rgba(253, 251, 247, 0.95) 35%, rgba(253, 251, 247, 0) 60%); z-index: 2; pointer-events: none;"></div>
-    
-    <div style="position: relative; z-index: 3; max-width: 550px; width: 100%; text-align: left;">
-        <span class="mono-caps spread-tag" style="margin-bottom: 20px; display: inline-block;">[ DIRECTION DE PROJET & ÉDITION SCIENTIFIQUE ]</span>
-        <h2 class="spread-title">Association Contrast —<br><em>Supports d'édition et promotion</em></h2>
-        <p class="spread-desc">
-            En tant que Président, j'ai géré l'intégralité de la stratégie de marque de l'association. Conception graphique et mise en page des supports de promotion d'événements de l'histoire de l'art (livrets, affiches de conférences, programmes imprimés et dossiers de mécénat).
-        </p>
-        <a href="#" class="spread-btn mono-caps">Consulter le book d'édition</a>
-    </div>
-
-    <div class="spread-num" style="z-index: 2; left: 8%;">02</div>
-</section>
+            <div style="position: relative; z-index: 3; max-width: 550px; width: 100%; text-align: left;">
+                <span class="mono-caps spread-tag">[ DIRECTION DE PROJET & ÉDITION SCIENTIFIQUE ]</span>
+                <h2 class="spread-title">Association Contrast —<br><em>Supports d'édition et promotion</em></h2>
+                <p class="spread-desc">
+                    En tant que Président, j'ai géré l'intégralité de la stratégie de marque de l'association. Conception graphique et mise en page des supports de promotion d'événements de l'histoire de l'art (livrets, affiches, programmes imprimés).
+                </p>
+                <a href="#planches-graphiques" class="spread-btn mono-caps">Consulter le book d'édition</a>
+            </div>
+            <div class="spread-num" style="z-index: 2; left: 8%;">02</div>
+        </section>
 
     </main>
 
-<section class="editorial-grid-section" id="digital-strategy">
-    <div class="section-header">
-        <h2 class="section-title">Stratégie Numérique <span>&</span> Écrans</h2>
-        <p class="section-intro">Maîtriser les supports physiques ne suffit plus. Je développe des écosystèmes digitaux performants, de la gestion technique de portails nationaux à la création d'applications interactives.</p>
-    </div>
+    <section class="editorial-grid-section" id="digital-strategy">
+        <div class="section-header">
+            <h2 class="section-title">Stratégie Numérique <span>&</span> Écrans</h2>
+            <p class="section-intro">Maîtriser les supports physiques ne suffit plus. Je développe des écosystèmes digitaux performants, de la gestion technique de portails nationaux à la création d'applications interactives.</p>
+        </div>
 
-    <div class="grid-container">
-        <div class="editorial-card grid-item-wide">
-            <div class="card-display">
-                <img src="visuel.jpg" alt="Médiation Digitale Escape Game">
-            </div>
-            <div class="card-meta" style="display: flex; flex-direction: column; gap: 16px;">
-                <div>
-                    <span class="mono-caps" style="color: #555555; display: block; margin-bottom: 6px;">[ GAMIFICATION & EXPÉRIENCE DE PUBLIC ]</span>
-                    <h3 class="card-title">Conception d'une Web-App d'Escape Game patrimonial immersif (JavaScript / GeoJSON)</h3>
+        <div class="grid-container">
+            <div class="editorial-card grid-item-wide">
+                <div class="card-display">
+                    <img src="visuel.jpg" alt="Médiation Digitale Escape Game">
                 </div>
-                
-                <div>
-                    <a href="https://frhb10946ds.ikexpress.com/~thibault/projet/" target="_blank" class="spread-btn mono-caps" style="padding: 10px 20px; font-size: 0.75rem; display: inline-block;">
-                        Tester l'expérience
-                    </a>
+                <div class="card-meta" style="display: flex; flex-direction: column; gap: 16px;">
+                    <div>
+                        <span class="mono-caps" style="color: #555555; display: block; margin-bottom: 6px;">[ GAMIFICATION & EXPÉRIENCE DE PUBLIC ]</span>
+                        <h3 class="card-title">Conception d'une Web-App d'Escape Game patrimonial immersif (JavaScript / GeoJSON)</h3>
+                    </div>
+                    <div>
+                        <a href="https://frhb10946ds.ikexpress.com/~thibault/projet/" target="_blank" class="spread-btn mono-caps" style="padding: 10px 20px; font-size: 0.75rem; display: inline-block;">
+                            Tester l'expérience
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="editorial-card grid-item-narrow">
+                <div class="card-display">
+                    <img src="screen_site.jpg" alt="Gestion de projet Web DRASSM">
+                </div>
+                <div class="card-meta">
+                    <span class="mono-caps" style="color: #555555;">[ INGÉNIERIE WEB & EXCELLENCE TECHNIQUE / DRASSM ]</span>
+                    <h3 class="card-title">Co-pilotage de la refonte, de la structuration de l'information et du déploiement du nouveau portail institutionnel sous Drupal</h3>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="editorial-card grid-item-narrow">
-            <div class="card-display">
-                <img src="screen_site.jpg" alt="Gestion de projet Web DRASSM">
-            </div>
-            <div class="card-meta">
-                <span class="mono-caps" style="color: #555555;">[ INGÉNIERIE WEB & EXCELLENCE TECHNIQUE / DRASSM ]</span>
-                <h3 class="card-title">Co-pilotage de la refonte, de la structuration de l'information et du déploiement du nouveau portail institutionnel sous Drupal</h3>
+    <section class="planches-section" id="planches-graphiques">
+        <div class="section-header">
+            <h2 class="section-title">Planches Graphiques <span>&</span> Médias</h2>
+            <p class="section-intro">Laboratoire visuel et productions d'édition. Cette section regroupe mes travaux de mise en page imprimée et mes créations de contenus vidéo optimisés pour les nouveaux canaux.</p>
+        </div>
+
+        <div style="display: flex; flex-direction: column; align-items: center; margin-top: 60px; margin-bottom: 100px;">
+            <span class="mono-caps" style="margin-bottom: 24px;">[ PRODUCTION AUDIOVISUELLE / REELS 46S ]</span>
+            <div style="position: relative; width: 100%; max-width: 360px; aspect-ratio: 9 / 16; background: #1a1a1a; box-shadow: 0 30px 60px rgba(0,0,0,0.12); border-radius: 8px; overflow: hidden;">
+                <video controls poster="miniature.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+                    <source src="votre_video.mp4" type="video/mp4">
+                    Votre navigateur ne prend pas en charge les vidéos HTML5.
+                </video>
             </div>
         </div>
-    </div> </section>
+
+        <div class="gallery-grid">
+            <div class="gallery-item item-wide">
+                <div class="image-wrapper">
+                    <img src="affiche_drassm.jpg" alt="Affiche Campagne DRASSM">
+                </div>
+                <div class="item-meta">
+                    <span class="mono-caps">[ PRINT / CAMPAGNE MINISTÈRE ]</span>
+                    <h3 class="item-title">Affiche institutionnelle — Valorisation du patrimoine sous-marin</h3>
+                </div>
+            </div>
+
+            <div class="gallery-item item-narrow">
+                <div class="image-wrapper">
+                    <img src="flyer_contrast.jpg" alt="Flyer Association Contrast">
+                </div>
+                <div class="item-meta">
+                    <span class="mono-caps">[ ÉDITION / EVENT ]</span>
+                    <h3 class="item-title">Flyer promotionnel et programme pour le cycle de conférences</h3>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer-contact" id="contact">
         <p class="mono-caps" style="margin-bottom: 20px;">— ACCESSIBLE & DISPONIBLE</p>
