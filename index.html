@@ -132,7 +132,11 @@
         }
         .hero-right {
             position: relative;
-            background: var(--ink);
+            background-color: #f0ebe0;
+            background-image:
+                linear-gradient(rgba(13,13,13,0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(13,13,13,0.08) 1px, transparent 1px);
+            background-size: 72px 72px;
             overflow: hidden;
         }
         .hero-right-content {
@@ -149,13 +153,13 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 28vw;
             font-weight: 300;
-            color: rgba(255,255,255,0.04);
+            color: rgba(13,13,13,0.04);
             line-height: 1;
             pointer-events: none;
             user-select: none;
         }
         .hero-meta {
-            color: rgba(253,251,247,0.4);
+            color: rgba(13,13,13,0.4);
             font-size: 0.65rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
@@ -165,7 +169,7 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: clamp(1.4rem, 2.4vw, 2.8rem);
             font-weight: 300;
-            color: var(--paper);
+            color: var(--ink);
             line-height: 1.1;
             letter-spacing: -0.02em;
         }
@@ -173,7 +177,7 @@
         .constellation-hero {
             position: absolute;
             inset: 0;
-            opacity: 0.15;
+            opacity: 0.25;
             pointer-events: none;
         }
 
@@ -552,23 +556,23 @@
         </div>
         <div class="hero-right">
             <svg class="constellation-hero" viewBox="0 0 500 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <line x1="120" y1="150" x2="280" y2="220" stroke="#fdfbf7" stroke-width="0.7" stroke-dasharray="4 4"/>
-                <line x1="280" y1="220" x2="200" y2="380" stroke="#fdfbf7" stroke-width="0.7"/>
-                <line x1="200" y1="380" x2="370" y2="500" stroke="#fdfbf7" stroke-width="0.7" stroke-dasharray="2 2"/>
-                <line x1="200" y1="380" x2="80" y2="480" stroke="#fdfbf7" stroke-width="0.7"/>
-                <line x1="80" y1="480" x2="160" y2="650" stroke="#fdfbf7" stroke-width="0.7"/>
-                <line x1="280" y1="220" x2="370" y2="500" stroke="#fdfbf7" stroke-width="0.7"/>
-                <line x1="370" y1="500" x2="300" y2="680" stroke="#fdfbf7" stroke-width="0.7" stroke-dasharray="3 3"/>
-                <line x1="160" y1="650" x2="300" y2="680" stroke="#fdfbf7" stroke-width="0.7"/>
-                <circle cx="120" cy="150" r="2.5" fill="#fdfbf7"/>
-                <circle cx="280" cy="220" r="4" fill="none" stroke="#fdfbf7" stroke-width="1"/>
-                <circle cx="280" cy="220" r="1.5" fill="#fdfbf7"/>
-                <circle cx="200" cy="380" r="2.5" fill="#fdfbf7"/>
-                <circle cx="370" cy="500" r="2.5" fill="#fdfbf7"/>
-                <circle cx="80" cy="480" r="4" fill="none" stroke="#fdfbf7" stroke-width="1"/>
-                <circle cx="80" cy="480" r="1.5" fill="#fdfbf7"/>
-                <circle cx="160" cy="650" r="2" fill="#fdfbf7"/>
-                <circle cx="300" cy="680" r="2" fill="#fdfbf7"/>
+                <line x1="120" y1="150" x2="280" y2="220" stroke="#0d0d0d" stroke-width="0.7" stroke-dasharray="4 4"/>
+                <line x1="280" y1="220" x2="200" y2="380" stroke="#0d0d0d" stroke-width="0.7"/>
+                <line x1="200" y1="380" x2="370" y2="500" stroke="#0d0d0d" stroke-width="0.7" stroke-dasharray="2 2"/>
+                <line x1="200" y1="380" x2="80" y2="480" stroke="#0d0d0d" stroke-width="0.7"/>
+                <line x1="80" y1="480" x2="160" y2="650" stroke="#0d0d0d" stroke-width="0.7"/>
+                <line x1="280" y1="220" x2="370" y2="500" stroke="#0d0d0d" stroke-width="0.7"/>
+                <line x1="370" y1="500" x2="300" y2="680" stroke="#0d0d0d" stroke-width="0.7" stroke-dasharray="3 3"/>
+                <line x1="160" y1="650" x2="300" y2="680" stroke="#0d0d0d" stroke-width="0.7"/>
+                <circle cx="120" cy="150" r="2.5" fill="#0d0d0d"/>
+                <circle cx="280" cy="220" r="4" fill="none" stroke="#0d0d0d" stroke-width="1"/>
+                <circle cx="280" cy="220" r="1.5" fill="#0d0d0d"/>
+                <circle cx="200" cy="380" r="2.5" fill="#0d0d0d"/>
+                <circle cx="370" cy="500" r="2.5" fill="#0d0d0d"/>
+                <circle cx="80" cy="480" r="4" fill="none" stroke="#0d0d0d" stroke-width="1"/>
+                <circle cx="80" cy="480" r="1.5" fill="#0d0d0d"/>
+                <circle cx="160" cy="650" r="2" fill="#0d0d0d"/>
+                <circle cx="300" cy="680" r="2" fill="#0d0d0d"/>
             </svg>
             <div class="hero-right-content">
                 <div class="hero-big-number" aria-hidden="true">Σ</div>
