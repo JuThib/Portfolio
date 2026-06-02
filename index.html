@@ -39,7 +39,7 @@
         .nav-links a { margin-left: 24px; transition: opacity 0.3s; }
         .nav-links a:hover { opacity: 0.6; }
 
-/* --- AVANT-PROPOS / POSTURE ÉLÉGANTE --- */
+        /* --- AVANT-PROPOS / POSTURE ÉLÉGANTE --- */
         .intro-manifesto {
             height: 100vh;
             display: grid;
@@ -54,7 +54,7 @@
         .intro-content {
             grid-column: 1 / span 8;
             max-width: 950px;
-            z-index: 2; /* Reste au-dessus du réseau filaire */
+            z-index: 2;
         }
         
         .intro-manifesto .mono-caps {
@@ -95,11 +95,11 @@
             width: 45%;
             height: 80vh;
             z-index: 1;
-            opacity: 0.18; /* Très subtil, presque évanescent */
+            opacity: 0.18; 
             pointer-events: none;
         }
 
-        /* --- STRUCTURE ASYMÉTRIQUE ET EFFET STICKY --- */
+        /* --- STRUCTURE STICKY RYTHMÉE --- */
         .portfolio-container { position: relative; }
         
         .gallery-section {
@@ -109,53 +109,44 @@
             display: grid;
             grid-template-columns: repeat(12, 1fr);
             align-items: center;
-            padding: 0 48px;
+            padding: 0 64px;
             overflow: hidden;
             border-bottom: 1px solid rgba(26, 26, 26, 0.05);
         }
 
-        /* Nuances chromatiques des espaces d'exposition */
         .bg-creme { background: #fdfbf7; }
         .bg-warm { background: #f5efe6; }
         .bg-soft-dark { background: #eadecc; }
 
-        /* --- VARIATIONS ASYMÉTRIQUES DES BLOCS (CONFIGURATIONS GRILLE) --- */
+        /* --- REDÉFINITION DES CONFIGURATIONS DE GRILLE ASYMÉTRIQUES --- */
         
-        /* Configuration A : Texte à gauche (étroit), Média à droite (large) */
-        .layout-a .cartel { grid-column: 1 / span 4; padding-right: 40px; }
-        .layout-a .media-display { grid-column: 5 / span 8; justify-content: center; }
+        /* Configuration A : Texte à gauche compact, Média suspendu haut à droite */
+        .layout-a .cartel { grid-column: 1 / span 4; padding-right: 20px; align-self: center; }
+        .layout-a .media-display { grid-column: 5 / span 8; justify-content: flex-end; align-self: flex-start; height: 85vh; padding-top: 10vh; }
 
-        /* --- CONFIGURATION B REVISITÉE (DÉCALAGE ASYMÉTRIQUE) --- */
-        .layout-b .cartel { 
-            grid-column: 8 / span 5; /* Légèrement resserré sur la droite */
-            padding-left: 20px; 
-        }
-        .layout-b .media-display { 
-            grid-column: 1 / span 7; 
-            justify-content: flex-start; 
-            padding-left: 12%; /* Décale le Reel de 12% par rapport au bord de l'écran */
-        }
+        /* Configuration B : Décalage asymétrique poussé (ex: Reel ou visuel étroit) */
+        .layout-b .cartel { grid-column: 8 / span 5; padding-left: 40px; align-self: center; }
+        .layout-b .media-display { grid-column: 1 / span 7; justify-content: flex-start; padding-left: 14%; align-self: flex-end; padding-bottom: 8vh; }
 
-        /* Configuration C : Texte centré haut, Média centré bas (grand format horizontal) */
-        .layout-c { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 0 10%; }
-        .layout-c .cartel { width: 100%; max-width: 650px; margin-bottom: 40px; }
-        .layout-c .media-display { width: 100%; justify-content: center; height: auto; }
+        /* Configuration C : Centrage décentré (style catalogue d'architecture) */
+        .layout-c { display: grid; grid-template-columns: repeat(12, 1fr); padding: 0 64px; }
+        .layout-c .cartel { grid-column: 2 / span 5; margin-bottom: 0; align-self: center; }
+        .layout-c .media-display { grid-column: 7 / span 6; justify-content: center; height: 65vh; align-self: center; }
 
-        /* Configuration DUO : Affiche + Flyer Side-by-Side Corrigé */
-        .layout-duo .cartel { 
-            grid-column: 1 / span 4; 
-            padding-right: 50px; 
-            align-self: center; 
-        }
-        .layout-duo .duo-container { 
-            grid-column: 5 / span 8; 
-            display: flex; 
-            align-items: flex-end; 
-            justify-content: flex-start; 
-            gap: 60px; 
-            width: 100%;
-            height: 80vh; 
-        }
+        /* Configuration DUO : Échelles disproportionnées A4 / A5 */
+        .layout-duo .cartel { grid-column: 1 / span 4; padding-right: 50px; align-self: center; }
+        .layout-duo .duo-container { grid-column: 5 / span 8; display: flex; align-items: flex-end; justify-content: flex-start; gap: 48px; width: 100%; height: 80vh; }
+
+        /* Configuration OFFSET-LEFT : Image écrasée à gauche, texte flottant à droite */
+        .layout-offset-left .cartel { grid-column: 7 / span 5; padding-left: 30px; align-self: center; }
+        .layout-offset-left .media-display { grid-column: 2 / span 5; justify-content: flex-start; height: 70vh; align-self: flex-start; padding-top: 12vh; }
+
+        /* Configuration PANORAMIQUE-BAS : Texte haut gauche, Média immense calé au ras du sol */
+        .layout-panoramic-bottom { display: grid; grid-template-columns: repeat(12, 1fr); align-items: flex-start; padding-top: 10vh; }
+        .layout-panoramic-bottom .cartel { grid-column: 2 / span 8; max-width: 750px; }
+        .layout-panoramic-bottom .media-display { grid-column: 1 / span 12; width: 100%; height: 52vh; align-self: flex-end; display: flex; justify-content: center; }
+
+        /* --- COMPOSANTS INTERNES EN JEUX D'ÉCHELLES --- */
         .media-wrapper {
             display: flex;
             flex-direction: column;
@@ -163,32 +154,18 @@
             height: 100%;
             justify-content: flex-end;
         }
-        .format-label {
-            font-size: 0.7rem;
-            margin-bottom: 16px;
-            color: #888;
-        }
-        .format-a4 { width: 50%; }
-        .format-a4 .mockup-img {
-            width: 100%;
-            height: 70vh; 
-            object-fit: contain;
-            object-position: bottom left;
-        }
-        .format-a5 { width: 35%; }
-        .format-a5 .mockup-img {
-            width: 100%;
-            height: 48vh; 
-            object-fit: contain;
-            object-position: bottom left;
-        }
+        .format-label { font-size: 0.7rem; margin-bottom: 16px; color: #888; }
+        
+        .format-a4 { width: 52%; }
+        .format-a4 .mockup-img { width: 100%; height: 72vh; object-fit: contain; object-position: bottom left; }
+        
+        .format-a5 { width: 36%; }
+        .format-a5 .mockup-img { width: 100%; height: 48vh; object-fit: contain; object-position: bottom left; }
 
-        /* --- COMPOSANTS DU CARTEL --- */
         .cartel-title { font-size: clamp(1.8rem, 2.5vw, 2.5rem); line-height: 1.2; margin: 16px 0 20px 0; color: #0d0d0d; }
-        .cartel-title em { font-style: italic; }
+        .cartel-title span { font-style: italic; }
         .cartel-desc { font-size: 0.85rem; line-height: 1.6; color: #444; margin-bottom: 24px; font-family: 'Space Mono', monospace; }
         
-        /* Boutons institutionnels */
         .portfolio-btn {
             display: inline-block;
             padding: 12px 24px;
@@ -201,37 +178,28 @@
         .portfolio-btn:hover { background: #1a1a1a; color: #fdfbf7; }
 
         /* --- ESPACE MÉDIA --- */
-        .media-display {
-            display: flex;
-            align-items: center;
-            height: 75vh;
-            position: relative;
-        }
+        .media-display { display: flex; align-items: center; position: relative; }
         .mockup-img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
-            box-shadow: 0 15px 45px rgba(0,0,0,0.06);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.05);
         }
 
-        /* Conteneur vertical aux proportions d'un Reel (9/16) */
+        /* Cadre du Reel */
         .insta-container {
             width: 100%;
-            max-width: 320px; /* Légèrement agrandi pour valoriser le média */
+            max-width: 310px;
             aspect-ratio: 9 / 16;
             background: #000;
             box-shadow: 0 30px 60px rgba(0,0,0,0.12);
-            border-radius: 12px; /* Coins légèrement plus doux et modernes */
+            border-radius: 12px;
             overflow: hidden;
-            border: 1px solid rgba(26, 26, 26, 0.08); /* Rappel institutionnel épuré */
+            border: 1px solid rgba(26, 26, 26, 0.08);
         }
-        .insta-container video { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-        }
+        .insta-container video { width: 100%; height: 100%; object-fit: cover; }
 
-        /* --- CONCLUSION DE PAGE --- */
+        /* --- CONCLUSION --- */
         .footer-gallery {
             position: relative;
             z-index: 10;
@@ -243,25 +211,24 @@
         .footer-gallery h2 { font-size: 2.5rem; margin-bottom: 24px; }
         .email-link { color: #1a1a1a; text-decoration: none; font-size: 1.5rem; border-bottom: 1px dashed #1a1a1a; padding-bottom: 4px; }
 
-        /* --- ADAPTATION MOBILE --- */
+        /* --- ADAPTATION RESPONSIVE COMPLET --- */
         @media (max-width: 900px) {
             .nav-header { padding: 24px; mix-blend-mode: normal; color: #1a1a1a; background: #fdfbf7; position: relative; }
             .nav-links { display: none; }
-            .intro-manifesto { height: auto; padding: 80px 24px; }
-            .gallery-section { position: relative; height: auto; display: flex; flex-direction: column; padding: 80px 24px; gap: 32px; }
-            .layout-c { padding: 80px 24px; }
-            .layout-duo .duo-container { display: flex; flex-direction: column; height: auto; gap: 40px; }
+            .intro-manifesto { height: auto; padding: 80px 24px; display: block; }
+            .gallery-section { position: relative; height: auto; display: flex; flex-direction: column; padding: 60px 24px; gap: 32px; }
+            .layout-c, .layout-panoramic-bottom { display: flex; flex-direction: column; padding: 60px 24px; }
+            .layout-duo .duo-container { display: flex; flex-direction: column; height: auto; gap: 32px; }
             .format-a4, .format-a5 { width: 100%; }
             .format-a4 .mockup-img, .format-a5 .mockup-img { height: auto; max-height: 500px; }
             .cartel { padding: 0 !important; width: 100%; }
-            .media-display { height: auto; width: 100%; justify-content: center !important; }
-            .mockup-img { max-height: 550px; }
+            .media-display { height: auto; width: 100%; justify-content: center !important; padding: 0 !important; align-self: center !important; }
+            .mockup-img { max-height: 500px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- PROTOCOLE DE NAVIGATION -->
     <header class="nav-header">
         <a href="#" class="nav-logo">JULIEN THIBAULT</a>
         <nav class="nav-links mono-caps">
@@ -270,18 +237,15 @@
         </nav>
     </header>
 
-<!-- AVANT-PROPOS AVEC ABSTRACTION GÉOMÉTRIQUE -->
     <section class="intro-manifesto">
         <div class="intro-content">
             <span class="mono-caps">// POSITIONNEMENT PROFESSIONNEL</span>
             <h1>
-                Issu d'un parcours universitaire en <span>Histoire de l'art</span>, je mets l'ingénierie éditoriale et graphique au service des <span>institutions publiques</span> et de la <span>valorisation scientifique</span>.
+                Issu d'un parcours universitaire en <span>Histoire de l'art</span>, je mets l'ingénierie éditoriale et graphique au service des <span class="intro-emphasis">institutions publiques</span> et de la <span>valorisation scientifique</span>.
             </h1>
         </div>
 
-        <!-- Réseau de points et lignes connectées (Constellation) -->
         <svg class="constellation-overlay" viewBox="0 0 400 700" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Lignes de liaison -->
             <line x1="120" y1="150" x2="280" y2="220" stroke="#1a1a1a" stroke-width="0.7" stroke-dasharray="4 4"/>
             <line x1="280" y1="220" x2="200" y2="380" stroke="#1a1a1a" stroke-width="0.7"/>
             <line x1="200" y1="380" x2="340" y2="480" stroke="#1a1a1a" stroke-width="0.7" stroke-dasharray="2 2"/>
@@ -289,7 +253,6 @@
             <line x1="80" y1="450" x2="150" y2="600" stroke="#1a1a1a" stroke-width="0.7"/>
             <line x1="280" y1="220" x2="340" y2="480" stroke="#1a1a1a" stroke-width="0.7"/>
             
-            <!-- Points de la constellation -->
             <circle cx="120" cy="150" r="3" fill="#1a1a1a" />
             <circle cx="280" cy="220" r="4.5" fill="none" stroke="#1a1a1a" stroke-width="1" />
             <circle cx="280" cy="220" r="1.5" fill="#1a1a1a" />
@@ -301,12 +264,8 @@
         </svg>
     </section>
 
-    <!-- INDEX DES VISUELS (STRUCTURE ASYMÉTRIQUE MULTIPLE) -->
     <div class="portfolio-container" id="galerie">
 
-        <!-- AXE 1 : VALORISATION INSTITUTIONNELLE (DRASSM) -->
-        
-        <!-- Œuvre 01 & 02 FUSIONNÉES ET CORRIGÉES : Campagne JEA (Affiche + Flyer) [Layout Duo] -->
         <section class="gallery-section bg-creme layout-duo">
             <div class="cartel">
                 <span class="mono-caps">[ DRASSM / JOURNÉES EUROPÉENNES DE L'ARCHÉOLOGIE ]</span>
@@ -325,7 +284,6 @@
             </div>
         </section>
 
-        <!-- Œuvre 04 : Médiation Jeune Public [Layout A] -->
         <section class="gallery-section bg-creme layout-a">
             <div class="cartel">
                 <span class="mono-caps">[ DRASSM / MÉDIATION UNIVERSITAIRE & SCOLAIRE ]</span>
@@ -333,15 +291,13 @@
                 <p class="cartel-desc">Développement d'un outil de médiation sous forme de jeu destiné aux classes de niveau primaire. Transposition graphique de concepts d'archéologie sous-marine en un parcours visuel adapté.</p>
             </div>
             <div class="media-display">
-                <img src="jeu_primaire.jpg" alt="Outil didactique et ludique" class="mockup-img">
+                <img src="jeu_primaire.jpg" alt="Outil didactique et ludique" class="mockup-img" style="height: 65vh;">
             </div>
         </section>
 
-        <!-- Œuvre 05 : Vidéo Réel Instagram [Layout B] -->
         <section class="gallery-section bg-creme layout-b">
             <div class="media-display">
                 <div class="insta-container">
-                    <!-- Ajout des attributs requis pour l'autoplay au scroll -->
                     <video id="reel-video" muted playsinline loop poster="miniature.jpg">
                         <source src="Reel.mp4" type="video/mp4">
                     </video>
@@ -354,25 +310,21 @@
             </div>
         </section>
 
-        <!-- Œuvre 06 : Affiche Communication Interne [Layout A] -->
-        <section class="gallery-section bg-creme layout-a">
+        <section class="gallery-section bg-creme layout-offset-left">
+            <div class="media-display">
+                <img src="archeo_time.jpg" alt="Affiche communication interne Archéo Time" class="mockup-img">
+            </div>
             <div class="cartel">
                 <span class="mono-caps">[ DRASSM / COHÉSION ET SYNERGIE INTERNE ]</span>
                 <h2 class="cartel-title">Archéo' Time : <span>Fédérer la Structure</span></h2>
                 <p class="cartel-desc">Création de l'affiche pour le projet interne "Archéo' Time". Adoption d'un ton graphique plus souple, spécifiquement calibré pour les collaborateurs et le renforcement de la cohésion interne.</p>
             </div>
-            <div class="media-display">
-                <img src="archeo_time.jpg" alt="Affiche communication interne Archéo Time" class="mockup-img">
-            </div>
         </section>
 
 
-        <!-- AXE 2 : COMMUNIQUER POUR L'ÉDITION SCIENTIFIQUE (ASSOCIATION CONTRAST) -->
-
-        <!-- Œuvre 07 : Affiche Conférences/Visites [Layout B] -->
         <section class="gallery-section bg-warm layout-b">
             <div class="media-display">
-                <img src="affiche_visites.jpg" alt="Affiche cycle de visites Contrast" class="mockup-img">
+                <img src="affiche_visites.jpg" alt="Affiche cycle de visites Contrast" class="mockup-img" style="height: 70vh;">
             </div>
             <div class="cartel">
                 <span class="mono-caps">[ ASSOCIATION CONTRAST / PROMOTION DES SAVOIRS ]</span>
@@ -381,7 +333,6 @@
             </div>
         </section>
 
-        <!-- Œuvre 08 : Flyer Présentation [Layout C] -->
         <section class="gallery-section bg-soft-dark layout-c">
             <div class="cartel">
                 <span class="mono-caps">[ ASSOCIATION CONTRAST / STRATÉGIE DE MARQUE ]</span>
@@ -393,7 +344,6 @@
             </div>
         </section>
 
-        <!-- Œuvre 09 : Flyer Programme [Layout A] -->
         <section class="gallery-section bg-creme layout-a">
             <div class="cartel">
                 <span class="mono-caps">[ ASSOCIATION CONTRAST / DESIGN ÉDITORIAL ]</span>
@@ -401,17 +351,14 @@
                 <p class="cartel-desc">Mise en page du programme annuel des colloques et conférences. Synthèse de données textuelles denses dans un document papier normé et structuré.</p>
             </div>
             <div class="media-display">
-                <img src="flyer_programme.jpg" alt="Dépliant programme annuel" class="mockup-img">
+                <img src="flyer_programme.jpg" alt="Dépliant programme annuel" class="mockup-img" style="height: 60vh;">
             </div>
         </section>
 
 
-        <!-- AXE 3 : EXPÉRIENCES NUMÉRIQUES ET INTERFACES GRAPHIQUES -->
-
-        <!-- Œuvre 10 : L'Escape Game Web-App [Layout B] -->
         <section class="gallery-section bg-warm layout-b">
             <div class="media-display">
-                <img src="visuel.jpg" alt="Interface de l'Escape Game" class="mockup-img">
+                <img src="visuel.jpg" alt="Interface de l'Escape Game" class="mockup-img" style="height: 65vh;">
             </div>
             <div class="cartel">
                 <span class="mono-caps">[ STRATÉGIE DIGITALE / INGENIERIE DE MÉDIATION ]</span>
@@ -421,28 +368,26 @@
             </div>
         </section>
 
-        <!-- Œuvre 11 : Maquette d'interface Web [Layout A] -->
-        <section class="gallery-section bg-creme layout-a">
+        <section class="gallery-section bg-creme layout-offset-left">
+            <div class="media-display">
+                <img src="one_page.png" alt="Screencast d'interface" class="mockup-img" style="height: 60vh;">
+            </div>
             <div class="cartel">
                 <span class="mono-caps">[ INTERACTION DESIGN / PROTOCOLE ERGONOMIQUE ]</span>
                 <h2 class="cartel-title">Architecture d'une <span>Interface One-Page</span></h2>
                 <p class="cartel-desc">Dossier technique de conception d'une interface web unifiée. Travail poussé sur le parcours utilisateur (UX) et le découpage fonctionnel des composants de page.</p>
                 <a href="maquette_onepage.pdf" target="_blank" class="portfolio-btn mono-caps">Ouvrir le dossier d'architecture (PDF)</a>
             </div>
-            <div class="media-display">
-                <img src="one_page.png" alt="Screencast d'interface" class="mockup-img">
-            </div>
         </section>
 
-        <!-- Œuvre 12 : Démo vidéo site complet [Layout C] -->
-        <section class="gallery-section bg-soft-dark layout-c">
+        <section class="gallery-section bg-soft-dark layout-panoramic-bottom">
             <div class="cartel">
                 <span class="mono-caps">[ CONCEVOIR LE PARCOURS / DOCUMENTATION UX ]</span>
                 <h2 class="cartel-title">Cinématique d'un <span>Portail Web</span></h2>
                 <p class="cartel-desc">Capsule vidéo de démonstration simulant le comportement fluide, les micro-interactions de navigation et l'arborescence structurelle d'un portail web culturel d'envergure.</p>
             </div>
             <div class="media-display">
-                <div style="width: 100%; max-width: 850px; aspect-ratio: 16 / 9; background: #1a1a1a; box-shadow: 0 20px 45px rgba(0,0,0,0.08);">
+                <div style="width: 100%; max-width: 900px; aspect-ratio: 16 / 9; background: #1a1a1a; box-shadow: 0 25px 60px rgba(0,0,0,0.15);">
                     <video controls style="width: 100%; height: 100%; object-fit: cover;">
                         <source src="capsule_site_complet.mp4" type="video/mp4">
                     </video>
@@ -452,13 +397,12 @@
 
     </div>
 
-    <!-- REMARQUES FINALES ET CONTACT -->
     <footer class="footer-gallery" id="contact">
         <h2 class="serif">Me contacter</h2>
         <a href="mailto:j.thibaultpro@outlook.fr" class="email-link">j.thibaultpro@outlook.fr</a>
         <p class="mono-caps" style="margin-top: 40px; font-size: 0.7rem; color: #666;">Julien Thibault • Toulouse • 06.50.94.31.84</p>
     </footer>
-<!-- SCRIPT DE LECTURE AUTOMATIQUE INTELLIGENTE AU SCROLL -->
+
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const video = document.getElementById("reel-video");
@@ -466,16 +410,14 @@
             if (video) {
                 const observerOptions = {
                     root: null,
-                    threshold: 0.5 // Déclenche l'action quand 50% de la vidéo est visible à l'écran
+                    threshold: 0.5 
                 };
 
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
-                            // La vidéo entre à l'écran : lecture
                             video.play().catch(error => console.log("Autoplay bloqué par le navigateur :", error));
                         } else {
-                            // La vidéo sort de l'écran : pause pour préserver les ressources
                             video.pause();
                         }
                     });
