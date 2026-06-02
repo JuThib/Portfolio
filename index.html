@@ -258,10 +258,35 @@
         </nav>
     </header>
 
-    <!-- AVANT-PROPOS HISTORIEN ET COMMUNICANT -->
+<!-- AVANT-PROPOS AVEC ABSTRACTION GÉOMÉTRIQUE -->
     <section class="intro-manifesto">
-        <span class="mono-caps">// POSITIONNEMENT PROFESSIONNEL</span>
-        <h1>Issu d'un parcours universitaire en Histoire de l'art, je mets l'ingénierie éditoriale et graphique au service des <span>institutions publiques</span> et de la valorisation scientifique.</h1>
+        <div class="intro-content">
+            <span class="mono-caps">// POSITIONNEMENT PROFESSIONNEL</span>
+            <h1>
+                Issu d'un parcours universitaire en <span>Histoire de l'art</span>, je mets l'ingénierie éditoriale et graphique au service des <span class="intro-emphasis">institutions publiques</span> et de la <span>valorisation scientifique</span>.
+            </h1>
+        </div>
+
+        <!-- Réseau de points et lignes connectées (Constellation) -->
+        <svg class="constellation-overlay" viewBox="0 0 400 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Lignes de liaison -->
+            <line x1="120" y1="150" x2="280" y2="220" stroke="#1a1a1a" stroke-width="0.7" stroke-dasharray="4 4"/>
+            <line x1="280" y1="220" x2="200" y2="380" stroke="#1a1a1a" stroke-width="0.7"/>
+            <line x1="200" y1="380" x2="340" y2="480" stroke="#1a1a1a" stroke-width="0.7" stroke-dasharray="2 2"/>
+            <line x1="200" y1="380" x2="80" y2="450" stroke="#1a1a1a" stroke-width="0.7"/>
+            <line x1="80" y1="450" x2="150" y2="600" stroke="#1a1a1a" stroke-width="0.7"/>
+            <line x1="280" y1="220" x2="340" y2="480" stroke="#1a1a1a" stroke-width="0.7"/>
+            
+            <!-- Points de la constellation -->
+            <circle cx="120" cy="150" r="3" fill="#1a1a1a" />
+            <circle cx="280" cy="220" r="4.5" fill="none" stroke="#1a1a1a" stroke-width="1" />
+            <circle cx="280" cy="220" r="1.5" fill="#1a1a1a" />
+            <circle cx="200" cy="380" r="3" fill="#1a1a1a" />
+            <circle cx="340" cy="480" r="3" fill="#1a1a1a" />
+            <circle cx="80" cy="450" r="4.5" fill="none" stroke="#1a1a1a" stroke-width="1" />
+            <circle cx="80" cy="450" r="1.5" fill="#1a1a1a" />
+            <circle cx="150" cy="600" r="2.5" fill="#1a1a1a" />
+        </svg>
     </section>
 
     <!-- INDEX DES VISUELS (STRUCTURE ASYMÉTRIQUE MULTIPLE) -->
