@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Julien Thibault — Direction de la Communication & Ingénierie Éditoriale</title>
+    <title>Julien Thibault — Chargé de Communication</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,111 +26,83 @@
             cursor: crosshair;
         }
 
-        /* ─── MARQUEE TICKER ─── */
+        /* ─── TICKER ─── */
         .ticker {
-            position: fixed;
-            top: 0; left: 0; width: 100%;
-            height: 36px;
-            background: var(--ink);
-            color: var(--paper);
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            z-index: 200;
+            position: fixed; top: 0; left: 0; width: 100%;
+            height: 36px; background: var(--ink); color: var(--paper);
+            display: flex; align-items: center; overflow: hidden; z-index: 200;
         }
         .ticker-track {
-            display: flex;
-            white-space: nowrap;
-            animation: ticker-scroll 28s linear infinite;
-            font-size: 0.65rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
+            display: flex; white-space: nowrap;
+            animation: ticker-scroll 32s linear infinite;
+            font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
         }
         .ticker-track span { padding: 0 40px; }
         .ticker-track .sep { opacity: 0.35; }
-        @keyframes ticker-scroll {
-            from { transform: translateX(0); }
-            to   { transform: translateX(-50%); }
-        }
+        @keyframes ticker-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
         /* ─── NAV ─── */
         .nav {
-            position: fixed;
-            top: 36px; left: 0; width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px 18px;
-            z-index: 100;
-            border-bottom: 1px solid var(--rule);
-            background: var(--paper);
+            position: fixed; top: 36px; left: 0; width: 100%;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 18px 40px; z-index: 100;
+            border-bottom: 1px solid var(--rule); background: var(--paper);
         }
-        .nav-logo {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            text-decoration: none;
-            color: var(--ink);
-        }
+        .nav-logo { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; color: var(--ink); }
         .nav-links { display: flex; gap: 32px; }
-        .nav-links a {
-            font-size: 0.65rem;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            text-decoration: none;
-            color: var(--muted);
-            transition: color 0.2s;
-        }
+        .nav-links a { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; color: var(--muted); transition: color 0.2s; }
         .nav-links a:hover { color: var(--ink); }
 
-        /* ─── HERO BRUTAL ─── */
+        /* ════════════════════════════════════════
+           HERO — SPLIT PRINT / NUMÉRIQUE
+        ════════════════════════════════════════ */
         .hero {
-            margin-top: calc(36px + 57px);
-            min-height: 80vh;
+            margin-top: calc(36px + 55px);
+            min-height: 88vh;
             display: grid;
             grid-template-columns: 1fr 1fr;
             border-bottom: 1px solid var(--rule);
             position: relative;
-            overflow: hidden;
         }
-        .hero-left {
+
+        /* GAUCHE — PROFIL PRINT */
+        .hero-print {
             border-right: 1px solid var(--rule);
-            padding: 48px 40px 48px 32px;
+            padding: 48px 44px 48px 32px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            background: var(--paper);
         }
-        .hero-index-block {
-            font-size: 0.65rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--muted);
-            border-top: 1px solid var(--rule);
-            padding-top: 12px;
-            display: flex;
-            justify-content: space-between;
+        .hero-print-tag {
+            font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase;
+            color: var(--muted); border-top: 1px solid var(--rule); padding-top: 12px;
+            display: flex; justify-content: space-between;
         }
-        .hero-h1 {
+        .hero-print-h1 {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 300;
-            font-size: clamp(2.2rem, 4vw, 4.8rem);
-            line-height: 0.92;
-            letter-spacing: -0.03em;
-            color: var(--ink);
-            margin: 40px 0;
+            font-size: clamp(2rem, 3.8vw, 4.4rem);
+            line-height: 0.92; letter-spacing: -0.03em; color: var(--ink);
+            margin: 48px 0 32px;
         }
-        .hero-h1 em { font-style: italic; display: block; }
-        .hero-h1 .stacked { display: block; padding-left: 3vw; }
-        .hero-h1 .underline-rule { display: inline-block; border-bottom: 2px solid var(--ink); }
-        .hero-footnote {
-            font-size: 0.72rem;
-            line-height: 1.7;
-            color: var(--muted);
-            max-width: 340px;
+        .hero-print-h1 em { font-style: italic; display: block; }
+        .hero-print-h1 .indent { display: block; padding-left: 4vw; }
+        .hero-print-h1 .rule-under { display: inline-block; border-bottom: 2px solid var(--ink); }
+
+        .hero-print-skills {
+            display: flex; flex-direction: column; gap: 10px;
+            border-top: 1px solid var(--rule); padding-top: 24px;
         }
-        .hero-right {
+        .skill-line {
+            display: flex; align-items: baseline; gap: 16px;
+        }
+        .skill-num { font-size: 0.58rem; color: var(--muted); letter-spacing: 0.1em; min-width: 20px; }
+        .skill-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 300; color: var(--ink); letter-spacing: -0.01em; }
+        .skill-detail { font-size: 0.58rem; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-left: auto; }
+
+        /* DROITE — PROFIL NUMÉRIQUE */
+        .hero-digital {
             position: relative;
             background-color: #f0ebe0;
             background-image:
@@ -139,176 +111,219 @@
             background-size: 72px 72px;
             overflow: hidden;
         }
-        .hero-right-content {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 40px;
+        .hero-digital-content {
+            position: absolute; inset: 0;
+            display: flex; flex-direction: column; justify-content: space-between;
+            padding: 48px 40px;
         }
-        .hero-big-number {
-            position: absolute;
-            top: -30px; right: -20px;
+        .hero-digital-tag {
+            font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase;
+            color: rgba(13,13,13,0.45); border-top: 1px solid rgba(13,13,13,0.15);
+            padding-top: 12px; display: flex; justify-content: space-between;
+        }
+        .hero-digital-h2 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 28vw;
             font-weight: 300;
-            color: rgba(13,13,13,0.04);
-            line-height: 1;
-            pointer-events: none;
-            user-select: none;
+            font-size: clamp(2rem, 3.8vw, 4.4rem);
+            line-height: 0.92; letter-spacing: -0.03em; color: var(--ink);
+            margin: 0;
         }
-        .hero-meta {
-            color: rgba(13,13,13,0.4);
-            font-size: 0.65rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            margin-bottom: 24px;
+        .hero-digital-h2 em { font-style: italic; display: block; }
+        .hero-digital-h2 .indent { display: block; padding-left: 4vw; }
+
+        .hero-digital-skills {
+            display: flex; flex-direction: column; gap: 10px;
+            border-top: 1px solid rgba(13,13,13,0.15); padding-top: 24px;
         }
-        .hero-discipline {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(1.4rem, 2.4vw, 2.8rem);
-            font-weight: 300;
-            color: var(--ink);
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-        }
-        .hero-discipline em { font-style: italic; }
+
         .constellation-hero {
-            position: absolute;
-            inset: 0;
-            opacity: 0.25;
-            pointer-events: none;
+            position: absolute; inset: 0; opacity: 0.22; pointer-events: none;
         }
 
-        /* ─── ÉLÉMENTS COMMUNS AUX FRAGMENTS EXISTANTS ─── */
-        .portfolio-container { position: relative; padding-bottom: 100px; }
-
-        .gallery-section {
+        /* ════════════════════════════════════════
+           BANDEAU COMPÉTENCE (remplace axis-stripe)
+        ════════════════════════════════════════ */
+        .competence-stripe {
+            background: var(--ink);
+            padding: 0 40px;
             display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            align-items: flex-start;
-            padding: 80px 40px;
-            position: relative;
+            grid-template-columns: 200px 1fr 1fr 1fr;
+            border-top: none;
         }
-        .bg-creme { background: var(--paper); }
-        .bg-warm   { background: var(--warm); }
-        .bg-soft-dark { background: var(--bone); }
-
-        .cartel { position: sticky; top: 140px; z-index: 5; }
-        .layout-epic   .cartel        { grid-column: 1 / span 4; }
-        .layout-epic   .media-display { grid-column: 5 / span 8; margin-top: 60px; }
-        .layout-intimate .cartel        { grid-column: 8 / span 5; padding-left: 60px; }
-        .layout-intimate .media-display { grid-column: 2 / span 5; margin-top: -40px; }
-        .layout-wide  .cartel        { grid-column: 3 / span 5; margin-bottom: 60px; }
-        .layout-wide  .media-display { grid-column: 6 / span 7; }
-        .layout-duo   .cartel        { grid-column: 1 / span 4; }
-        .layout-duo   .duo-container {
-            grid-column: 5 / span 8;
-            display: flex;
-            align-items: flex-start;
-            gap: 48px;
-            margin-top: 40px;
+        .cs-col {
+            padding: 24px 0;
+            border-right: 1px solid rgba(253,251,247,0.1);
+            padding-right: 32px;
+            padding-left: 0;
+        }
+        .cs-col:first-child { padding-left: 0; }
+        .cs-col:last-child { border-right: none; padding-left: 32px; }
+        .cs-col + .cs-col { padding-left: 32px; }
+        .cs-axe {
+            font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
+            color: rgba(253,251,247,0.4); display: block; margin-bottom: 8px;
+        }
+        .cs-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem; font-weight: 300; font-style: italic; color: var(--paper);
+            line-height: 1.1;
         }
 
-        .media-wrapper { display: flex; flex-direction: column; }
-        .media-wrapper.offset-down { margin-top: 120px; }
-        .format-label { font-size: 0.7rem; margin-bottom: 12px; color: #888; }
-        .format-a4 { width: 55%; }
-        .format-a5 { width: 38%; }
-
-        .cartel-title { font-size: clamp(1.8rem, 2.8vw, 2.8rem); line-height: 1.15; margin: 16px 0 24px 0; color: var(--ink); letter-spacing: -0.02em; font-family: 'Cormorant Garamond', serif; font-weight: 300; }
-        .cartel-title span { font-style: italic; }
-        .cartel-desc { font-size: 0.88rem; line-height: 1.65; color: #333; margin-bottom: 32px; font-family: 'Space Mono', monospace; max-width: 420px; }
-
-        .portfolio-btn {
-            display: inline-block;
-            padding: 12px 24px;
-            border: 1px solid var(--ink);
-            color: var(--ink);
-            text-decoration: none;
-            font-size: 0.75rem;
-            transition: all 0.3s ease;
+        /* ════════════════════════════════════════
+           SECTIONS WS (01 & 02 — style éditorial)
+        ════════════════════════════════════════ */
+        .ws-topbar { padding: 24px 32px 0; border-top: 1px solid var(--rule); }
+        .ws-topbar-inner {
+            display: flex; align-items: center; gap: 20px;
+            padding-bottom: 14px; border-bottom: 1px solid var(--rule);
         }
-        .portfolio-btn:hover { background: var(--ink); color: var(--paper); }
-
-        .media-display { display: flex; position: relative; }
-        .mockup-img { width: 100%; height: auto; object-fit: contain; box-shadow: 0 20px 50px rgba(0,0,0,0.06); }
-        .h-large { max-height: 85vh; }
-        .h-medium { max-height: 65vh; }
-        .h-small  { max-height: 45vh; }
-
-        .insta-container {
-            width: 100%;
-            max-width: 290px;
-            aspect-ratio: 9 / 16;
-            background: #000;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.12);
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid rgba(26,26,26,0.08);
+        .ws-num { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+        .ws-rule { flex: 1; height: 1px; background: var(--rule); }
+        .ws-date { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+        /* Badge compétence dans la topbar */
+        .ws-badge {
+            font-size: 0.56rem; letter-spacing: 0.18em; text-transform: uppercase;
+            padding: 4px 10px; border: 1px solid var(--rule); color: var(--muted);
+            white-space: nowrap;
         }
-        .insta-container video { width: 100%; height: 100%; object-fit: cover; }
 
-        /* Typo partagée */
-        .mono-caps { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.25em; color: #555; }
-        .label-caps {
-            font-size: 0.62rem;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-            color: var(--muted);
-            margin-bottom: 20px;
-            display: block;
+        .ws-body { display: grid; grid-template-columns: 320px 1fr; min-height: 70vh; }
+        .ws-text {
+            padding: 36px 32px 40px;
+            display: flex; flex-direction: column; justify-content: flex-end;
+            border-right: 1px solid var(--rule);
         }
-        .label-caps-inv {
-            font-size: 0.62rem;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-            color: rgba(253,251,247,0.45);
-            margin-bottom: 20px;
-            display: block;
+        .ws-competence {
+            font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase;
+            color: var(--ink); margin-bottom: 6px;
+            display: flex; align-items: center; gap: 8px;
         }
-        .title-serif { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(1.6rem, 2.4vw, 3rem); line-height: 0.95; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 28px; }
-        .title-serif em { font-style: italic; }
-        .title-serif-inv { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(1.6rem, 2.4vw, 3rem); line-height: 0.95; letter-spacing: -0.025em; color: var(--paper); margin-bottom: 28px; }
-        .title-serif-inv em { font-style: italic; }
-        .title-massive { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(2.4rem, 5vw, 6rem); line-height: 0.88; letter-spacing: -0.04em; color: var(--ink); }
-        .title-massive em { font-style: italic; }
-        .body-mono     { font-size: 0.78rem; line-height: 1.75; color: #444; max-width: 400px; }
-        .body-mono-inv { font-size: 0.78rem; line-height: 1.75; color: rgba(253,251,247,0.6); max-width: 380px; }
-        .work-number { font-family: 'Cormorant Garamond', serif; font-size: 4.5rem; font-weight: 300; color: var(--rule); line-height: 1; pointer-events: none; user-select: none; }
+        .ws-competence::before { content: ''; display: block; width: 16px; height: 1px; background: var(--ink); }
+        .ws-institution { display: block; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; margin-top: 10px; }
+        .ws-title {
+            font-family: 'Cormorant Garamond', serif; font-weight: 300;
+            font-size: clamp(1.8rem, 2.8vw, 3.4rem);
+            line-height: 1.0; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 22px;
+        }
+        .ws-title em { font-style: italic; }
+        .ws-tags { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
+        .ws-desc { font-size: 0.72rem; line-height: 1.85; color: #444; max-width: 300px; }
+        /* Proof block — ce que ça démontre */
+        .ws-proof {
+            margin-top: 24px;
+            padding: 14px 16px;
+            border-left: 2px solid var(--ink);
+            background: var(--warm);
+        }
+        .ws-proof-label { font-size: 0.56rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; display: block; }
+        .ws-proof-text { font-size: 0.68rem; line-height: 1.7; color: var(--ink); }
 
-        /* Fragments réutilisés (03 à 12) */
+        .ws-images { background: var(--warm); padding: 40px 36px; display: flex; align-items: flex-start; gap: 28px; }
+        .ws-img-wrap { display: flex; flex-direction: column; }
+        .ws-img-wrap img { width: 100%; height: auto; display: block; }
+        .ws-caption {
+            display: flex; justify-content: space-between; margin-top: 10px;
+            padding-top: 8px; border-top: 1px solid var(--rule);
+            font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+        }
+        .ws-images-duo .ws-img-wrap:first-child { flex: 0 0 45%; }
+        .ws-images-duo .ws-img-offset { flex: 0 0 36%; margin-top: 70px; }
+        .ws-images-single { padding: 40px 36px; display: flex; align-items: center; justify-content: center; }
+        .ws-images-single .ws-img-wrap { display: flex; flex-direction: column; max-width: 600px; width: 100%; }
+        .ws-images-single .ws-img-wrap img { width: 100%; height: auto; display: block; object-fit: contain; }
+        .ws-images-single .ws-caption { display: flex; justify-content: space-between; margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--rule); font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+        .ws-footbar {
+            display: flex; justify-content: space-between; padding: 10px 32px;
+            border-top: 1px solid var(--rule); font-size: 0.56rem;
+            letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted);
+        }
+        .ws-alt { background: var(--warm); }
+        .ws-alt .ws-text { background: var(--warm); }
+        .ws-alt .ws-images { background: var(--bone); }
+
+        /* ════════════════════════════════════════
+           FRAGMENTS (sections 03–10)
+        ════════════════════════════════════════ */
         .fragment { border-top: 1px solid var(--rule); display: grid; position: relative; }
+
+        /* Badge flottant sur les fragments */
+        .frag-badge {
+            position: absolute; top: 0; left: 32px;
+            background: var(--ink); color: var(--paper);
+            font-size: 0.54rem; letter-spacing: 0.18em; text-transform: uppercase;
+            padding: 5px 12px; z-index: 10;
+        }
+        .frag-badge-light {
+            position: absolute; top: 0; left: 32px;
+            background: var(--paper); color: var(--ink);
+            border: 1px solid var(--rule);
+            font-size: 0.54rem; letter-spacing: 0.18em; text-transform: uppercase;
+            padding: 5px 12px; z-index: 10;
+        }
+
         .frag-dark { grid-template-columns: 1fr 360px; background: var(--ink); color: var(--paper); min-height: 60vh; }
         .frag-dark .frag-visual-dark { padding: 40px 32px; display: flex; align-items: center; }
         .frag-dark .frag-meta-dark { padding: 40px 32px; border-left: 1px solid rgba(253,251,247,0.1); display: flex; flex-direction: column; justify-content: space-between; }
         .frag-full { grid-template-columns: 1fr; overflow: hidden; }
         .frag-full-inner { display: grid; grid-template-columns: 1fr 1fr; }
-        .frag-full .frag-left  { padding: 48px 40px 48px 32px; border-right: 1px solid var(--rule); }
+        .frag-full .frag-left { padding: 48px 40px 48px 32px; border-right: 1px solid var(--rule); }
         .frag-full .frag-right { padding: 40px 32px; }
         .frag-triptych { grid-template-columns: 1fr 1fr 1fr; min-height: 55vh; }
         .frag-triptych .col { border-right: 1px solid var(--rule); padding: 36px 28px; display: flex; flex-direction: column; }
         .frag-triptych .col:last-child { border-right: none; }
         .frag-triptych .col-meta { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; }
+
+        /* Proof block version dark */
+        .proof-dark {
+            margin-top: 20px; padding: 12px 14px;
+            border-left: 2px solid rgba(253,251,247,0.3);
+        }
+        .proof-dark-label { font-size: 0.54rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(253,251,247,0.4); margin-bottom: 5px; display: block; }
+        .proof-dark-text { font-size: 0.66rem; line-height: 1.7; color: rgba(253,251,247,0.7); }
+
+        /* Typo */
+        .label-caps { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; display: block; }
+        .label-caps-inv { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(253,251,247,0.45); margin-bottom: 20px; display: block; }
+        .title-serif { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(1.6rem, 2.4vw, 3rem); line-height: 0.95; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 20px; }
+        .title-serif em { font-style: italic; }
+        .title-serif-inv { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(1.6rem, 2.4vw, 3rem); line-height: 0.95; letter-spacing: -0.025em; color: var(--paper); margin-bottom: 20px; }
+        .title-serif-inv em { font-style: italic; }
+        .title-massive { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(2.4rem, 5vw, 6rem); line-height: 0.88; letter-spacing: -0.04em; color: var(--ink); }
+        .title-massive em { font-style: italic; }
+        .body-mono { font-size: 0.76rem; line-height: 1.75; color: #444; max-width: 400px; }
+        .body-mono-inv { font-size: 0.76rem; line-height: 1.75; color: rgba(253,251,247,0.6); max-width: 380px; }
+        .work-number { font-family: 'Cormorant Garamond', serif; font-size: 4.5rem; font-weight: 300; color: var(--rule); line-height: 1; pointer-events: none; user-select: none; }
+
+        /* Media */
         .img-full { width: 100%; height: auto; display: block; }
-        .reel-wrap { width: 220px; aspect-ratio: 9/16; background: #000; border-radius: 8px; overflow: hidden; flex-shrink: 0; }
-        .reel-wrap video { width: 100%; height: 100%; object-fit: cover; }
-        .video-wide { width: 100%; aspect-ratio: 16/9; background: var(--ink); overflow: hidden; }
-        .video-wide video { width: 100%; height: 100%; object-fit: cover; }
         .img-hover { transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s; filter: saturate(0.9); }
         .img-hover:hover { transform: scale(1.015); filter: saturate(1.05); }
+        .video-wide { width: 100%; aspect-ratio: 16/9; background: var(--ink); overflow: hidden; }
+        .video-wide video { width: 100%; height: 100%; object-fit: cover; }
 
-        /* Axis stripe */
-        .axis-stripe { background: var(--ink); padding: 28px 40px; display: flex; align-items: center; gap: 40px; }
-        .axis-stripe-label { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(253,251,247,0.5); white-space: nowrap; }
-        .axis-stripe-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; font-style: italic; color: var(--paper); }
-        .axis-stripe-rule { flex: 1; height: 1px; background: rgba(253,251,247,0.15); }
+        /* Reel */
+        .reel-wrap { width: 220px; aspect-ratio: 9/16; background: #000; border-radius: 8px; overflow: hidden; flex-shrink: 0; }
+        .reel-wrap video { width: 100%; height: 100%; object-fit: cover; }
+        .layout-insta-fixed .frag-visual-dark {
+            display: grid; grid-template-columns: 200px 1fr 120px;
+            gap: 40px; padding: 60px 48px; align-items: center;
+        }
+        .video-spec-data { display: flex; flex-direction: column; gap: 20px; border-left: 1px solid rgba(253,251,247,0.15); padding-left: 20px; }
+        .spec-item { display: flex; flex-direction: column; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; }
+        .spec-item span:first-child { color: rgba(253,251,247,0.4); margin-bottom: 4px; }
+        .spec-item span:last-child { color: var(--paper); font-weight: 700; }
+        .reel-center-zone { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; width: 100%; }
+        .layout-insta-fixed .reel-wrap { width: 240px; overflow: hidden; background: transparent; margin: 0; flex-shrink: 0; border-radius: 8px; box-shadow: 0 30px 60px rgba(0,0,0,0.4); border: 1px solid rgba(253,251,247,0.1); }
+        .layout-insta-fixed .reel-wrap video { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .audio-toggle { background: rgba(13,13,13,0.75); backdrop-filter: blur(8px); border: 1px solid rgba(253,251,247,0.2); color: var(--paper); padding: 8px 14px; font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.15em; cursor: pointer; display: flex; align-items: center; gap: 8px; border-radius: 4px; transition: all 0.2s ease; white-space: nowrap; }
+        .audio-toggle:hover { background: var(--paper); color: var(--ink); }
+        #audio-icon { width: 12px; height: 12px; display: block; }
+        .constellation-insta { width: 120px; opacity: 0.15; flex-shrink: 0; justify-self: center; }
 
         /* CTA */
-        .cta { display: inline-block; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 10px 20px; border: 1px solid var(--ink); color: var(--ink); text-decoration: none; transition: background 0.25s, color 0.25s; margin-top: 32px; }
+        .cta { display: inline-block; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 10px 20px; border: 1px solid var(--ink); color: var(--ink); text-decoration: none; transition: background 0.25s, color 0.25s; margin-top: 28px; }
         .cta:hover { background: var(--ink); color: var(--paper); }
-        .cta-inv { display: inline-block; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 10px 20px; border: 1px solid rgba(253,251,247,0.4); color: var(--paper); text-decoration: none; transition: background 0.25s; margin-top: 32px; }
+        .cta-inv { display: inline-block; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 10px 20px; border: 1px solid rgba(253,251,247,0.4); color: var(--paper); text-decoration: none; transition: background 0.25s; margin-top: 28px; }
         .cta-inv:hover { background: rgba(253,251,247,0.1); }
 
         /* Footer */
@@ -318,323 +333,114 @@
         .footer-email { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.8vw, 3.2rem); font-weight: 300; color: var(--ink); text-decoration: none; line-height: 1.1; letter-spacing: -0.02em; border-bottom: 1px solid var(--ink); padding-bottom: 6px; display: inline-block; }
         .footer-coords { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); line-height: 2.2; }
 
-        /* ════════════════════════════════════════
-           SECTIONS 01 & 02 — STYLE LOVABLE
-        ════════════════════════════════════════ */
-
-        /* Barre de titre de projet */
-        .ws-topbar {
-            padding: 24px 32px 0;
-            border-top: 1px solid var(--rule);
-        }
-        .ws-topbar-inner {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            padding-bottom: 14px;
-            border-bottom: 1px solid var(--rule);
-        }
-        .ws-num {
-            font-size: 0.62rem;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-            color: var(--muted);
-            white-space: nowrap;
-        }
-        .ws-rule { flex: 1; height: 1px; background: var(--rule); }
-        .ws-date {
-            font-size: 0.62rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--muted);
-            white-space: nowrap;
-        }
-
-        /* Corps texte + images */
-        .ws-body {
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            min-height: 70vh;
-        }
-
-        /* Colonne texte — poussé vers le bas */
-        .ws-text {
-            padding: 36px 32px 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            border-right: 1px solid var(--rule);
-        }
-        .ws-institution {
-            display: block;
-            font-size: 0.62rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--muted);
-            margin-bottom: 18px;
-        }
-        .ws-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 300;
-            font-size: clamp(1.8rem, 2.8vw, 3.4rem);
-            line-height: 1.0;
-            letter-spacing: -0.03em;
-            color: var(--ink);
-            margin-bottom: 22px;
-        }
-        .ws-title em { font-style: italic; }
-        .ws-tags {
-            font-size: 0.6rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--muted);
-            margin-bottom: 26px;
-        }
-        .ws-desc {
-            font-size: 0.72rem;
-            line-height: 1.85;
-            color: #444;
-            max-width: 300px;
-        }
-
-        /* Colonne images — fond crème, images en cascade */
-        .ws-images {
-            background: var(--warm);
-            padding: 40px 36px;
-            display: flex;
-            align-items: flex-start;
-            gap: 28px;
-        }
-
-        /* Wrapper image individuelle */
-        .ws-img-wrap { display: flex; flex-direction: column; }
-        .ws-img-wrap img { width: 100%; height: auto; display: block; }
-        /* Légende sous image */
-        .ws-caption {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-            padding-top: 8px;
-            border-top: 1px solid var(--rule);
-            font-size: 0.56rem;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--muted);
-        }
-
-        /* Section 01 : duo en cascade */
-        .ws-images-duo .ws-img-wrap:first-child { flex: 0 0 45%; }
-        .ws-images-duo .ws-img-offset          { flex: 0 0 36%; margin-top: 70px; }
-
-        /* Section 02 : image complète sans crop */
-        .ws-images-single {
-            padding: 40px 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .ws-images-single .ws-img-wrap {
-            display: flex;
-            flex-direction: column;
-            max-width: 600px;
-            width: 100%;
-        }
-        .ws-images-single .ws-img-wrap img {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: contain;
-        }
-        .ws-images-single .ws-caption {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-            padding-top: 8px;
-            border-top: 1px solid var(--rule);
-            font-size: 0.56rem;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--muted);
-        }
-
-        /* Barre de pied */
-        .ws-footbar {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 32px;
-            border-top: 1px solid var(--rule);
-            font-size: 0.56rem;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            color: var(--muted);
-        }
-
-        /* Section 02 — fond légèrement différent */
-        .ws-alt { background: var(--warm); }
-        .ws-alt .ws-text { background: var(--warm); }
-        .ws-alt .ws-images { background: var(--bone); }
-
-        /* ─── SECTION 03 : LAYOUT INSTA FIXED ─── */
-        .layout-insta-fixed .frag-visual-dark {
-            display: grid;
-            grid-template-columns: 200px 1fr 120px;
-            gap: 40px;
-            padding: 60px 48px;
-            align-items: center;
-        }
-        .video-spec-data {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            border-left: 1px solid rgba(253,251,247,0.15);
-            padding-left: 20px;
-        }
-        .spec-item {
-            display: flex;
-            flex-direction: column;
-            font-size: 0.58rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-        }
-        .spec-item span:first-child { color: rgba(253,251,247,0.4); margin-bottom: 4px; }
-        .spec-item span:last-child  { color: var(--paper); font-weight: 700; }
-        .reel-center-zone {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            width: 100%;
-        }
-        .layout-insta-fixed .reel-wrap {
-            width: 240px;
-            aspect-ratio: 9/16;
-            overflow: hidden;
-            background: transparent;
-            margin: 0;
-            flex-shrink: 0;
-            border-radius: 8px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
-            border: 1px solid rgba(253,251,247,0.1);
-        }
-        .layout-insta-fixed .reel-wrap video { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .audio-toggle {
-            background: rgba(13,13,13,0.75);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(253,251,247,0.2);
-            color: var(--paper);
-            padding: 8px 14px;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.55rem;
-            letter-spacing: 0.15em;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border-radius: 4px;
-            transition: all 0.2s ease;
-            white-space: nowrap;
-        }
-        .audio-toggle:hover { background: var(--paper); color: var(--ink); }
-        #audio-icon { width: 12px; height: 12px; display: block; }
-        .constellation-insta {
-            width: 120px;
-            opacity: 0.15;
-            flex-shrink: 0;
-            justify-self: center;
-        }
-
         /* ─── MOBILE ─── */
         @media (max-width: 860px) {
-            .nav { padding: 16px 20px; }
+            .nav { padding: 14px 20px; }
             .nav-links { display: none; }
-            .hero { grid-template-columns: 1fr; margin-top: calc(36px + 53px); }
-            .hero-left { padding: 40px 20px; min-height: 60vh; }
-            .hero-right { min-height: 50vh; }
-
-            /* ws mobile */
+            .hero { grid-template-columns: 1fr; margin-top: calc(36px + 51px); }
+            .hero-print, .hero-digital { min-height: 55vh; }
+            .hero-digital { min-height: 50vh; }
             .ws-body { grid-template-columns: 1fr; }
             .ws-text { border-right: none; border-bottom: 1px solid var(--rule); padding: 32px 20px; justify-content: flex-start; }
             .ws-topbar { padding: 24px 20px 0; }
             .ws-images { padding: 32px 20px; flex-direction: column; gap: 24px; }
-            .ws-images-duo .ws-img-wrap:first-child,
-            .ws-images-duo .ws-img-offset { flex: none; width: 100%; margin-top: 0; }
-            .ws-images-single { position: relative; }
-            .ws-images-single .ws-img-wrap img { max-height: 50vh; }
+            .ws-images-duo .ws-img-wrap:first-child, .ws-images-duo .ws-img-offset { flex: none; width: 100%; margin-top: 0; }
+            .ws-images-single { padding: 32px 20px; }
             .ws-footbar { padding: 10px 20px; flex-direction: column; gap: 4px; }
-
-            /* autres fragments */
-            .gallery-section { display: flex; flex-direction: column; padding: 80px 24px; gap: 40px; }
-            .cartel { position: relative; top: 0 !important; }
-            .layout-duo .duo-container { display: flex; flex-direction: column; gap: 32px; margin-top: 0; }
-            .media-wrapper.offset-down { margin-top: 0; }
-            .format-a4, .format-a5 { width: 100%; }
-            .media-display { width: 100%; margin: 0 !important; }
-            .mockup-img { max-height: none !important; }
             .frag-dark { grid-template-columns: 1fr; }
             .frag-dark .frag-visual-dark { padding: 30px 20px; }
             .frag-dark .frag-meta-dark { border-left: none; border-top: 1px solid rgba(253,251,247,0.1); padding: 30px 20px; }
             .frag-full-inner { grid-template-columns: 1fr; }
-            .frag-full .frag-left  { border-right: none; border-bottom: 1px solid var(--rule); padding: 30px 20px; }
+            .frag-full .frag-left { border-right: none; border-bottom: 1px solid var(--rule); padding: 30px 20px; }
             .frag-full .frag-right { padding: 30px 20px; }
             .frag-triptych { grid-template-columns: 1fr; }
             .frag-triptych .col { border-right: none; border-bottom: 1px solid var(--rule); padding: 30px 20px; }
-            .axis-stripe { padding: 20px; flex-wrap: wrap; }
+            .competence-stripe { grid-template-columns: 1fr 1fr; gap: 0; }
+            .cs-col { padding: 20px; border-right: 1px solid rgba(253,251,247,0.1); border-bottom: 1px solid rgba(253,251,247,0.1); }
             .footer { grid-template-columns: 1fr; }
             .footer-left { border-right: none; border-bottom: 1px solid var(--rule); }
-            .title-massive { font-size: clamp(3.5rem, 18vw, 14rem); }
-            .reel-wrap { width: 160px; }
+            .layout-insta-fixed .frag-visual-dark { grid-template-columns: 1fr; padding: 30px 20px; }
+            .constellation-insta, .video-spec-data { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ─── TICKER ─── -->
+    <!-- TICKER -->
     <div class="ticker" aria-hidden="true">
         <div class="ticker-track">
-            <span>Julien Thibault</span><span class="sep">—</span>
-            <span>Direction de la Communication</span><span class="sep">—</span>
-            <span>Ingénierie Éditoriale</span><span class="sep">—</span>
-            <span>Archéologie Sous-marine</span><span class="sep">—</span>
-            <span>DRASSM</span><span class="sep">—</span>
-            <span>Histoire de l'art</span><span class="sep">—</span>
-            <span>Toulouse</span><span class="sep">—</span>
-            <span>Julien Thibault</span><span class="sep">—</span>
-            <span>Direction de la Communication</span><span class="sep">—</span>
-            <span>Ingénierie Éditoriale</span><span class="sep">—</span>
-            <span>Archéologie Sous-marine</span><span class="sep">—</span>
-            <span>DRASSM</span><span class="sep">—</span>
-            <span>Histoire de l'art</span><span class="sep">—</span>
-            <span>Toulouse</span><span class="sep">—</span>
+            <span>Stratégie éditoriale</span><span class="sep">—</span>
+            <span>Direction artistique</span><span class="sep">—</span>
+            <span>InDesign · Illustrator</span><span class="sep">—</span>
+            <span>UX Design</span><span class="sep">—</span>
+            <span>GeoJSON · Cartographie</span><span class="sep">—</span>
+            <span>Charte graphique</span><span class="sep">—</span>
+            <span>Médiation culturelle</span><span class="sep">—</span>
+            <span>Référencement</span><span class="sep">—</span>
+            <span>Julien Thibault · Chargé de Communication</span><span class="sep">—</span>
+            <span>Stratégie éditoriale</span><span class="sep">—</span>
+            <span>Direction artistique</span><span class="sep">—</span>
+            <span>InDesign · Illustrator</span><span class="sep">—</span>
+            <span>UX Design</span><span class="sep">—</span>
+            <span>GeoJSON · Cartographie</span><span class="sep">—</span>
+            <span>Charte graphique</span><span class="sep">—</span>
+            <span>Médiation culturelle</span><span class="sep">—</span>
+            <span>Référencement</span><span class="sep">—</span>
+            <span>Julien Thibault · Chargé de Communication</span><span class="sep">—</span>
         </div>
     </div>
 
-    <!-- ─── NAV ─── -->
+    <!-- NAV -->
     <header class="nav">
-        <a href="#" class="nav-logo">JULIEN THIBAULT</a>
+        <a href="#" class="nav-logo">Julien Thibault</a>
         <nav class="nav-links">
-            <a href="#galerie">Travaux de communication</a>
-            <a href="#contact">Coordonnées</a>
+            <a href="#preuves">Preuves de compétences</a>
+            <a href="#contact">Contact</a>
         </nav>
     </header>
 
-    <!-- ─── HERO ─── -->
+    <!-- ══════════════════════════════════════════
+         HERO — SPLIT PRINT / NUMÉRIQUE
+    ══════════════════════════════════════════ -->
     <section class="hero">
-        <div class="hero-left">
-            <div class="hero-index-block">
-                <span>// Positionnement professionnel</span>
-                <span>01 / 01</span>
+
+        <!-- GAUCHE : PRINT & ÉDITORIAL -->
+        <div class="hero-print">
+            <div class="hero-print-tag">
+                <span>Profil I — Édition & Print</span>
+                <span>01 / 02</span>
             </div>
-            <h1 class="hero-h1">
-                <span class="underline-rule">Ingénierie</span>
-                <em>éditoriale</em>
-                <span class="stacked">& graphique</span>
+            <h1 class="hero-print-h1">
+                <span class="rule-under">Concevoir,</span>
+                <em>écrire,</em>
+                <span class="indent">mettre en forme.</span>
             </h1>
-            <p class="hero-footnote">
-                Issu d'un parcours en Histoire de l'art, je mets l'ingénierie éditoriale au service des institutions publiques et de la valorisation scientifique.
-            </p>
+            <div class="hero-print-skills">
+                <div class="skill-line">
+                    <span class="skill-num">01</span>
+                    <span class="skill-name">Direction artistique</span>
+                    <span class="skill-detail">InDesign · Illustrator · Photoshop</span>
+                </div>
+                <div class="skill-line">
+                    <span class="skill-num">02</span>
+                    <span class="skill-name">Ingénierie éditoriale</span>
+                    <span class="skill-detail">Charte · Identité · Typographie</span>
+                </div>
+                <div class="skill-line">
+                    <span class="skill-num">03</span>
+                    <span class="skill-name">Médiation culturelle</span>
+                    <span class="skill-detail">Jeune public · Institutions · Scolaire</span>
+                </div>
+                <div class="skill-line">
+                    <span class="skill-num">04</span>
+                    <span class="skill-name">Stratégie de contenu</span>
+                    <span class="skill-detail">Réseaux sociaux · Capsule vidéo</span>
+                </div>
+            </div>
         </div>
-        <div class="hero-right">
+
+        <!-- DROITE : NUMÉRIQUE & UX -->
+        <div class="hero-digital">
             <svg class="constellation-hero" viewBox="0 0 500 800" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <line x1="120" y1="150" x2="280" y2="220" stroke="#0d0d0d" stroke-width="0.7" stroke-dasharray="4 4"/>
                 <line x1="280" y1="220" x2="200" y2="380" stroke="#0d0d0d" stroke-width="0.7"/>
@@ -654,311 +460,371 @@
                 <circle cx="160" cy="650" r="2" fill="#0d0d0d"/>
                 <circle cx="300" cy="680" r="2" fill="#0d0d0d"/>
             </svg>
-            <div class="hero-right-content">
-                <div class="hero-big-number" aria-hidden="true">Σ</div>
-                <p class="hero-meta">Axes de compétences — 2025</p>
-                <div class="hero-discipline">
-                    Communication<br>
-                    <em>institutionnelle</em><br>
-                    Édition<br>
-                    <em>scientifique</em><br>
-                    Design<br>
-                    <em>numérique</em>
+            <div class="hero-digital-content">
+                <div class="hero-digital-tag">
+                    <span>Profil II — Web & Numérique</span>
+                    <span>02 / 02</span>
+                </div>
+                <h2 class="hero-digital-h2">
+                    <span>Architecturer,</span>
+                    <em>coder,</em>
+                    <span class="indent">déployer.</span>
+                </h2>
+                <div class="hero-digital-skills">
+                    <div class="skill-line">
+                        <span class="skill-num">05</span>
+                        <span class="skill-name">Design d'interface</span>
+                        <span class="skill-detail">UX · Maquettage · One-page</span>
+                    </div>
+                    <div class="skill-line">
+                        <span class="skill-num">06</span>
+                        <span class="skill-name">Développement web</span>
+                        <span class="skill-detail">HTML · CSS · JS · GeoJSON</span>
+                    </div>
+                    <div class="skill-line">
+                        <span class="skill-num">07</span>
+                        <span class="skill-name">Expérience de médiation</span>
+                        <span class="skill-detail">Gamification · Escape game · Cartographie</span>
+                    </div>
+                    <div class="skill-line">
+                        <span class="skill-num">08</span>
+                        <span class="skill-name">Référencement & SEO</span>
+                        <span class="skill-detail">Arborescence · Balises · Accessibilité</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════════
+    <!-- ══════════════════════════════════════════
+         BANDEAU COMPÉTENCES
+    ══════════════════════════════════════════ -->
+    <div class="competence-stripe" id="preuves">
+        <div class="cs-col">
+            <span class="cs-axe">Ce qui suit</span>
+            <span class="cs-title">Preuves de<br>compétences</span>
+        </div>
+        <div class="cs-col">
+            <span class="cs-axe">Axe I</span>
+            <span class="cs-title">Édition & Communication institutionnelle</span>
+        </div>
+        <div class="cs-col">
+            <span class="cs-axe">Axe II</span>
+            <span class="cs-title">Valorisation scientifique</span>
+        </div>
+        <div class="cs-col">
+            <span class="cs-axe">Axe III</span>
+            <span class="cs-title">Interfaces & Expériences numériques</span>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════
          AXE I — DRASSM
-    ═══════════════════════════════════════════════════════ -->
+    ══════════════════════════════════════════ -->
 
-    <div id="galerie">
-        <div class="axis-stripe">
-            <span class="axis-stripe-label">Axe I</span>
-            <div class="axis-stripe-rule"></div>
-            <span class="axis-stripe-title">Institutions publiques & archéologie</span>
-            <div class="axis-stripe-rule"></div>
-            <span class="axis-stripe-label">DRASSM</span>
+    <!-- 01 — JEA : combinaison de chartes -->
+    <article>
+        <div class="ws-topbar">
+            <div class="ws-topbar-inner">
+                <span class="ws-num">№ 01</span>
+                <span class="ws-rule"></span>
+                <span class="ws-badge">Maîtrise d'InDesign · Articulation de deux chartes graphiques</span>
+                <span class="ws-rule"></span>
+                <span class="ws-date">2026 / Cannes</span>
+            </div>
         </div>
-
-        <!-- ══ SECTION 01 — JEA (style Lovable) ══ -->
-        <article>
-            <div class="ws-topbar">
-                <div class="ws-topbar-inner">
-                    <span class="ws-num">№ 01</span>
-                    <span class="ws-rule"></span>
-                    <span class="ws-date">2026 / Cannes</span>
+        <div class="ws-body">
+            <div class="ws-text">
+                <span class="ws-competence">Direction artistique</span>
+                <span class="ws-institution">DRASSM — Ministère de la Culture</span>
+                <h2 class="ws-title">Journées Européennes de<br><em>l'Archéologie</em></h2>
+                <p class="ws-tags">Affiche A4 · Flyer A5 · InDesign</p>
+                <p class="ws-desc">Campagne de communication pour l'édition cannoise des JEA. Le défi : articuler la charte nationale de l'événement avec l'identité propre au DRASSM sans compromis sur aucune des deux.</p>
+                <div class="ws-proof">
+                    <span class="ws-proof-label">Preuve</span>
+                    <span class="ws-proof-text">Respect simultané de deux chartes graphiques concurrentes — hiérarchie typographique, palette, logotypes — dans un format affiche et un format flyer produits sous InDesign.</span>
                 </div>
             </div>
-            <div class="ws-body">
-                <div class="ws-text">
-                    <span class="ws-institution">DRASSM — Ministère de la Culture</span>
-                    <h2 class="ws-title">Journées Européennes de<br><em>l'Archéologie</em></h2>
-                    <p class="ws-tags">Direction artistique · Affiche · Flyer</p>
-                    <p class="ws-desc">Identité visuelle déployée pour l'édition cannoise des JEA : conception d'une affiche manifeste et d'un flyer pédagogique distribué aux scolaires et au grand public.</p>
-                </div>
-                <div class="ws-images ws-images-duo">
-                    <div class="ws-img-wrap">
-                        <img src="JEA_2026-Cannes_V4.jpg" alt="Affiche JEA - DRASSM" class="img-hover">
-                        <div class="ws-caption">
-                            <span>Affiche manifeste</span>
-                            <span>JEA_2026-Cannes_V4.jpg</span>
-                        </div>
-                    </div>
-                    <div class="ws-img-wrap ws-img-offset">
-                        <img src="JEA_2026-Cannes_V4_flyer_recto.jpg" alt="Flyer JEA - DRASSM" class="img-hover">
-                        <div class="ws-caption">
-                            <span>Flyer A5</span>
-                            <span>JEA_flyer_recto.jpg</span>
-                        </div>
+            <div class="ws-images ws-images-duo">
+                <div class="ws-img-wrap">
+                    <img src="JEA_2026-Cannes_V4.jpg" alt="Affiche JEA - DRASSM" class="img-hover">
+                    <div class="ws-caption">
+                        <span>Affiche manifeste A4</span>
+                        <span>JEA_2026-Cannes_V4.jpg</span>
                     </div>
                 </div>
-            </div>
-            <div class="ws-footbar">
-                <span>Direction artistique · Identité visuelle</span>
-                <span>DRASSM · 2026</span>
-            </div>
-        </article>
-
-        <!-- ══ SECTION 02 — Jeu primaire (style Lovable) ══ -->
-        <article class="ws-alt">
-            <div class="ws-topbar" style="background:var(--warm);">
-                <div class="ws-topbar-inner">
-                    <span class="ws-num">№ 02</span>
-                    <span class="ws-rule"></span>
-                    <span class="ws-date">2025</span>
-                </div>
-            </div>
-            <div class="ws-body">
-                <div class="ws-text">
-                    <span class="ws-institution">DRASSM — Médiation</span>
-                    <h2 class="ws-title">Jeunes publics &amp; archéologie<br><em>sous-marine</em></h2>
-                    <p class="ws-tags">Conception pédagogique · Édition jeunesse</p>
-                    <p class="ws-desc">Conception d'un dispositif de médiation à destination des classes primaires : jeu d'identification, livret-cartel et iconographie sur-mesure pour transmettre les méthodes de l'archéologie sous-marine.</p>
-                </div>
-                <div class="ws-images ws-images-single">
-                    <div class="ws-img-wrap">
-                        <img src="jeu_primaire.jpg" alt="Outil didactique et ludique" class="img-hover">
-                        <div class="ws-caption">
-                            <span>Jeu de médiation primaire</span>
-                            <span>jeu_primaire.jpg</span>
-                        </div>
+                <div class="ws-img-wrap ws-img-offset">
+                    <img src="JEA_2026-Cannes_V4_flyer_recto.jpg" alt="Flyer JEA - DRASSM" class="img-hover">
+                    <div class="ws-caption">
+                        <span>Flyer A5</span>
+                        <span>JEA_flyer_recto.jpg</span>
                     </div>
-                </div>
-            </div>
-            <div class="ws-footbar" style="background:var(--warm);">
-                <span>Dispositif scolaire · 2025</span>
-                <span>DRASSM · Médiation jeunesse</span>
-            </div>
-        </article>
-
-        <!-- ══ SECTION 03 — Reel Instagram ══ -->
-        <div class="fragment frag-dark layout-insta-fixed">
-            <div class="frag-visual-dark">
-                <div class="video-spec-data">
-                    <div class="spec-item"><span>PROJET</span><span>REEL ARCHÉO V1</span></div>
-                    <div class="spec-item"><span>RATIO</span><span>9:16 VERTICAL</span></div>
-                    <div class="spec-item"><span>DURÉE</span><span>00:46:00</span></div>
-                    <div class="spec-item"><span>AUDIO</span><span>STEREO / 48KHZ</span></div>
-                </div>
-                <div class="reel-center-zone">
-                    <div class="reel-wrap">
-                        <video id="reel-video" muted playsinline loop poster="miniature.jpg">
-                            <source src="Reel.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <button class="audio-toggle" onclick="toggleReelAudio()">
-                        <svg id="audio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path id="audio-path" d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6"/>
-                        </svg>
-                        <span id="audio-text">ACTIVER LE SON</span>
-                    </button>
-                </div>
-                <svg class="constellation-insta" viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <line x1="60" y1="40" x2="140" y2="100" stroke="#fdfbf7" stroke-width="0.7" stroke-dasharray="3 3"/>
-                    <line x1="140" y1="100" x2="80" y2="200" stroke="#fdfbf7" stroke-width="0.7"/>
-                    <line x1="80" y1="200" x2="160" y2="300" stroke="#fdfbf7" stroke-width="0.7" stroke-dasharray="2 2"/>
-                    <line x1="80" y1="200" x2="30" y2="280" stroke="#fdfbf7" stroke-width="0.7"/>
-                    <circle cx="60" cy="40" r="2" fill="#fdfbf7"/>
-                    <circle cx="140" cy="100" r="3" fill="none" stroke="#fdfbf7" stroke-width="1"/>
-                    <circle cx="140" cy="100" r="1.2" fill="#fdfbf7"/>
-                    <circle cx="80" cy="200" r="2" fill="#fdfbf7"/>
-                    <circle cx="160" cy="300" r="2" fill="#fdfbf7"/>
-                    <circle cx="30" cy="280" r="2" fill="#fdfbf7"/>
-                </svg>
-            </div>
-            <div class="frag-meta-dark">
-                <div>
-                    <span class="label-caps-inv">DRASSM / Dynamisation des Canaux</span>
-                    <div class="work-number" aria-hidden="true" style="color:rgba(253,251,247,0.06);">03</div>
-                </div>
-                <div>
-                    <h2 class="title-serif-inv">
-                        Rendez-vous<br>
-                        <em>Éditorial Numérique</em>
-                    </h2>
-                    <p class="body-mono-inv">
-                        Conception, réalisation et montage d'une capsule vidéo au format vertical (46 secondes) instaurant un jalon éditorial récurrent sur l'Instagram de l'institution.
-                    </p>
                 </div>
             </div>
         </div>
+        <div class="ws-footbar">
+            <span>InDesign · Illustrator · Charte nationale + charte DRASSM</span>
+            <span>DRASSM · 2026</span>
+        </div>
+    </article>
 
-        <!-- ══ SECTION 04 — Archéo' Time (style original) ══ -->
-        <div class="fragment frag-full">
-            <div class="frag-full-inner">
-                <div class="frag-left">
-                    <span class="label-caps">DRASSM / Cohésion & Synergie Interne</span>
-                    <div class="work-number" aria-hidden="true">04</div>
-                    <h2 class="title-serif">
-                        Archéo' Time :<br>
-                        <em>Fédérer la Structure</em>
-                    </h2>
-                    <p class="body-mono">
-                        Création de l'affiche pour le projet interne "Archéo' Time". Adoption d'un ton graphique plus souple, spécifiquement calibré pour les collaborateurs.
-                    </p>
+    <!-- 02 — Jeu primaire : médiation jeune public -->
+    <article class="ws-alt">
+        <div class="ws-topbar" style="background:var(--warm);">
+            <div class="ws-topbar-inner">
+                <span class="ws-num">№ 02</span>
+                <span class="ws-rule"></span>
+                <span class="ws-badge">Conception pédagogique · Public scolaire · Iconographie sur-mesure</span>
+                <span class="ws-rule"></span>
+                <span class="ws-date">2025</span>
+            </div>
+        </div>
+        <div class="ws-body">
+            <div class="ws-text">
+                <span class="ws-competence">Médiation & édition jeunesse</span>
+                <span class="ws-institution">DRASSM — Médiation</span>
+                <h2 class="ws-title">Jeunes publics &amp;<br><em>archéologie sous-marine</em></h2>
+                <p class="ws-tags">Jeu · Livret-cartel · Iconographie</p>
+                <p class="ws-desc">Dispositif complet de médiation pour classes primaires : jeu d'identification d'artefacts, livret-cartel et iconographie dessinée sur-mesure. Adapter un discours scientifique à un public de 8 ans est une compétence à part entière.</p>
+                <div class="ws-proof">
+                    <span class="ws-proof-label">Preuve</span>
+                    <span class="ws-proof-text">Transposition graphique et sémantique de concepts d'archéologie sous-marine pour un public non-expert. Création d'un système visuel cohérent (pictogrammes, mise en page ludique, couleurs pédagogiques) de A à Z.</span>
                 </div>
-                <div class="frag-right" style="display:flex; align-items:center; justify-content:center; background:var(--warm);">
-                    <img src="archeo_time.jpg" alt="Affiche communication interne Archéo Time" class="img-hover" style="max-width:340px; width:100%; height:auto;">
+            </div>
+            <div class="ws-images ws-images-single">
+                <div class="ws-img-wrap">
+                    <img src="jeu_primaire.jpg" alt="Outil didactique et ludique" class="img-hover">
+                    <div class="ws-caption">
+                        <span>Jeu de médiation primaire</span>
+                        <span>jeu_primaire.jpg</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ws-footbar" style="background:var(--warm);">
+            <span>Illustration · InDesign · Conception pédagogique</span>
+            <span>DRASSM · 2025</span>
+        </div>
+    </article>
+
+    <!-- 03 — Reel Instagram : stratégie de contenu vidéo -->
+    <div class="fragment frag-dark layout-insta-fixed" style="position:relative;">
+        <span class="frag-badge">Compétence — Stratégie de contenu & production vidéo</span>
+        <div class="frag-visual-dark">
+            <div class="video-spec-data">
+                <div class="spec-item"><span>FORMAT</span><span>VERTICAL 9:16</span></div>
+                <div class="spec-item"><span>DURÉE</span><span>00:46:00</span></div>
+                <div class="spec-item"><span>DIFFUSION</span><span>INSTAGRAM</span></div>
+                <div class="spec-item"><span>AUDIO</span><span>STEREO / 48KHZ</span></div>
+            </div>
+            <div class="reel-center-zone">
+                <div class="reel-wrap">
+                    <video id="reel-video" muted playsinline loop poster="miniature.jpg">
+                        <source src="Reel.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <button class="audio-toggle" onclick="toggleReelAudio()">
+                    <svg id="audio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path id="audio-path" d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6"/>
+                    </svg>
+                    <span id="audio-text">ACTIVER LE SON</span>
+                </button>
+            </div>
+            <svg class="constellation-insta" viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="60" y1="40" x2="140" y2="100" stroke="#fdfbf7" stroke-width="0.7" stroke-dasharray="3 3"/>
+                <line x1="140" y1="100" x2="80" y2="200" stroke="#fdfbf7" stroke-width="0.7"/>
+                <line x1="80" y1="200" x2="160" y2="300" stroke="#fdfbf7" stroke-width="0.7" stroke-dasharray="2 2"/>
+                <line x1="80" y1="200" x2="30" y2="280" stroke="#fdfbf7" stroke-width="0.7"/>
+                <circle cx="60" cy="40" r="2" fill="#fdfbf7"/>
+                <circle cx="140" cy="100" r="3" fill="none" stroke="#fdfbf7" stroke-width="1"/>
+                <circle cx="140" cy="100" r="1.2" fill="#fdfbf7"/>
+                <circle cx="80" cy="200" r="2" fill="#fdfbf7"/>
+                <circle cx="160" cy="300" r="2" fill="#fdfbf7"/>
+                <circle cx="30" cy="280" r="2" fill="#fdfbf7"/>
+            </svg>
+        </div>
+        <div class="frag-meta-dark">
+            <div>
+                <span class="label-caps-inv">DRASSM / Instagram — № 03</span>
+                <div class="work-number" style="color:rgba(253,251,247,0.05);">03</div>
+            </div>
+            <div>
+                <h2 class="title-serif-inv">Rendez-vous<br><em>Éditorial Numérique</em></h2>
+                <p class="body-mono-inv">Conception, tournage, montage et publication d'une capsule verticale de 46 secondes instaurant un rendez-vous éditorial hebdomadaire sur l'Instagram institutionnel.</p>
+                <div class="proof-dark">
+                    <span class="proof-dark-label">Preuve</span>
+                    <span class="proof-dark-text">Maîtrise complète de la chaîne de production vidéo courte : scénario, cadrage, montage, sous-titrage, export en format vertical natif pour Instagram Reels.</span>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ═══════════════════════════════════════════════════════
+    <!-- 04 — Archéo' Time : communication interne -->
+    <div class="fragment frag-full" style="position:relative;">
+        <span class="frag-badge-light">Compétence — Adaptation du discours graphique selon la cible</span>
+        <div class="frag-full-inner">
+            <div class="frag-left" style="padding-top:60px;">
+                <span class="label-caps">DRASSM / Communication interne — № 04</span>
+                <div class="work-number">04</div>
+                <h2 class="title-serif">Archéo' Time :<br><em>Fédérer en interne</em></h2>
+                <p class="body-mono">Affiche pour le projet d'animation interne "Archéo' Time". Même institution, autre cible : les collaborateurs. Le registre graphique est délibérément plus souple, plus chaleureux, moins institutionnel.</p>
+                <div class="ws-proof" style="margin-top:24px;">
+                    <span class="ws-proof-label">Preuve</span>
+                    <span class="ws-proof-text">Capacité à moduler le ton graphique et éditorial selon l'audience — passer d'une communication externe formelle à une communication interne engageante, avec la même maîtrise des outils.</span>
+                </div>
+            </div>
+            <div class="frag-right" style="display:flex; align-items:center; justify-content:center; background:var(--warm);">
+                <img src="archeo_time.jpg" alt="Affiche communication interne Archéo Time" class="img-hover" style="max-width:340px; width:100%; height:auto;">
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════
          AXE II — ASSOCIATION CONTRAST
-    ═══════════════════════════════════════════════════════ -->
-    <div class="axis-stripe">
-        <span class="axis-stripe-label">Axe II</span>
-        <div class="axis-stripe-rule"></div>
-        <span class="axis-stripe-title">Édition scientifique & valorisation</span>
-        <div class="axis-stripe-rule"></div>
-        <span class="axis-stripe-label">Association Contrast</span>
+    ══════════════════════════════════════════ -->
+    <div class="competence-stripe" style="margin-top:0;">
+        <div class="cs-col">
+            <span class="cs-axe">Axe II</span>
+            <span class="cs-title">Édition scientifique & valorisation des savoirs</span>
+        </div>
+        <div class="cs-col">
+            <span class="cs-axe">Contexte</span>
+            <span class="cs-title">Association Contrast</span>
+        </div>
+        <div class="cs-col">
+            <span class="cs-axe">Compétences mobilisées</span>
+            <span class="cs-title">Identité visuelle · Mise en page · Programme</span>
+        </div>
+        <div class="cs-col">
+            <span class="cs-axe">Public</span>
+            <span class="cs-title">Chercheurs, étudiants, grand public cultivé</span>
+        </div>
     </div>
 
-    <!-- Affiche visites -->
-    <div class="fragment frag-full" style="background:var(--warm);">
+    <!-- 05 — Affiche visites -->
+    <div class="fragment frag-full" style="background:var(--warm); position:relative;">
+        <span class="frag-badge-light">Compétence — Identité visuelle & épure graphique</span>
         <div class="frag-full-inner">
             <div class="frag-right" style="order:-1; background:var(--bone); display:flex; align-items:center; justify-content:center; padding:60px 40px;">
                 <img src="affiche_visites.jpg" alt="Affiche cycle de visites Contrast" class="img-hover" style="max-width:340px; width:100%; height:auto;">
             </div>
-            <div class="frag-left" style="background:var(--warm); border-right:none; border-left:1px solid var(--rule);">
-                <span class="label-caps">Association Contrast / Promotion des Savoirs</span>
-                <div class="work-number" aria-hidden="true">05</div>
-                <h2 class="title-serif">
-                    Valorisation des<br>
-                    <em>Cycles Scientifiques</em>
-                </h2>
-                <p class="body-mono">
-                    Affiche promotionnelle conçue pour annoncer les prochaines visites programmées. L'épuration graphique fait écho aux exigences esthétiques de l'histoire de l'art.
-                </p>
+            <div class="frag-left" style="background:var(--warm); border-right:none; border-left:1px solid var(--rule); padding-top:60px;">
+                <span class="label-caps">Association Contrast — № 05</span>
+                <div class="work-number">05</div>
+                <h2 class="title-serif">Cycles de visites<br><em>& conférences</em></h2>
+                <p class="body-mono">Affiche de promotion pour les visites programmées. L'épuration graphique n'est pas un choix esthétique par défaut — c'est la signature d'une structure académique qui communique avec rigueur.</p>
+                <div class="ws-proof" style="margin-top:24px;">
+                    <span class="ws-proof-label">Preuve</span>
+                    <span class="ws-proof-text">Capacité à construire une identité visuelle cohérente pour une structure associative scientifique : choix typographiques assumés, hiérarchie de l'information, sobriété au service du fond.</span>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Triptyque Contrast -->
-    <div class="fragment frag-triptych" style="background:var(--bone);">
-        <div class="col" style="background:var(--bone);">
-            <span class="label-caps">Association Contrast / Stratégie de Marque</span>
-            <div class="work-number" aria-hidden="true" style="font-size:4rem; color:var(--rule);">06</div>
+    <!-- 06–07 — Triptyque flyers -->
+    <div class="fragment frag-triptych" style="background:var(--bone); position:relative;">
+        <span class="frag-badge-light">Compétence — Mise en page dense · Support de présentation · Programme annuel</span>
+        <div class="col" style="background:var(--bone); padding-top:52px;">
+            <span class="label-caps">Association Contrast — № 06</span>
+            <div class="work-number" style="font-size:4rem; color:var(--rule);">06</div>
             <div class="col-meta">
-                <h2 class="title-serif" style="font-size:clamp(1.6rem,2.5vw,2.8rem);">
-                    Le Manifeste de<br>
-                    <em>l'Association</em>
-                </h2>
-                <p class="body-mono" style="margin-top:16px;">
-                    Conception éditoriale du support de présentation global de l'association. Traitement rigoureux de l'identité visuelle.
-                </p>
+                <h2 class="title-serif" style="font-size:clamp(1.6rem,2.5vw,2.8rem);">Le Manifeste<br><em>de l'Association</em></h2>
+                <p class="body-mono" style="margin-top:12px;">Support de présentation institutionnel. Construire l'image d'une structure en quelques pages : posture, missions, identité.</p>
             </div>
         </div>
         <div class="col" style="justify-content:center; background:var(--warm);">
             <img src="flyer_presentation.jpg" alt="Support de présentation" class="img-full img-hover">
         </div>
         <div class="col" style="border-right:none; background:var(--bone);">
-            <span class="label-caps">Association Contrast / Design Éditorial</span>
-            <div class="work-number" aria-hidden="true" style="font-size:4rem; color:var(--rule);">07</div>
+            <span class="label-caps">Association Contrast — № 07</span>
+            <div class="work-number" style="font-size:4rem; color:var(--rule);">07</div>
             <div class="col-meta">
-                <h2 class="title-serif" style="font-size:clamp(1.6rem,2.5vw,2.8rem);">
-                    Le Dépliant de<br>
-                    <em>Programmation</em>
-                </h2>
-                <p class="body-mono" style="margin-top:16px;">
-                    Mise en page du programme annuel des colloques et conférences.
-                </p>
+                <h2 class="title-serif" style="font-size:clamp(1.6rem,2.5vw,2.8rem);">Dépliant<br><em>de programmation</em></h2>
+                <p class="body-mono" style="margin-top:12px;">Programme annuel des colloques. Synthèse de données textuelles denses dans un format papier contraint : l'exercice le plus exigeant de la mise en page.</p>
             </div>
             <img src="flyer_programme.jpg" alt="Dépliant programme annuel" class="img-full img-hover" style="margin-top:24px;">
         </div>
     </div>
 
-    <!-- ═══════════════════════════════════════════════════════
-         AXE III — EXPÉRIENCES NUMÉRIQUES
-    ═══════════════════════════════════════════════════════ -->
-    <div class="axis-stripe">
-        <span class="axis-stripe-label">Axe III</span>
-        <div class="axis-stripe-rule"></div>
-        <span class="axis-stripe-title">Interfaces numériques & gamification</span>
-        <div class="axis-stripe-rule"></div>
-        <span class="axis-stripe-label">Web & UX</span>
+    <!-- ══════════════════════════════════════════
+         AXE III — NUMÉRIQUE & UX
+    ══════════════════════════════════════════ -->
+    <div class="competence-stripe">
+        <div class="cs-col">
+            <span class="cs-axe">Axe III</span>
+            <span class="cs-title">Interfaces numériques & expériences de médiation</span>
+        </div>
+        <div class="cs-col">
+            <span class="cs-axe">Compétence clé</span>
+            <span class="cs-title">GeoJSON · Gamification · UX · SEO</span>
+        </div>
+        <div class="cs-col">
+            <span class="cs-axe">Approche</span>
+            <span class="cs-title">Penser l'expérience avant de la coder</span>
+        </div>
+        <div class="cs-col">
+            <span class="cs-axe">Livrables</span>
+            <span class="cs-title">App en production · Dossier UX · Démo portail</span>
+        </div>
     </div>
 
-    <!-- Escape Game -->
-    <div class="fragment frag-dark">
-        <div class="frag-visual-dark" style="justify-content:center;">
-            <img src="visuel.jpg" alt="Interface de l'Escape Game" class="img-hover" style="max-width:100%; height:auto;">
+    <!-- 08 — Escape Game -->
+    <div class="fragment frag-dark" style="position:relative;">
+        <span class="frag-badge">Compétence — GeoJSON · Gamification patrimoniale · Médiation numérique</span>
+        <div class="frag-visual-dark" style="justify-content:center; padding-top:60px;">
+            <img src="visuel.jpg" alt="Interface Escape Game" class="img-hover" style="max-width:100%; height:auto;">
         </div>
         <div class="frag-meta-dark">
             <div>
-                <span class="label-caps-inv">Stratégie Digitale / Ingénierie de Médiation</span>
-                <div class="work-number" aria-hidden="true" style="color:rgba(253,251,247,0.06);">08</div>
+                <span class="label-caps-inv">Stratégie digitale — № 08</span>
+                <div class="work-number" style="color:rgba(253,251,247,0.05);">08</div>
             </div>
             <div>
-                <h2 class="title-serif-inv">
-                    Gamification<br>
-                    <em>Patrimoniale</em>
-                </h2>
-                <p class="body-mono-inv">
-                    Interface UI et logique algorithmique d'un dispositif de médiation numérique immersif. Intégration cartographique interactive de données territoriales.
-                </p>
-                <a href="https://frhb10946ds.ikexpress.com/~thibault/projet/" target="_blank" class="cta-inv">Consulter l'application</a>
+                <h2 class="title-serif-inv">Escape game<br><em>patrimonial</em></h2>
+                <p class="body-mono-inv">Application web de médiation gamifiée avec intégration cartographique interactive (GeoJSON). Conçue, architecturée et développée pour ancrer la découverte d'un territoire dans le jeu.</p>
+                <div class="proof-dark">
+                    <span class="proof-dark-label">Preuve</span>
+                    <span class="proof-dark-text">Maîtrise de l'intégration GeoJSON pour la cartographie interactive, conception de la logique algorithmique de jeu, UI design, et déploiement en production.</span>
+                </div>
+                <a href="https://frhb10946ds.ikexpress.com/~thibault/projet/" target="_blank" class="cta-inv">Consulter l'application en production</a>
             </div>
         </div>
     </div>
 
-    <!-- Maquette One Page -->
-    <div class="fragment frag-full">
+    <!-- 09 — Maquette One Page : UX & réflexion -->
+    <div class="fragment frag-full" style="position:relative;">
+        <span class="frag-badge-light">Compétence — Réflexion UX · Arborescence · Référencement · Design web</span>
         <div class="frag-full-inner">
-            <div class="frag-left">
-                <span class="label-caps">Interaction Design / Protocole Ergonomique</span>
-                <div class="work-number" aria-hidden="true">09</div>
-                <h2 class="title-serif">
-                    Architecture d'une<br>
-                    <em>Interface One-Page</em>
-                </h2>
-                <p class="body-mono">
-                    Dossier technique de conception d'une interface web unifiée. Travail poussé sur le parcours utilisateur (UX).
-                </p>
-                <a href="maquette_onepage.pdf" target="_blank" class="cta">Ouvrir le dossier PDF</a>
+            <div class="frag-left" style="padding-top:60px;">
+                <span class="label-caps">Design d'interface — № 09</span>
+                <div class="work-number">09</div>
+                <h2 class="title-serif">Dossier d'architecture<br><em>One-Page</em></h2>
+                <p class="body-mono">Un site n'est pas une page. C'est un parcours. Ce dossier technique documente la réflexion UX complète : arborescence, wireframes, conventions ergonomiques, stratégie de référencement naturel.</p>
+                <div class="ws-proof" style="margin-top:24px;">
+                    <span class="ws-proof-label">Preuve</span>
+                    <span class="ws-proof-text">Capacité à penser l'expérience utilisateur en amont du code : parcours de lecture, hiérarchie des contenus, balises sémantiques, accessibilité et optimisation SEO documentés.</span>
+                </div>
+                <a href="maquette_onepage.pdf" target="_blank" class="cta">Ouvrir le dossier d'architecture (PDF)</a>
             </div>
             <div class="frag-right" style="background:var(--bone); display:flex; align-items:center; justify-content:center; padding:60px 40px;">
-                <img src="one_page.png" alt="Screencast interface" class="img-hover" style="width:100%; height:auto;">
+                <img src="one_page.png" alt="Maquette interface" class="img-hover" style="width:100%; height:auto;">
             </div>
         </div>
     </div>
 
-    <!-- Capsule Portail Web -->
-    <div class="fragment frag-full" style="background:var(--warm);">
+    <!-- 10 — Capsule portail web -->
+    <div class="fragment frag-full" style="background:var(--warm); position:relative;">
+        <span class="frag-badge-light">Compétence — Prototypage · Micro-interactions · Expérience utilisateur complète</span>
         <div class="frag-full-inner">
-            <div class="frag-left" style="background:var(--warm);">
-                <span class="label-caps">Concevoir le Parcours / Documentation UX</span>
-                <div class="work-number" aria-hidden="true">10</div>
-                <h2 class="title-serif">
-                    Cinématique d'un<br>
-                    <em>Portail Web</em>
-                </h2>
-                <p class="body-mono">
-                    Capsule vidéo de démonstration simulant le comportement fluide, les micro-interactions de navigation et l'arborescence d'un portail web culturel.
-                </p>
+            <div class="frag-left" style="background:var(--warm); padding-top:60px;">
+                <span class="label-caps">Portail web — № 10</span>
+                <div class="work-number">10</div>
+                <h2 class="title-serif">Cinématique d'un<br><em>portail culturel</em></h2>
+                <p class="body-mono">Démonstration vidéo d'un portail web complet : navigation fluide, micro-interactions, transitions, arborescence complète. Proof of concept d'une interface pensée pour le secteur culturel.</p>
+                <div class="ws-proof" style="margin-top:24px; background:var(--bone);">
+                    <span class="ws-proof-label">Preuve</span>
+                    <span class="ws-proof-text">Maîtrise du prototypage d'interfaces complexes — de la conception à la démonstration fonctionnelle — avec une attention portée aux détails d'expérience (loading states, hover, transitions).</span>
+                </div>
             </div>
             <div class="frag-right" style="background:var(--warm); display:flex; align-items:center;">
                 <div class="video-wide">
@@ -1007,27 +873,21 @@
         const video = document.getElementById("reel-video");
         if (video) {
             const obs = new IntersectionObserver(entries => {
-                entries.forEach(e => e.isIntersecting
-                    ? video.play().catch(() => {})
-                    : video.pause()
-                );
+                entries.forEach(e => e.isIntersecting ? video.play().catch(()=>{}) : video.pause());
             }, { threshold: 0.5 });
             obs.observe(video);
         }
-
         function toggleReelAudio() {
-            const videoEl = document.getElementById('reel-video');
-            const text    = document.getElementById('audio-text');
-            const path    = document.getElementById('audio-path');
-            if (!videoEl) return;
-            if (videoEl.muted) {
-                videoEl.muted = false;
-                text.innerText = "COUPER LE SON";
-                path.setAttribute('d', 'M11 5L6 9H2v6h4l5 4V5z M15.54 8.46a5 5 0 0 1 0 7.07');
+            const v = document.getElementById('reel-video');
+            const t = document.getElementById('audio-text');
+            const p = document.getElementById('audio-path');
+            if (!v) return;
+            if (v.muted) {
+                v.muted = false; t.innerText = "COUPER LE SON";
+                p.setAttribute('d','M11 5L6 9H2v6h4l5 4V5z M15.54 8.46a5 5 0 0 1 0 7.07');
             } else {
-                videoEl.muted = true;
-                text.innerText = "ACTIVER LE SON";
-                path.setAttribute('d', 'M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6');
+                v.muted = true; t.innerText = "ACTIVER LE SON";
+                p.setAttribute('d','M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6');
             }
         }
     </script>
