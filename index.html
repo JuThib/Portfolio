@@ -229,10 +229,10 @@
         }
         .ws-images-duo .ws-img-wrap:first-child { flex: 0 0 45%; }
         .ws-images-duo .ws-img-offset { flex: 0 0 36%; margin-top: 70px; }
-        .ws-images-single { padding: 40px 36px; display: flex; align-items: center; justify-content: center; }
-        .ws-images-single .ws-img-wrap { display: flex; flex-direction: column; max-width: 600px; width: 100%; }
-        .ws-images-single .ws-img-wrap img { width: 100%; height: auto; display: block; object-fit: contain; }
-        .ws-images-single .ws-caption { display: flex; justify-content: space-between; margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--rule); font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+        .ws-images-single { padding: 0; display: flex; align-items: stretch; justify-content: stretch; }
+        .ws-images-single .ws-img-wrap { display: flex; flex-direction: column; width: 100%; }
+        .ws-images-single .ws-img-wrap img { width: 100%; height: 100%; object-fit: contain; display: block; max-height: 80vh; }
+        .ws-images-single .ws-caption { display: flex; justify-content: space-between; padding: 10px 24px; border-top: 1px solid var(--rule); font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
         .ws-footbar {
             display: flex; justify-content: space-between; padding: 10px 32px;
             border-top: 1px solid var(--rule); font-size: 0.56rem;
@@ -581,7 +581,7 @@
                 <span class="ws-date">2025</span>
             </div>
         </div>
-        <div class="ws-body img-wide">
+        <div class="ws-body">
             <div class="ws-text">
                 <span class="ws-competence">Médiation & édition jeunesse</span>
                 <span class="ws-institution">DRASSM — Médiation</span>
