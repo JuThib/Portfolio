@@ -610,29 +610,31 @@
     </article>
 
     <!-- 03 — Reel Instagram : stratégie de contenu vidéo -->
-    <div class="fragment frag-dark layout-insta-fixed" style="position:relative;">
-        <span class="frag-badge">Compétence — Stratégie de contenu & production vidéo</span>
-        <div class="frag-visual-dark">
-            <div class="video-spec-data">
-                <div class="spec-item"><span>FORMAT</span><span>VERTICAL 9:16</span></div>
-                <div class="spec-item"><span>DURÉE</span><span>00:46:00</span></div>
-                <div class="spec-item"><span>DIFFUSION</span><span>INSTAGRAM</span></div>
-                <div class="spec-item"><span>AUDIO</span><span>STEREO / 48KHZ</span></div>
+    <article style="border-top: 1px solid var(--rule); display: grid; grid-template-columns: 1fr 1fr; min-height: 85vh; position: relative;">
+        <span class="frag-badge-light">Compétence — Stratégie de contenu & production vidéo verticale</span>
+
+        <!-- GAUCHE : cadre noir contenu, reel centré dedans -->
+        <div style="background: var(--ink); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 64px 48px; gap: 28px; border-right: 1px solid rgba(253,251,247,0.08);">
+            <!-- Specs en haut -->
+            <div style="width: 100%; max-width: 280px; display: flex; justify-content: space-between; padding-bottom: 16px; border-bottom: 1px solid rgba(253,251,247,0.12);">
+                <div class="spec-item"><span>FORMAT</span><span>9:16 VERTICAL</span></div>
+                <div class="spec-item" style="text-align:right;"><span>DURÉE</span><span>00:46</span></div>
             </div>
-            <div class="reel-center-zone">
-                <div class="reel-wrap">
-                    <video id="reel-video" muted playsinline loop poster="miniature.jpg">
-                        <source src="Reel.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <button class="audio-toggle" onclick="toggleReelAudio()">
-                    <svg id="audio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path id="audio-path" d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6"/>
-                    </svg>
-                    <span id="audio-text">ACTIVER LE SON</span>
-                </button>
+            <!-- Reel -->
+            <div style="width: 220px; aspect-ratio: 9/16; background: #000; border-radius: 10px; overflow: hidden; box-shadow: 0 24px 56px rgba(0,0,0,0.6); border: 1px solid rgba(253,251,247,0.1); flex-shrink: 0;">
+                <video id="reel-video" muted playsinline loop poster="miniature.jpg" style="width:100%; height:100%; object-fit:cover; display:block;">
+                    <source src="Reel.mp4" type="video/mp4">
+                </video>
             </div>
-            <svg class="constellation-insta" viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Bouton son -->
+            <button class="audio-toggle" onclick="toggleReelAudio()">
+                <svg id="audio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path id="audio-path" d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6"/>
+                </svg>
+                <span id="audio-text">ACTIVER LE SON</span>
+            </button>
+            <!-- Constellation -->
+            <svg style="position:absolute; bottom:40px; left:40px; width:80px; opacity:0.12; pointer-events:none;" viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <line x1="60" y1="40" x2="140" y2="100" stroke="#fdfbf7" stroke-width="0.7" stroke-dasharray="3 3"/>
                 <line x1="140" y1="100" x2="80" y2="200" stroke="#fdfbf7" stroke-width="0.7"/>
                 <line x1="80" y1="200" x2="160" y2="300" stroke="#fdfbf7" stroke-width="0.7" stroke-dasharray="2 2"/>
@@ -645,21 +647,33 @@
                 <circle cx="30" cy="280" r="2" fill="#fdfbf7"/>
             </svg>
         </div>
-        <div class="frag-meta-dark">
+
+        <!-- DROITE : texte éditorial sur fond crème -->
+        <div style="background: var(--warm); padding: 64px 48px; display: flex; flex-direction: column; justify-content: space-between;">
             <div>
-                <span class="label-caps-inv">DRASSM / Instagram — № 03</span>
-                <div class="work-number" style="color:rgba(253,251,247,0.05);">03</div>
+                <span class="label-caps">DRASSM / Instagram — № 03</span>
+                <div class="work-number" style="color: var(--rule); margin: 8px 0 24px;">03</div>
+                <h2 class="title-serif">Rendez-vous<br><em>Éditorial Numérique</em></h2>
+                <p class="body-mono">Conception, tournage, montage et publication d'une capsule verticale de 46 secondes instaurant un rendez-vous éditorial hebdomadaire sur l'Instagram institutionnel du DRASSM.</p>
+                <div class="ws-proof" style="margin-top: 28px; background: var(--bone);">
+                    <span class="ws-proof-label">Preuve</span>
+                    <span class="ws-proof-text">Maîtrise complète de la chaîne de production vidéo courte : scénario, cadrage, montage, sous-titrage, export en format vertical natif pour Instagram Reels.</span>
+                </div>
             </div>
-            <div>
-                <h2 class="title-serif-inv">Rendez-vous<br><em>Éditorial Numérique</em></h2>
-                <p class="body-mono-inv">Conception, tournage, montage et publication d'une capsule verticale de 46 secondes instaurant un rendez-vous éditorial hebdomadaire sur l'Instagram institutionnel.</p>
-                <div class="proof-dark">
-                    <span class="proof-dark-label">Preuve</span>
-                    <span class="proof-dark-text">Maîtrise complète de la chaîne de production vidéo courte : scénario, cadrage, montage, sous-titrage, export en format vertical natif pour Instagram Reels.</span>
+            <!-- Specs secondaires en bas -->
+            <div style="display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--rule); padding-top: 24px;">
+                <div style="display:flex; justify-content:space-between; font-size:0.58rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted);">
+                    <span>Diffusion</span><span>Instagram Reels</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; font-size:0.58rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted);">
+                    <span>Audio</span><span>Stéréo / 48 kHz</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; font-size:0.58rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted);">
+                    <span>Outils</span><span>Premiere Pro · CapCut</span>
                 </div>
             </div>
         </div>
-    </div>
+    </article>
 
     <!-- 04 — Archéo' Time : communication interne -->
     <div class="fragment frag-full" style="position:relative;">
