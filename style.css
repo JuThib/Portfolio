@@ -38,6 +38,8 @@ body {
     top: 28%;    /* Passé de 34% à 28% pour remonter légèrement la vidéo */
     left: 31%;   /* Ajuste horizontalement si besoin */
     width: 38%;  /* Largeur de la vidéo */
+    border: 0;
+    aspect-ratio: 9 / 16;  /* reel vertical (YouTube Short) */
     border-radius: 4px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     z-index: 9999;
