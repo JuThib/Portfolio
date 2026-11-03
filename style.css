@@ -9,10 +9,26 @@ body {
 }
 
 .container {
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;          /* tient compte de la barre d'adresse sur mobile */
+    padding: 12px;
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* Le livre occupe tout l'espace du conteneur : StPageFlip calcule la taille des pages à partir de lui */
+#book {
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 6px;
+    }
 }
 
 .page {
