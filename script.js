@@ -3,21 +3,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (bookElement) {
         const pageFlip = new St.PageFlip(bookElement, {
-            width: 550,   // Largeur d'une page individuelle
-            height: 733,  // Hauteur d'une page individuelle
-            size: "fixed",
-            minWidth: 300,
+            // width/height = proportions d'UNE page (le livre s'adapte ensuite à l'écran)
+            width: 550,
+            height: 733,
+            size: "stretch",      // le livre remplit l'écran disponible en gardant les proportions
+            minWidth: 260,        // en dessous de 2 x minWidth de large : affichage page seule (mobile portrait)
             maxWidth: 1000,
-            minHeight: 400,
-            maxHeight: 1200,
+            minHeight: 346,
+            maxHeight: 1333,
             showCover: true,
-            
+
             // Paramètres clés pour atténuer la cassure visuelle au centre :
             maxShadowOpacity: 0.15, // Réduit fortement l'ombre noire au milieu qui "coupe" les dessins
             showShadow: true,
-            
+
             mobileScrollSupport: true,
-            usePortrait: false      // Force l'affichage double page côte à côte sur écran large
+            usePortrait: true       // page seule sur petit écran, double page sur écran large
         });
 
         pageFlip.loadFromHTML(document.querySelectorAll('.page'));
